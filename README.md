@@ -33,4 +33,5 @@ Please view the PyOneDark repository tutorials for more informations.
 ## Legal
 
 (C)opyright ADV-P group X members, using [Unlicensed License](https://unlicense.org/)
+
 UI based from [PyOneDark_Qt_Widgets_Modern_GUI](https://github.com/Wanderson-Magalhaes/PyOneDark_Qt_Widgets_Modern_GUI) and [Material Design](https://material.io)
