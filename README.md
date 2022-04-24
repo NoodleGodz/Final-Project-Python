@@ -2,9 +2,9 @@
 ~ A project from Advanced Programming with Python, Group X ~
 
 ## Features
- - 1
- - 2
- - 3
+ - Login System
+ - Enterprise Management
+ - Customer Management
  
 ## Build instruction
 
@@ -12,12 +12,12 @@ Of course, Python 3 is necessary.
 
 Next, install necessary PySide components:
 ``` 
-    pip install pyside6 
+pip install pyside6 
 ```
 
 Then run and hope you installed all dependencies :)
 ```
-    python3 main.py
+python3 main.py
 ```
 
 It is also recommended use Qt Creator or Qt Designer (>= 6.0.0) to build.
