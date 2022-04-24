@@ -28,7 +28,7 @@ import random
 # ADJUST QT FONT DPI FOR HIGHT SCALE AN 4K MONITOR
 # ///////////////////////////////////////////////////////////////
 os.environ["QT_FONT_DPI"] = "96"
-# IF IS 4K MONITOR ENABLE 'os.environ["QT_SCALE_FACTOR"] = "2"'
+# os.environ["QT_SCALE_FACTOR"] = "0.5"
 
 # MAIN WINDOW
 # ///////////////////////////////////////////////////////////////

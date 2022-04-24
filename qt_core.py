@@ -21,10 +21,3 @@ builtins.motds = [
     "I will KILL you!\n" +
         "~ sontg ~",
 ]
-
-def checkLogin(username, password):
-    if username and password:
-        return True
-    else:
-        return False
-

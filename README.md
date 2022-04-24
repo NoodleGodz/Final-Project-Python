@@ -20,7 +20,7 @@ Then run and hope you installed all dependencies :)
 python3 main.py
 ```
 
-It is also recommended use Qt Creator or Qt Designer (>= 6.0.0) to build.
+It is also recommended to use Qt Creator or Qt Designer (>= 6.0.0) to build.
 
 ## Troubleshooting
 
