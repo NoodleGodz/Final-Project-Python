@@ -1,0 +1,9 @@
+# Ignore python binaries
+**/__pycache__
+*.pyc
+
+# Ignore pre-built designer file
+.qt_for_python/
+
+# Ignore Qt Creator autosave
+*.autosave
