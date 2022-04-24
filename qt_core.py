@@ -10,6 +10,7 @@ from PySide6.QtCore import *
 from PySide6.QtGui import *
 from PySide6.QtWidgets import *
 from PySide6.QtSvgWidgets import *
+from Elec_Database import *
 import builtins
 
 # GLOBAL VARIABLES
