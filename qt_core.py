@@ -12,6 +12,8 @@ from PySide6.QtWidgets import *
 from PySide6.QtSvgWidgets import *
 from Elec_Database import *
 import builtins
+import datetime
+import random
 
 # GLOBAL VARIABLES
 builtins.is_logged = False
