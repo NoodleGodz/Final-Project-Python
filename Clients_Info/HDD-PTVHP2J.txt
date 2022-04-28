@@ -1,0 +1,10 @@
+-------------Client-------------------
+ID : HDD-PTVHP2J
+Name : Le Thien An
+Address : 101 Bo Y Te Group, Tho Lao, Hai Ba Trung, Ha Noi
+Info : dinhhuong_truong@hotmail.com
+-------------Contract-------------------
+State : True
+Energy Mode : 5
+Start Date (mm/dd/yy): 11/23/02
+Length : 0 days

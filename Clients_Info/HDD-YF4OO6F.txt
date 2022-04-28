@@ -1,0 +1,10 @@
+-------------Client-------------------
+ID : HDD-YF4OO6F
+Name : Thi Minh Toan
+Address : T5 Hoang Hoa Tham, Ward 13, Hai Ba Trung, Ha Noi
+Info : quangminh.dang@gmail.com
+-------------Contract-------------------
+State : True
+Energy Mode : 5
+Start Date (mm/dd/yy): 11/23/02
+Length : 5 days
