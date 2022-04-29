@@ -34,10 +34,13 @@ class Clients_List:
         return [d['Client_Object'].Energy_Usage for d in self.List]
 
     def New_day(self,Today):
+        self.Today=Today
+        c=[]
         for d in self.List:
             d['Client_Object'].New_day(Today)
-        self.Today=Today
-        return self.GetUsageDay()    
+            a = {"Id":d['Client_Object'].Contract_ID,"Date":Today,"Energy Usage":d['Client_Object'].Energy_Usage}
+            c.append(a)
+        return c  
 
     def ListOfDict(self):
         return [d['Client_Object'].ToDict() for d in self.List]

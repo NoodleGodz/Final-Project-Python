@@ -1,0 +1,10 @@
+-------------Client-------------------
+ID : HDD-ET2T10D
+Name : Thach Gia Phong
+Address : 1C Trang Tien, Trang Tien Ward, Hai Ba Trung, Ha Noi
+Info : lamkhe_le@yahoo.com
+-------------Contract-------------------
+State : True
+Energy Mode : 5
+Start Date (mm/dd/yy): 04/26/22
+Length : 4 days
