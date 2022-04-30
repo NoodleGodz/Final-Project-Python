@@ -8,7 +8,15 @@
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
 
-from qt_core import *
+from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
+    QMetaObject, QObject, QPoint, QRect,
+    QSize, QTime, QUrl, Qt)
+from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
+    QFont, QFontDatabase, QGradient, QIcon,
+    QImage, QKeySequence, QLinearGradient, QPainter,
+    QPalette, QPixmap, QRadialGradient, QTransform)
+from PySide6.QtWidgets import (QApplication, QLabel, QSizePolicy, QStackedWidget,
+    QVBoxLayout, QWidget)
 
 class Ui_RightColumn(object):
     def setupUi(self, RightColumn):
@@ -59,7 +67,7 @@ class Ui_RightColumn(object):
 
         self.retranslateUi(RightColumn)
 
-        self.menus.setCurrentIndex(0)
+        self.menus.setCurrentIndex(1)
 
 
         QMetaObject.connectSlotsByName(RightColumn)

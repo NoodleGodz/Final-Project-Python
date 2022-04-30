@@ -254,7 +254,7 @@ class SetupMainWindow:
 
         self.login_btn.setMinimumHeight(36)
 
-        def username_clicked(self, username, password):
+        def username_clicked(self, username, password, changed_label: QLabel):
             if username and password:
                 builtins.is_logged = True
                 MainFunctions.get_left_menu_btn(self, "btn_login").set_icon(Functions.set_svg_icon("icon_user.svg"))
@@ -264,6 +264,9 @@ class SetupMainWindow:
                 msgBox.setIcon(QMessageBox.Information)
                 msgBox.setText("You are logged in!")
                 msgBox.exec()
+
+                MainFunctions.set_page(self, self.ui.load_pages.page_0)
+                changed_label.setText("Welcome back, " + username + "!")
             else:
                 msgBox = QMessageBox()
                 msgBox.setWindowTitle("Login Panel")
@@ -272,7 +275,7 @@ class SetupMainWindow:
                 msgBox.exec()
 
         # NO!
-        self.login_btn.clicked.connect(lambda: username_clicked(self, self.userLineEdit.text(), self.passwordLineEdit.text()))
+        self.login_btn.clicked.connect(lambda: username_clicked(self, self.userLineEdit.text(), self.passwordLineEdit.text(), self.ui.load_pages.label_welcome))
 
         self.ui.load_pages.layout_username.addWidget(self.userLineEdit)
         self.ui.load_pages.layout_password.addWidget(self.passwordLineEdit)

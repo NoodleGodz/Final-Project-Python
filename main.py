@@ -76,7 +76,10 @@ class MainWindow(QMainWindow):
 
         if btn.objectName() == "btn_login":
             self.ui.left_menu.select_only_one(btn.objectName())
-            MainFunctions.set_page(self, self.ui.load_pages.page_1)
+            if builtins.is_logged:
+                MainFunctions.set_page(self, self.ui.load_pages.page_0)
+            else:
+                MainFunctions.set_page(self, self.ui.load_pages.page_1)
 
         if btn.objectName() == "btn_stat":
             if not builtins.is_logged:
@@ -184,7 +187,7 @@ class MainWindow(QMainWindow):
 
         #     # Get Left Menu Btn            
         #     top_settings = MainFunctions.get_left_menu_btn(self, "btn_setting")
-        #     top_settings.set_active_tab(False)           
+        #     top_settings.set_active_tab(False)    
 
         # DEBUG
         print(f"Button {btn.objectName()}, clicked!")

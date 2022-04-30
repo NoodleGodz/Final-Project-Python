@@ -1,4 +1,4 @@
-# Energy Management Control Panel
+# Energy Control & Management Panel
 ~ A project from Advanced Programming with Python, Group X ~
 
 ## Features
