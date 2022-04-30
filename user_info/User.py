@@ -3,28 +3,15 @@ import os
 import getpass
 import sys
 
-# NOT DONE:
-# - grabpass function
+## NOTE: NOT done:
 # - Delete user function
 
-## Check file 
-def check(file, string):
-    with open(file, 'r') as read:
-        for line in read:
-            if string in line:
-                return True
-    return False
-
-def checklogin(file, string):
-    global lf
-    with open(file, 'r') as read:
-        for (lf, line) in enumerate(read):
-            if string in line:
-                return True
-    return False
+## Get username
+def input_username():
+    pass
 
 ## Get password from user input - use in later function
-def mpass(prompt='Password: '):
+def input_passwd(prompt='Password: '):
     if sys.stdin is not sys.__stdin__:
         pwd = getpass.getpass(prompt)
         return pwd
@@ -48,30 +35,48 @@ def mpass(prompt='Password: '):
                 sys.stdout.write('*')
                 sys.stdout.flush()
                 pwd = pwd + char
-        return pwd
+        return pwd   
 
-## Read pass
-def grabpass(password):
-    global pass_to_check
-    writef = open("user_database.txt", "r")
-    cl = lf + 1
-    ltr = [cl]
-    for position, line in enumerate(writef):
-        if position in ltr:
-            pass_to_check = line    
-    
-## Add user (Sign up)
-# IMPORTANT: must have the password input from mpass() function
-# username = input("Username: ")
-# password = mpass()
-# password is encrypted with sha256, i.e. can't be decrypted
-def add_user(username, password):
-    while True:
-        newuser = username
-        if check('user_database.txt', newuser):
-            print("User already exists!")
+## Check user name exist
+def check_if_exist(username):
+    #inputusername
+    with open("user_database.txt", "rb") as handle:
+        pickle.loads(handle)
+        if check_if_exist_username('user_database.txt', username):
+            #print("User already exists!")
+            pass
         else:
             break
+
+## Check user name exist
+def check_if_exist_username(file, string):
+    read_username = []
+    with open(file, 'rb') as read:
+        user_db = pickle.loads(read)
+        for i in user_db:
+            read_username.append(next(iter(user_db[i])))
+        if string in read_username:
+            return True
+        return False
+
+## Check password exist - NOT done
+def check_passwd(username):
+    with open("user_database.txt", "rb") as handle:
+        user_db = pickle.loads(handle)
+        for i in user_db:
+            val = user_db[i].values()
+            user, passwd = next(val), next(val)
+            if username = user:
+                password = passwd
+                break
+        return password
+        
+## Add user (Sign up)
+# IMPORTANT: must have the password input from input_passwd() function
+# username = input("Username: ")
+# password = input_passwd()
+def register(username, password):
+    check_if_exist(username)
     h = hashlib.pbkdf2_hmac('sha256', password.encode("utf-8"), b'*@#d2', 182)
     newpass = h.hex() 
     # Add item to list
@@ -86,9 +91,10 @@ def add_user(username, password):
         pickle.dumps(user_list, handle, protocol=pickle.HIGHEST_PROTOCOL)
     # remember to have a successfully message!
 
-## Get user from db
-def read_db():
+## Read user from db
+def read_user():
     ## IMPORTANT - Check if user_db is empty or not
+    read_username = []
     if os.path.getsize("user_database.txt") == 0:
         #print("Database is empty!\n")
         pass
@@ -96,14 +102,13 @@ def read_db():
         with open("user_database.txt", "rb") as handle:
             user_db = pickle.loads(handle)
             for i in user_db:
-                for k in user_db[i]:
-                    username = next(iter(user_db[i]))
-        # return username
+                read_username.append(next(iter(user_db[i])))
+        return username
 
 ## Log in
-# IMPORTANT: must have the password input from mpass() function
+# IMPORTANT: must have the password input from input_passwd() function
 # username = input("Username: ")
-# password = mpass()
+# password = input_passwd()
 def log_in(username, password):
     if os.path.getsize("user_database.txt") == 0:
         #print("Database is empty!\n")
@@ -112,29 +117,24 @@ def log_in(username, password):
         while True:
             userinput = username
             with open("user_database.txt", "rb") as handle:
-                user_db = pickle.loads(handle)
-                if checklogin(userinput in user_db.value()):
-                    print("Welcome " + username + "!\n")
+                if check_if_exist_username("user_database.txt", userinput):
+                    #print("Welcome " + userinput + "!\n")
                     break
                 else:
-                    print("Invalid username.")
+                    #print("Invalid username.")
+                    break
         while True:
             h = hashlib.pbkdf2_hmac('sha256', password.encode("utf-8"), b'*@#d2', 182)
             passinput = h.hex()
-            grabpass()
-            ptct = pass_to_check.replace("Password: ", '')
-            ptcr = pass_to_check.rstrip("\n")
-            if passinput == ptcr:
-                currentuser = userinput
-                clear()
-                print("Successfully logged in as " + currentuser + "!\n")
-                usrtitle = ("title Secure Login System (logged in as " + currentuser + ")")
-                os.system(usrtitle)
+            passcheck = check_passwd(userinput)
+            if passinput == passcheck:
+                #Succesfully log in
                 break
             else:
-                print("Invalid Password.")
-
-def delete_user():
+                #print("Invalid Password.")
+                pass
+            
+def delete_user(username):
     pass
 
 ## Wipe all db
