@@ -53,7 +53,7 @@ def mpass(prompt='Password: '):
 ## Read pass
 def grabpass(password):
     global pass_to_check
-    writef = open("user_database.obj", "r")
+    writef = open("user_database.txt", "r")
     cl = lf + 1
     ltr = [cl]
     for position, line in enumerate(writef):
@@ -68,7 +68,7 @@ def grabpass(password):
 def add_user(username, password):
     while True:
         newuser = username
-        if check('user_database.obj', newuser):
+        if check('user_database.txt', newuser):
             print("User already exists!")
         else:
             break
@@ -82,18 +82,18 @@ def add_user(username, password):
     user_list = []
     user_list.add(users)
     # open(file, mode=""), for a is writing to the db
-    with open("user_database.obj", "a") as handle:
+    with open("user_database.txt", "a") as handle:
         pickle.dumps(user_list, handle, protocol=pickle.HIGHEST_PROTOCOL)
     # remember to have a successfully message!
 
 ## Get user from db
 def read_db():
     ## IMPORTANT - Check if user_db is empty or not
-    if os.path.getsize("user_database.obj") == 0:
+    if os.path.getsize("user_database.txt") == 0:
         #print("Database is empty!\n")
         pass
     else:
-        with open("user_database.obj", "rb") as handle:
+        with open("user_database.txt", "rb") as handle:
             user_db = pickle.loads(handle)
             for i in user_db:
                 for k in user_db[i]:
@@ -105,13 +105,13 @@ def read_db():
 # username = input("Username: ")
 # password = mpass()
 def log_in(username, password):
-    if os.path.getsize("user_database.obj") == 0:
+    if os.path.getsize("user_database.txt") == 0:
         #print("Database is empty!\n")
         pass
     else:
         while True:
             userinput = username
-            with open("user_database.obj", "rb") as handle:
+            with open("user_database.txt", "rb") as handle:
                 user_db = pickle.loads(handle)
                 if checklogin(userinput in user_db.value()):
                     print("Welcome " + username + "!\n")
@@ -141,14 +141,14 @@ def delete_user():
 # For this part, it is better to integrated it with the gui
 # idk why I want to delete all data, lol!
 def wipe_db():
-    if os.path.getsize("user_database.obj") == 0:
+    if os.path.getsize("user_database.txt") == 0:
         #print("Database is already empty!\n")
         pass
     else:
         while True:
             a = input("Are you sure you want to wipe the user database [y/n]? ")
             if a == "y":
-                datab = open("user_database.obj", "w")
+                datab = open("user_database.txt", "w")
                 datab.write("")
                 datab.close()
                 clear()
