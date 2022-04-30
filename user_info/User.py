@@ -3,9 +3,6 @@ import os
 import getpass
 import sys
 
-## NOTE: NOT done:
-# - Delete user function
-
 ## Get username
 def input_username():
     pass
@@ -42,28 +39,28 @@ def check_if_exist(username):
     #inputusername
     with open("user_database.txt", "rb") as handle:
         pickle.loads(handle)
-        if check_if_exist_username('user_database.txt', username):
+        if check_exist('user_database.txt', username):
             #print("User already exists!")
             pass
         else:
             break
 
 ## Check user name exist
-def check_if_exist_username(file, string):
-    read_username = []
+def check_exist(file, string):
+    read_data = []
     with open(file, 'rb') as read:
         user_db = pickle.loads(read)
-        for i in user_db:
+        for i in range(len(user_db)):
             read_username.append(next(iter(user_db[i])))
-        if string in read_username:
+        if string in read_data:
             return True
         return False
 
-## Check password exist - NOT done
+## Check password exist
 def check_passwd(username):
     with open("user_database.txt", "rb") as handle:
         user_db = pickle.loads(handle)
-        for i in user_db:
+        for i in range(len(user_db)):
             val = user_db[i].values()
             user, passwd = next(val), next(val)
             if username = user:
@@ -85,10 +82,12 @@ def register(username, password):
         "passwd": newpass
     }
     user_list = []
-    user_list.add(users)
+    user_list.append(users)
     # open(file, mode=""), for a is writing to the db
-    with open("user_database.txt", "a") as handle:
-        pickle.dumps(user_list, handle, protocol=pickle.HIGHEST_PROTOCOL)
+    with open("user_database.txt", "w+b") as handle:
+        user_db = pickle.loads(handle)
+        user_db.extend(user_list)
+        pickle.dumps(user_db, handle, protocol=pickle.HIGHEST_PROTOCOL)
     # remember to have a successfully message!
 
 ## Read user from db
@@ -101,7 +100,7 @@ def read_user():
     else:
         with open("user_database.txt", "rb") as handle:
             user_db = pickle.loads(handle)
-            for i in user_db:
+            for i in range(len(user_db)):
                 read_username.append(next(iter(user_db[i])))
         return username
 
@@ -117,7 +116,7 @@ def log_in(username, password):
         while True:
             userinput = username
             with open("user_database.txt", "rb") as handle:
-                if check_if_exist_username("user_database.txt", userinput):
+                if check_exist("user_database.txt", userinput):
                     #print("Welcome " + userinput + "!\n")
                     break
                 else:
@@ -135,7 +134,13 @@ def log_in(username, password):
                 pass
             
 def delete_user(username):
-    pass
+    with open("user_database.txt", "w+b") as handle:
+        user_db = pickle.loads(handle)
+        if check_exist("user_database.txt", userinput)
+            for i in range(len(user_db)):
+                if user_db[i]['user_name'] = username:
+                    del user_db[i]
+            pickle.dumps(user_db, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
 ## Wipe all db
 # For this part, it is better to integrated it with the gui
@@ -151,12 +156,11 @@ def wipe_db():
                 datab = open("user_database.txt", "w")
                 datab.write("")
                 datab.close()
-                clear()
-                print("Database wiped!\n")
+                #print("Database wiped!\n")
                 break
             elif a == "n":
-                clear()
-                print("Database will not be wiped!\n")
+                #print("Database will not be wiped!\n")
                 break
             else:
-                print("Invalid selection.")
+                #print("Invalid selection.")
+                pass
