@@ -55,7 +55,7 @@ def each_day_usage_to_excel(Data):
     writer = pd.ExcelWriter(path, engine = 'openpyxl')
     for i in range(len(Data)):
         Data[i].to_excel(writer, sheet_name = 'day '+str(i+1)+' usage')
-    writer.save()
+    #writer.save()
     writer.close()    
     return    
           
@@ -83,7 +83,7 @@ def client_in4_to_excel(Data):
     path = "Excel_file/Client_infor.xlsx"
     writer = pd.ExcelWriter(path, engine = 'openpyxl')
     Data.to_excel(writer, sheet_name = 'Client infor')
-    writer.save()
+    #writer.save()
     writer.close()    
     return       
 def cal_sum_of_day(list_of_day):
