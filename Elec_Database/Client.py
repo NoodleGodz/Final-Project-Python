@@ -1,6 +1,27 @@
+import pickle
 import random
 import datetime
 class Client:
+    """
+    THis function contain all infomation of 1 clients with unique Id
+        Display varible (can be change at GUI):
+            Contract_ID
+            Owner_Name
+            Address
+            Info
+            Open(State)
+            Energy_Mode : Radio_Button from 0-5
+
+        Main function:
+            UpdateInput(): Update the new varible when click edit button
+
+            Get_Plot(): Return this clients 
+                + a list of Engery_Usage in that time inverval and an equal len list of Date in that time inverval
+
+            Print_Info_File() : Export this clients infomation into .txt file in Clients_Info
+
+
+    """
     def __init__(self,Today:datetime.date) -> None:
         self.Base_Energy_Usage=30
         self.Random_Usage_Factor=0
@@ -21,6 +42,13 @@ class Client:
         self.Energy_mode=EM
     def Set_Open(self,b:bool):
         self.Open=b    
+    def Get_Plot(self):
+        file_cl = open('Object_Folder/Client_L.obj', 'rb')
+        Stat_L = pickle.load(file_cl)   
+        file_cl.close()  
+        usage_of_client,date  = Stat_L.Ploting_Usage_Of_Specific_Client(self.Contract_ID)
+        return usage_of_client,date
+    
     def UpdateInput(self,id,name,address,info,EM):
         self.Set_id(id)    
         self.Set_name(name)  

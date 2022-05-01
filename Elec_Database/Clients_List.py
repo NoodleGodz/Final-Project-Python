@@ -3,6 +3,33 @@ import datetime
 import pickle
 
 class Clients_List:
+    """
+    This class contain a list of all our Clients in the area
+    
+    Main function get display on the GUI:
+        + FindClientsListbyInput(input) : 
+            - Work as a search engine for the panel.
+            - Return a list of all clients have the input in ID
+            - Call at every key pressed
+
+        + CreateNewClient() :
+            - Create a pop up clients panel with textbox for user input (See more at Clients)
+            - Need to get Contact_ID - Owner_Name - Address - Info - E_Mode to create
+            - Return True when validated, the new client get add to the list   
+                     False when the new ID already exist,the new client throw away
+
+        + For now, there is no way to delete a Client out of the list, the current option is to close the contract and left :v
+
+    GUI: 
+        +a Big box show .Today
+        +A small button for New_day to Simmulate a day passing by, refresh panel each time click to update time
+        +A search bar and a javax.swing.JList alike to display every clients correct :v
+        +THis is a Jlist of button to click on each clients and get pop up clients panel of that clients
+        +A buttton to add clients
+       
+    
+    
+    """
     def __init__(self,Today) -> None:
         self.List=[]
         self.Today=Today

@@ -14,9 +14,13 @@ class Main_Menu():
         + Stat_List:    An Instance of a class contains all Energy_Usages in a time period, export to excel and calculate price
                         -> GUI into Stat_Panel       
                                  
+    Main function:
+        + New_day: Simmulate a day pass-> New Energy_Usage add to the Stat list
 
-
-
+    GUI:
+        +a Big box show .Today
+        +A small button for New_day to Simmulate a day passing by
+        +Save_data() when close
     """
 
     def __init__(self) -> None:
@@ -25,8 +29,8 @@ class Main_Menu():
 
     def Load_TempData(self):
         """
-        This function is for loading old data
-        Therefore will not save when close
+        This function is for loading old demo data
+        Therefore Changes will not be save when close
 
         When finish testing, use Load_Data() instead
         """
@@ -49,7 +53,11 @@ class Main_Menu():
 
     def Save_Data(self):
         """
-        a.New_day()
+        This function save all current change in gui into .obj file
+        Keep persistent info after closing app
+
+        (Remember to change the __init__ to Load_Data() to persistent info)
+
         """
         file_cl = open('Object_Folder/Client_L.obj', 'wb')
         pickle.dump(self.Client_L,file_cl)
