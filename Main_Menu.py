@@ -18,9 +18,7 @@ class Main_Menu():
         + New_day: Simmulate a day pass-> New Energy_Usage add to the Stat list
 
     GUI:
-        +a Big box show .Today
-        +A small button for New_day to Simmulate a day passing by
-        +Save_data() when close
+        + savedata() when closing
     """
 
     def __init__(self) -> None:
