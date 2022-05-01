@@ -1,5 +1,6 @@
 from Elec_Database import Client
 import datetime
+import pickle
 
 class Clients_List:
     def __init__(self,Today) -> None:
@@ -15,6 +16,10 @@ class Clients_List:
     def CheckIDexist(self,id):
         return any(d['id'] == id for d in self.List)
                
+    def Save_CL(self):
+        file_cl = open('Object_Folder/Client_L.obj', 'wb')
+        pickle.dump(self,file_cl)
+        file_cl.close()
 
     def CreateNewClient(self,Contact_ID,Owner_Name,Address,Info,E_Mode):
         a=Client.Client(self.Today)

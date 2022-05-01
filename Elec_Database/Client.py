@@ -2,7 +2,7 @@ import random
 import datetime
 class Client:
     def __init__(self,Today:datetime.date) -> None:
-        self.Base_Energy_Usage=random.randint(30,60)
+        self.Base_Energy_Usage=30
         self.Random_Usage_Factor=0
         self.Start_date=Today
         self.Today=Today
@@ -30,7 +30,7 @@ class Client:
     def New_day(self,Today:datetime.date):
         self.Today=Today
         self.Energy_Usage=round(self.Base_Energy_Usage*(self.Energy_mode/5)*self.Random_Usage_Factor)
-        self.Random_Usage_Factor=random.uniform(0.25,3)                  
+        self.Random_Usage_Factor=random.uniform(0.10,2.5)                  
     def __str__(self) -> str:
         buffer='-------------Client-------------------\n'
         buffer=buffer +"ID : "+ self.Contract_ID +'\n'

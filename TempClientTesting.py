@@ -49,9 +49,9 @@ Cl.List[5]['Client_Object'].Print_Info_File()
 file_cm = open('Temp_Obj/CLTesting.obj', 'rb')
 b = pickle.load(file_cm)  
 print(b.ListOfDict())
-
-print(Today)
 """
+print(Today)
+
 file_cl = open('Temp_Obj/CLTesting.obj', 'wb')
 pickle.dump(Cl,file_cl)
 file_cl.close()
