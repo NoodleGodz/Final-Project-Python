@@ -10,12 +10,15 @@ from PySide6.QtCore import *
 from PySide6.QtGui import *
 from PySide6.QtWidgets import *
 from PySide6.QtSvgWidgets import *
+from PySide6.QtCharts import *
 from Elec_Database import *
+from Main_Menu import Main_Menu
 import builtins
 import datetime
 import random
 
 # GLOBAL VARIABLES
+builtins.mm = Main_Menu()
 builtins.is_logged = False
 builtins.motds = [
     "The whole point of criticism is that you are asking the other guys to do better." +

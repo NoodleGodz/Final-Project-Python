@@ -16,9 +16,9 @@ git clone https://github.com/rashlight/Final-Project-Python
 cd Final-Project-Python
 ```
 
-Next, install necessary PySide components:
+Next, install necessary components:
 ``` 
-pip install pyside6 
+pip install pandas pyside6 openpyxl
 ```
 
 Then run and hope you installed all dependencies :)

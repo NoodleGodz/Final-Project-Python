@@ -226,7 +226,7 @@ class SetupMainWindow:
         )
 
         self.userLineEdit.setMinimumHeight(36)
-        self.userLineEdit.returnPressed.connect(lambda: username_clicked(self, self.userLineEdit.text(), self.passwordLineEdit.text(), self.ui.load_pages.label_welcome, self.ui.load_pages.label_status))
+        self.userLineEdit.returnPressed.connect(lambda: username_released(self, self.userLineEdit.text(), self.passwordLineEdit.text(), self.ui.load_pages.label_welcome, self.ui.load_pages.label_status))
 
         self.passwordLineEdit = PyLineEdit(
             "",
@@ -243,7 +243,7 @@ class SetupMainWindow:
         self.passwordLineEdit.setMinimumHeight(36)
         self.passwordLineEdit.setEchoMode(QLineEdit.Password)
         self.passwordLineEdit.setInputMethodHints(Qt.ImhHiddenText | Qt.ImhNoPredictiveText | Qt.ImhNoAutoUppercase);
-        self.passwordLineEdit.returnPressed.connect(lambda: username_clicked(self, self.userLineEdit.text(), self.passwordLineEdit.text(), self.ui.load_pages.label_welcome, self.ui.load_pages.label_status))
+        self.passwordLineEdit.returnPressed.connect(lambda: username_released(self, self.userLineEdit.text(), self.passwordLineEdit.text(), self.ui.load_pages.label_welcome, self.ui.load_pages.label_status))
 
         self.login_btn = PyPushButton(
             "Login",
@@ -256,7 +256,7 @@ class SetupMainWindow:
 
         self.login_btn.setMinimumHeight(36)
 
-        def username_clicked(self, username, password, changed_label: QLabel, status_label: QLabel):
+        def username_released(self, username, password, changed_label: QLabel, status_label: QLabel, datetime_label: QLabel):
             if username and password:
                 builtins.is_logged = True
                 MainFunctions.get_left_menu_btn(self, "btn_login").set_icon(Functions.set_svg_icon("icon_user.svg"))
@@ -264,6 +264,7 @@ class SetupMainWindow:
                 MainFunctions.set_page(self, self.ui.load_pages.page_0)
                 changed_label.setText("Welcome back, " + username + "!")
                 status_label.setText("Last login: " + QDateTime.currentDateTime().toString())
+                datetime_label.setText("Today is: " + str(builtins.mm.Today.strftime("%A, %d %B, %Y")))
             else:
                 msgBox = QMessageBox()
                 msgBox.setWindowTitle("Login Panel")
@@ -272,7 +273,14 @@ class SetupMainWindow:
                 msgBox.exec()
 
         # NO!
-        self.login_btn.clicked.connect(lambda: username_clicked(self, self.userLineEdit.text(), self.passwordLineEdit.text(), self.ui.load_pages.label_welcome, self.ui.load_pages.label_status))
+        self.login_btn.clicked.connect(lambda: username_released(
+            self, 
+            self.userLineEdit.text(), 
+            self.passwordLineEdit.text(), 
+            self.ui.load_pages.label_welcome, 
+            self.ui.load_pages.label_status,
+            self.ui.load_pages.label_datetime
+        ))
 
         self.ui.load_pages.layout_username.addWidget(self.userLineEdit)
         self.ui.load_pages.layout_password.addWidget(self.passwordLineEdit)
@@ -299,7 +307,7 @@ class SetupMainWindow:
             self.ui.left_menu.select_only_one("btn_stat")
             MainFunctions.set_page(self, self.ui.load_pages.page_2)
 
-        self.btn_change_stat.clicked.connect(lambda: change_stat_panel(self))
+        self.btn_change_stat.released.connect(lambda: change_stat_panel(self))
 
         self.btn_change_manage = PyPushButton(
             "Customers Management",
@@ -319,7 +327,27 @@ class SetupMainWindow:
             self.ui.left_menu.select_only_one("btn_manage")
             MainFunctions.set_page(self, self.ui.load_pages.page_3)
 
-        self.btn_change_manage.clicked.connect(lambda: change_manage_panel(self))
+        self.btn_change_manage.released.connect(lambda: change_manage_panel(self))
+
+        self.btn_new_day = PyPushButton(
+            "New day",
+            8,
+            self.themes["app_color"]["text_foreground"],
+            self.themes["app_color"]["dark_one"],
+            self.themes["app_color"]["dark_three"],
+            self.themes["app_color"]["dark_four"]
+        )
+        self.icon_new_day = QIcon(Functions.set_svg_icon("icon_newday.svg"))
+        self.btn_new_day.setMinimumHeight(160)
+        self.btn_new_day.setIcon(self.icon_new_day)
+        self.btn_new_day.setIconSize(QSize(40, 40))
+        self.btn_new_day.setFont(QFont("Ubuntu", 30))
+
+        def change_new_day(self, datetime_label: QLabel):
+            builtins.mm.New_day()
+            datetime_label.setText("Today is: " + str(builtins.mm.Today.strftime("%A, %d %B, %Y")))
+
+        self.btn_new_day.released.connect(lambda: change_new_day(self, self.ui.load_pages.label_datetime))
 
         self.btn_change_logout = PyPushButton(
             "Logout",
@@ -346,14 +374,57 @@ class SetupMainWindow:
                 self.ui.left_menu.select_only_one("btn_login")
                 MainFunctions.set_page(self, self.ui.load_pages.page_1)
 
-        self.btn_change_logout.clicked.connect(lambda: change_logout_panel(self, passwdbox=self.passwordLineEdit))
+        self.btn_change_logout.released.connect(lambda: change_logout_panel(self, passwdbox=self.passwordLineEdit))
 
         self.ui.load_pages.layout_frame_btn_stat.addWidget(self.btn_change_stat)
         self.ui.load_pages.layout_frame_btn_manage.addWidget(self.btn_change_manage)
+        self.ui.load_pages.layout_frame_btn_newday.addWidget(self.btn_new_day)
         self.ui.load_pages.layout_frame_btn_logout.addWidget(self.btn_change_logout)
 
         # SET STAT PANEL
         # ///////////////////////////////////////////////////////////////
+
+        self.stat_series = QBarSeries()
+
+        sample = QBarSet("Energy Usage")
+        sample.setColor(QColor(255, 206, 0, 255))
+        sample.append(10)
+        sample.append(15)
+        sample.append(20)
+
+        self.stat_series.append(sample)
+
+        chart = QChart()
+        chart.addSeries(self.stat_series)
+        chart.setBackgroundBrush(QBrush(QColor(44, 49, 60, 255)))
+        chart.setTitleBrush(QBrush(QColor(133, 148, 170, 255)))
+        chart.setAnimationOptions(QChart.SeriesAnimations)
+
+        categories = []
+        categories.append("One")
+        categories.append("Two")
+        categories.append("Three")
+
+        axisX = QBarCategoryAxis()
+        axisX.append(categories)
+        axisX.setLabelsBrush(QBrush(QColor(133, 148, 170, 255)))
+        chart.addAxis(axisX, Qt.AlignBottom)
+        self.stat_series.attachAxis(axisX)
+    
+        axisY = QValueAxis()
+        axisY.setRange(0, 30)
+        axisY.setLabelsBrush(QBrush(QColor(133, 148, 170, 255)))
+        chart.addAxis(axisY, Qt.AlignLeft)
+        self.stat_series.attachAxis(axisY)
+
+        chart.legend().setVisible(True)
+        chart.legend().setAlignment(Qt.AlignBottom)
+        chart.legend().setLabelBrush(QBrush(QColor(133, 148, 170, 255)))
+
+        chartView = QChartView(chart);
+        chartView.setRenderHint(QPainter.Antialiasing)
+
+        self.ui.load_pages.layout_linechart.addWidget(chartView)
 
         # SET CUSTOMER MANAGE
         # ///////////////////////////////////////////////////////////////
