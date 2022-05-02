@@ -21,10 +21,10 @@ class Clients_List:
         + For now, there is no way to delete a Client out of the list, the current option is to close the contract and left :v
 
     GUI: 
-        +a Big box show .Today
+        +A Big textbox show .Today
         +A small button for New_day to Simmulate a day passing by, refresh panel each time click to update time
-        +A search bar and a javax.swing.JList alike to display every clients correct :v
-        +THis is a Jlist of button to click on each clients and get pop up clients panel of that clients
+        +A search bar and a javax.swing.JList alike to display every clients correct the search term:v
+        +A Jlist of button to click on each clients and get pop up clients panel of that clients
         +A buttton to add clients
        
     
@@ -38,6 +38,9 @@ class Clients_List:
         return {'id':id,'Client_Object':obj}    
 
     def CountClients(self):
+        """
+        This function return the number of clients in List
+        """
         return len(self.List)
 
     def CheckIDexist(self,id):
@@ -49,6 +52,14 @@ class Clients_List:
         file_cl.close()
 
     def CreateNewClient(self,Contact_ID,Owner_Name,Address,Info,E_Mode):
+        """
+        This function create a new client with user input : Contact_ID - Owner_Name - Address - Info - E_Mode
+        
+        Return 
+            +True when id validated, the new client get add to the list   
+            +False when the new ID already exist,the new client throw away
+        
+        """
         a=Client.Client(self.Today)
         a.UpdateInput(Contact_ID,Owner_Name,Address,Info,E_Mode)       
         Check=self.CheckIDexist(Contact_ID)
@@ -60,12 +71,21 @@ class Clients_List:
         return not Check
 
     def FindClientsListbyInput(self,text):
+        """
+        This function return all clients with Id contain text
+        """
         return [d for d in self.List if text in d['id']]
 
     def GetUsageDay(self):
         return [d['Client_Object'].Energy_Usage for d in self.List]
 
     def New_day(self,Today):
+        """
+        This function simulate a day pass
+        
+        Return:
+            +list of dict of Energy Usage of Yesterday
+        """
         self.Today=Today
         c=[]
         for d in self.List:

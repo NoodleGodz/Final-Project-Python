@@ -19,6 +19,8 @@ class Main_Menu():
 
     GUI:
         + savedata() when closing
+
+    # Don't contains login method    
     """
 
     def __init__(self) -> None:

@@ -4,7 +4,7 @@ import datetime
 class Client:
     """
     THis function contain all infomation of 1 clients with unique Id
-        Display varible (can be change at GUI):
+        Display variable (can be change at GUI):
             Contract_ID
             Owner_Name
             Address
@@ -13,13 +13,18 @@ class Client:
             Energy_Mode : Radio_Button from 0-5
 
         Main function:
-            UpdateInput(): Update the new varible when click edit button
+            UpdateInput(): Update the User-editable variable when click edit button
 
             Get_Plot(): Return this clients 
                 + a list of Engery_Usage in that time inverval and an equal len list of Date in that time inverval
 
-            Print_Info_File() : Export this clients infomation into .txt file in Clients_Info
+            Print_Info_File() : Export this clients infomation into 'id'.txt file in Clients_Info
 
+            Set_Open: Open/Closing the Contract (Dong dien :v)
+
+        GUI guide:
+        +All display infomation in the main panel 
+        +All main function in the setting panel   
 
     """
     def __init__(self,Today:datetime.date) -> None:
@@ -41,8 +46,23 @@ class Client:
     def Set_Energy_Mode(self,EM):
         self.Energy_mode=EM
     def Set_Open(self,b:bool):
+        """
+        This function is for the state of the Contract
+            true=This clients still use Electricity 
+            false=This clients stop use
+        """
         self.Open=b    
     def Get_Plot(self):
+        """
+        This function return the All E_Usage of this client into 2 array of value and date
+
+        For ploting graph
+
+        return:
+            + a list of Energy Usage of this client in Stat_List
+            + a list of Date with same length
+        
+        """
         file_cl = open('Object_Folder/Client_L.obj', 'rb')
         Stat_L = pickle.load(file_cl)   
         file_cl.close()  
@@ -50,12 +70,23 @@ class Client:
         return usage_of_client,date
     
     def UpdateInput(self,id,name,address,info,EM):
+        """
+        This function set all User-editable Variable
+        Work as Saving after user finish edit
+
+        """
         self.Set_id(id)    
         self.Set_name(name)  
         self.Set_address(address)
         self.Set_info(info)
         self.Set_Energy_Mode(EM)   
     def New_day(self,Today:datetime.date):
+        """
+        This function simulate a day pass
+        
+        Return:
+            Energy_Usage of this client in Yesterday
+        """
         self.Today=Today
         self.Energy_Usage=round(self.Base_Energy_Usage*(self.Energy_mode/5)*self.Random_Usage_Factor)
         self.Random_Usage_Factor=random.uniform(0.10,2.5)                  
@@ -73,10 +104,16 @@ class Client:
         return buffer
 
     def Print_Info_File(self):
+        """
+        This function export Client info into .txt file in Clients_Info folder
+        """
         filename="Clients_Info/"+str(self.Contract_ID)+".txt"
         f = open(filename,'w')
         f.write(str(self))
         f.close()
 
     def ToDict(self):
+        """
+        Client represention as Dictionary
+        """
         return {"Contract_ID":self.Contract_ID,"Owner_Name":self.Owner_Name,"Address":self.Address,"Info":self.Info,"Energy_Mode":self.Energy_mode,"Open":self.Open,"Start_Date":self.Start_date,}    
