@@ -16,7 +16,8 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QFrame, QHBoxLayout, QLabel,
-    QSizePolicy, QStackedWidget, QVBoxLayout, QWidget)
+    QListView, QSizePolicy, QStackedWidget, QTextBrowser,
+    QVBoxLayout, QWidget)
 
 class Ui_MainPages(object):
     def setupUi(self, MainPages):
@@ -158,12 +159,12 @@ class Ui_MainPages(object):
 
         self.page_2_layout.addWidget(self.frame_3)
 
-        self.label_3 = QLabel(self.page_2)
-        self.label_3.setObjectName(u"label_3")
-        self.label_3.setMaximumSize(QSize(16777215, 50))
-        self.label_3.setAlignment(Qt.AlignCenter)
+        self.label_from_to = QLabel(self.page_2)
+        self.label_from_to.setObjectName(u"label_from_to")
+        self.label_from_to.setMaximumSize(QSize(16777215, 50))
+        self.label_from_to.setAlignment(Qt.AlignCenter)
 
-        self.page_2_layout.addWidget(self.label_3)
+        self.page_2_layout.addWidget(self.label_from_to)
 
         self.frame_5 = QFrame(self.page_2)
         self.frame_5.setObjectName(u"frame_5")
@@ -176,7 +177,7 @@ class Ui_MainPages(object):
 
         self.frame_linechart = QFrame(self.page_2)
         self.frame_linechart.setObjectName(u"frame_linechart")
-        self.frame_linechart.setMinimumSize(QSize(0, 250))
+        self.frame_linechart.setMinimumSize(QSize(0, 275))
         self.frame_linechart.setStyleSheet(u"background-color: rgb(44, 49, 60);")
         self.frame_linechart.setFrameShape(QFrame.NoFrame)
         self.frame_linechart.setFrameShadow(QFrame.Raised)
@@ -189,7 +190,7 @@ class Ui_MainPages(object):
 
         self.frame_stat_btn = QFrame(self.page_2)
         self.frame_stat_btn.setObjectName(u"frame_stat_btn")
-        self.frame_stat_btn.setMinimumSize(QSize(0, 100))
+        self.frame_stat_btn.setMinimumSize(QSize(0, 0))
         self.frame_stat_btn.setFrameShape(QFrame.NoFrame)
         self.frame_stat_btn.setFrameShadow(QFrame.Raised)
         self.layout_stat_btns = QHBoxLayout(self.frame_stat_btn)
@@ -198,54 +199,54 @@ class Ui_MainPages(object):
         self.layout_stat_btns.setContentsMargins(15, 0, 15, 10)
         self.frame_export_usage = QFrame(self.frame_stat_btn)
         self.frame_export_usage.setObjectName(u"frame_export_usage")
-        self.frame_export_usage.setFrameShape(QFrame.StyledPanel)
+        self.frame_export_usage.setFrameShape(QFrame.NoFrame)
         self.frame_export_usage.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_5 = QVBoxLayout(self.frame_export_usage)
-        self.verticalLayout_5.setSpacing(0)
-        self.verticalLayout_5.setObjectName(u"verticalLayout_5")
-        self.verticalLayout_5.setContentsMargins(0, 0, 0, 0)
+        self.layout_frame_btn_export_usage = QVBoxLayout(self.frame_export_usage)
+        self.layout_frame_btn_export_usage.setSpacing(0)
+        self.layout_frame_btn_export_usage.setObjectName(u"layout_frame_btn_export_usage")
+        self.layout_frame_btn_export_usage.setContentsMargins(0, 0, 0, 0)
 
         self.layout_stat_btns.addWidget(self.frame_export_usage)
 
         self.frame_export_price = QFrame(self.frame_stat_btn)
         self.frame_export_price.setObjectName(u"frame_export_price")
-        self.frame_export_price.setFrameShape(QFrame.StyledPanel)
+        self.frame_export_price.setFrameShape(QFrame.NoFrame)
         self.frame_export_price.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_4 = QVBoxLayout(self.frame_export_price)
-        self.verticalLayout_4.setSpacing(0)
-        self.verticalLayout_4.setObjectName(u"verticalLayout_4")
-        self.verticalLayout_4.setContentsMargins(0, 0, 0, 0)
+        self.layout_frame_btn_export_price = QVBoxLayout(self.frame_export_price)
+        self.layout_frame_btn_export_price.setSpacing(0)
+        self.layout_frame_btn_export_price.setObjectName(u"layout_frame_btn_export_price")
+        self.layout_frame_btn_export_price.setContentsMargins(0, 0, 0, 0)
 
         self.layout_stat_btns.addWidget(self.frame_export_price)
 
-        self.frame_save_version = QFrame(self.frame_stat_btn)
-        self.frame_save_version.setObjectName(u"frame_save_version")
-        self.frame_save_version.setFrameShape(QFrame.StyledPanel)
-        self.frame_save_version.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_7 = QVBoxLayout(self.frame_save_version)
-        self.verticalLayout_7.setSpacing(0)
-        self.verticalLayout_7.setObjectName(u"verticalLayout_7")
-        self.verticalLayout_7.setContentsMargins(0, 0, 0, 0)
-
-        self.layout_stat_btns.addWidget(self.frame_save_version)
-
         self.frame_flush = QFrame(self.frame_stat_btn)
         self.frame_flush.setObjectName(u"frame_flush")
-        self.frame_flush.setFrameShape(QFrame.StyledPanel)
+        self.frame_flush.setFrameShape(QFrame.NoFrame)
         self.frame_flush.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_6 = QVBoxLayout(self.frame_flush)
-        self.verticalLayout_6.setSpacing(0)
-        self.verticalLayout_6.setObjectName(u"verticalLayout_6")
-        self.verticalLayout_6.setContentsMargins(0, 0, 0, 0)
+        self.layout_frame_btn_flush = QVBoxLayout(self.frame_flush)
+        self.layout_frame_btn_flush.setSpacing(0)
+        self.layout_frame_btn_flush.setObjectName(u"layout_frame_btn_flush")
+        self.layout_frame_btn_flush.setContentsMargins(0, 0, 0, 0)
 
         self.layout_stat_btns.addWidget(self.frame_flush)
+
+        self.frame_load_versipn = QFrame(self.frame_stat_btn)
+        self.frame_load_versipn.setObjectName(u"frame_load_versipn")
+        self.frame_load_versipn.setFrameShape(QFrame.NoFrame)
+        self.frame_load_versipn.setFrameShadow(QFrame.Raised)
+        self.layout_frame_btn_load_version = QVBoxLayout(self.frame_load_versipn)
+        self.layout_frame_btn_load_version.setSpacing(0)
+        self.layout_frame_btn_load_version.setObjectName(u"layout_frame_btn_load_version")
+        self.layout_frame_btn_load_version.setContentsMargins(0, 0, 0, 0)
+
+        self.layout_stat_btns.addWidget(self.frame_load_versipn)
 
 
         self.page_2_layout.addWidget(self.frame_stat_btn)
 
         self.frame_11 = QFrame(self.page_2)
         self.frame_11.setObjectName(u"frame_11")
-        self.frame_11.setMaximumSize(QSize(16777215, 50))
+        self.frame_11.setMaximumSize(QSize(16777215, 20))
         self.frame_11.setFrameShape(QFrame.NoFrame)
         self.frame_11.setFrameShadow(QFrame.Raised)
 
@@ -437,8 +438,76 @@ class Ui_MainPages(object):
         self.page_3_layout1.setContentsMargins(5, 5, 5, 5)
         self.label = QLabel(self.page_3)
         self.label.setObjectName(u"label")
+        self.label.setStyleSheet(u"font: 45pt \"Ubuntu\";\n"
+"color: rgb(79, 159, 238);")
+        self.label.setAlignment(Qt.AlignCenter)
 
         self.page_3_layout1.addWidget(self.label)
+
+        self.frame_15 = QFrame(self.page_3)
+        self.frame_15.setObjectName(u"frame_15")
+        self.frame_15.setFrameShape(QFrame.StyledPanel)
+        self.frame_15.setFrameShadow(QFrame.Raised)
+
+        self.page_3_layout1.addWidget(self.frame_15)
+
+        self.label_3 = QLabel(self.page_3)
+        self.label_3.setObjectName(u"label_3")
+        self.label_3.setMinimumSize(QSize(300, 36))
+        self.label_3.setMaximumSize(QSize(16777212, 16777215))
+        self.label_3.setFrameShape(QFrame.NoFrame)
+        self.label_3.setAlignment(Qt.AlignBottom|Qt.AlignHCenter)
+
+        self.page_3_layout1.addWidget(self.label_3)
+
+        self.frame_13 = QFrame(self.page_3)
+        self.frame_13.setObjectName(u"frame_13")
+        self.frame_13.setMaximumSize(QSize(16777215, 10))
+        self.frame_13.setFrameShape(QFrame.StyledPanel)
+        self.frame_13.setFrameShadow(QFrame.Raised)
+
+        self.page_3_layout1.addWidget(self.frame_13)
+
+        self.frame_labeledit_search = QFrame(self.page_3)
+        self.frame_labeledit_search.setObjectName(u"frame_labeledit_search")
+        self.frame_labeledit_search.setMinimumSize(QSize(500, 36))
+        self.frame_labeledit_search.setMaximumSize(QSize(500, 36))
+        self.frame_labeledit_search.setFrameShape(QFrame.StyledPanel)
+        self.frame_labeledit_search.setFrameShadow(QFrame.Raised)
+
+        self.page_3_layout1.addWidget(self.frame_labeledit_search, 0, Qt.AlignHCenter|Qt.AlignVCenter)
+
+        self.label_7 = QLabel(self.page_3)
+        self.label_7.setObjectName(u"label_7")
+        self.label_7.setAlignment(Qt.AlignBottom|Qt.AlignHCenter)
+
+        self.page_3_layout1.addWidget(self.label_7)
+
+        self.frame_16 = QFrame(self.page_3)
+        self.frame_16.setObjectName(u"frame_16")
+        self.frame_16.setMaximumSize(QSize(16777215, 10))
+        self.frame_16.setFrameShape(QFrame.StyledPanel)
+        self.frame_16.setFrameShadow(QFrame.Raised)
+
+        self.page_3_layout1.addWidget(self.frame_16)
+
+        self.listView_cstmr = QListView(self.page_3)
+        self.listView_cstmr.setObjectName(u"listView_cstmr")
+        sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.listView_cstmr.sizePolicy().hasHeightForWidth())
+        self.listView_cstmr.setSizePolicy(sizePolicy)
+        self.listView_cstmr.setStyleSheet(u"background-color: rgb(44, 49, 60);")
+
+        self.page_3_layout1.addWidget(self.listView_cstmr)
+
+        self.frame_17 = QFrame(self.page_3)
+        self.frame_17.setObjectName(u"frame_17")
+        self.frame_17.setFrameShape(QFrame.StyledPanel)
+        self.frame_17.setFrameShadow(QFrame.Raised)
+
+        self.page_3_layout1.addWidget(self.frame_17)
 
         self.pages.addWidget(self.page_3)
         self.page_4 = QWidget()
@@ -450,10 +519,145 @@ class Ui_MainPages(object):
         self.page_3_layout2.setSpacing(5)
         self.page_3_layout2.setObjectName(u"page_3_layout2")
         self.page_3_layout2.setContentsMargins(5, 5, 5, 5)
-        self.label1 = QLabel(self.page_4)
-        self.label1.setObjectName(u"label1")
+        self.frame_cstmr_back = QFrame(self.page_4)
+        self.frame_cstmr_back.setObjectName(u"frame_cstmr_back")
+        self.frame_cstmr_back.setMaximumSize(QSize(100, 35))
+        self.frame_cstmr_back.setFrameShape(QFrame.StyledPanel)
+        self.frame_cstmr_back.setFrameShadow(QFrame.Raised)
+        self.layout_frame_cstmr_back = QVBoxLayout(self.frame_cstmr_back)
+        self.layout_frame_cstmr_back.setSpacing(0)
+        self.layout_frame_cstmr_back.setObjectName(u"layout_frame_cstmr_back")
+        self.layout_frame_cstmr_back.setContentsMargins(0, 0, 0, 0)
 
-        self.page_3_layout2.addWidget(self.label1)
+        self.page_3_layout2.addWidget(self.frame_cstmr_back)
+
+        self.frame_7 = QFrame(self.page_4)
+        self.frame_7.setObjectName(u"frame_7")
+        self.frame_7.setFrameShape(QFrame.StyledPanel)
+        self.frame_7.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout = QHBoxLayout(self.frame_7)
+        self.horizontalLayout.setSpacing(0)
+        self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
+        self.frame_9 = QFrame(self.frame_7)
+        self.frame_9.setObjectName(u"frame_9")
+        self.frame_9.setFrameShape(QFrame.StyledPanel)
+        self.frame_9.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_4 = QVBoxLayout(self.frame_9)
+        self.verticalLayout_4.setObjectName(u"verticalLayout_4")
+        self.frame_icon_template = QFrame(self.frame_9)
+        self.frame_icon_template.setObjectName(u"frame_icon_template")
+        self.frame_icon_template.setMinimumSize(QSize(256, 256))
+        self.frame_icon_template.setFrameShape(QFrame.StyledPanel)
+        self.frame_icon_template.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_6 = QVBoxLayout(self.frame_icon_template)
+        self.verticalLayout_6.setObjectName(u"verticalLayout_6")
+
+        self.verticalLayout_4.addWidget(self.frame_icon_template)
+
+
+        self.horizontalLayout.addWidget(self.frame_9)
+
+        self.frame_10 = QFrame(self.frame_7)
+        self.frame_10.setObjectName(u"frame_10")
+        self.frame_10.setMaximumSize(QSize(16777215, 16777215))
+        self.frame_10.setFrameShape(QFrame.StyledPanel)
+        self.frame_10.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_5 = QVBoxLayout(self.frame_10)
+        self.verticalLayout_5.setObjectName(u"verticalLayout_5")
+        self.label_5 = QLabel(self.frame_10)
+        self.label_5.setObjectName(u"label_5")
+        self.label_5.setStyleSheet(u"font: 30pt \"Ubuntu\";\n"
+"color: rgb(79, 159, 238);")
+
+        self.verticalLayout_5.addWidget(self.label_5)
+
+        self.frame_view_edit_profile = QFrame(self.frame_10)
+        self.frame_view_edit_profile.setObjectName(u"frame_view_edit_profile")
+        self.frame_view_edit_profile.setMinimumSize(QSize(0, 30))
+        self.frame_view_edit_profile.setMaximumSize(QSize(150, 30))
+        self.frame_view_edit_profile.setFrameShape(QFrame.StyledPanel)
+        self.frame_view_edit_profile.setFrameShadow(QFrame.Raised)
+        self.frame_cstmr_edit_profile = QVBoxLayout(self.frame_view_edit_profile)
+        self.frame_cstmr_edit_profile.setSpacing(0)
+        self.frame_cstmr_edit_profile.setObjectName(u"frame_cstmr_edit_profile")
+        self.frame_cstmr_edit_profile.setContentsMargins(0, 0, 0, 0)
+
+        self.verticalLayout_5.addWidget(self.frame_view_edit_profile)
+
+        self.frame_14 = QFrame(self.frame_10)
+        self.frame_14.setObjectName(u"frame_14")
+        self.frame_14.setFrameShape(QFrame.StyledPanel)
+        self.frame_14.setFrameShadow(QFrame.Raised)
+
+        self.verticalLayout_5.addWidget(self.frame_14)
+
+        self.label_6 = QLabel(self.frame_10)
+        self.label_6.setObjectName(u"label_6")
+
+        self.verticalLayout_5.addWidget(self.label_6)
+
+        self.billing_text_browser = QTextBrowser(self.frame_10)
+        self.billing_text_browser.setObjectName(u"billing_text_browser")
+        sizePolicy.setHeightForWidth(self.billing_text_browser.sizePolicy().hasHeightForWidth())
+        self.billing_text_browser.setSizePolicy(sizePolicy)
+        self.billing_text_browser.setStyleSheet(u"background-color: rgb(40, 44, 52);")
+
+        self.verticalLayout_5.addWidget(self.billing_text_browser)
+
+
+        self.horizontalLayout.addWidget(self.frame_10)
+
+        self.horizontalLayout.setStretch(0, 1)
+        self.horizontalLayout.setStretch(1, 2)
+
+        self.page_3_layout2.addWidget(self.frame_7)
+
+        self.frame_8 = QFrame(self.page_4)
+        self.frame_8.setObjectName(u"frame_8")
+        self.frame_8.setFrameShape(QFrame.StyledPanel)
+        self.frame_8.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_7 = QVBoxLayout(self.frame_8)
+        self.verticalLayout_7.setObjectName(u"verticalLayout_7")
+        self.label_8 = QLabel(self.frame_8)
+        self.label_8.setObjectName(u"label_8")
+        self.label_8.setMaximumSize(QSize(16777215, 20))
+        self.label_8.setAlignment(Qt.AlignCenter)
+
+        self.verticalLayout_7.addWidget(self.label_8)
+
+        self.frame_12 = QFrame(self.frame_8)
+        self.frame_12.setObjectName(u"frame_12")
+        self.frame_12.setFrameShape(QFrame.StyledPanel)
+        self.frame_12.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_3 = QHBoxLayout(self.frame_12)
+        self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
+        self.frame_btn_export_customer = QFrame(self.frame_12)
+        self.frame_btn_export_customer.setObjectName(u"frame_btn_export_customer")
+        self.frame_btn_export_customer.setFrameShape(QFrame.StyledPanel)
+        self.frame_btn_export_customer.setFrameShadow(QFrame.Raised)
+
+        self.horizontalLayout_3.addWidget(self.frame_btn_export_customer)
+
+        self.frame_btn_cstmr_plot = QFrame(self.frame_12)
+        self.frame_btn_cstmr_plot.setObjectName(u"frame_btn_cstmr_plot")
+        self.frame_btn_cstmr_plot.setFrameShape(QFrame.StyledPanel)
+        self.frame_btn_cstmr_plot.setFrameShadow(QFrame.Raised)
+
+        self.horizontalLayout_3.addWidget(self.frame_btn_cstmr_plot)
+
+        self.frame_btn_toggle_contract = QFrame(self.frame_12)
+        self.frame_btn_toggle_contract.setObjectName(u"frame_btn_toggle_contract")
+        self.frame_btn_toggle_contract.setFrameShape(QFrame.StyledPanel)
+        self.frame_btn_toggle_contract.setFrameShadow(QFrame.Raised)
+
+        self.horizontalLayout_3.addWidget(self.frame_btn_toggle_contract)
+
+
+        self.verticalLayout_7.addWidget(self.frame_12)
+
+
+        self.page_3_layout2.addWidget(self.frame_8)
 
         self.pages.addWidget(self.page_4)
 
@@ -462,7 +666,7 @@ class Ui_MainPages(object):
 
         self.retranslateUi(MainPages)
 
-        self.pages.setCurrentIndex(2)
+        self.pages.setCurrentIndex(3)
 
 
         QMetaObject.connectSlotsByName(MainPages)
@@ -471,12 +675,16 @@ class Ui_MainPages(object):
     def retranslateUi(self, MainPages):
         MainPages.setWindowTitle(QCoreApplication.translate("MainPages", u"Form", None))
         self.label_2.setText(QCoreApplication.translate("MainPages", u"Statistic Dashboard", None))
-        self.label_3.setText(QCoreApplication.translate("MainPages", u"From DateTime to DateTime", None))
+        self.label_from_to.setText(QCoreApplication.translate("MainPages", u"From DateTime to DateTime", None))
         self.label_welcome.setText(QCoreApplication.translate("MainPages", u"Welcome back, User!", None))
         self.label_datetime.setText(QCoreApplication.translate("MainPages", u"Error fetching status data: please contact IT support.", None))
         self.label_4.setText(QCoreApplication.translate("MainPages", u"Select an operation below to get started:", None))
         self.label_status.setText(QCoreApplication.translate("MainPages", u"Error fetching status data: please contact IT support.", None))
-        self.label.setText(QCoreApplication.translate("MainPages", u"Page 3", None))
-        self.label1.setText(QCoreApplication.translate("MainPages", u"Page 4", None))
+        self.label.setText(QCoreApplication.translate("MainPages", u"Customers Management", None))
+        self.label_3.setText(QCoreApplication.translate("MainPages", u"Search for Customer ID:", None))
+        self.label_7.setText(QCoreApplication.translate("MainPages", u"XXX matches found, double-click to open Detailed View", None))
+        self.label_5.setText(QCoreApplication.translate("MainPages", u"Customer Name Here", None))
+        self.label_6.setText(QCoreApplication.translate("MainPages", u"Billing Statistics", None))
+        self.label_8.setText(QCoreApplication.translate("MainPages", u"Operations Panel", None))
     # retranslateUi
 

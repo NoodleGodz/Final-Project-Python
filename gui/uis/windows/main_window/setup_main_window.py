@@ -29,6 +29,8 @@ from . ui_main import *
 # ///////////////////////////////////////////////////////////////
 from . functions_main_window import *
 
+import sys
+
 # PY WINDOW
 # ///////////////////////////////////////////////////////////////
 class SetupMainWindow:
@@ -343,11 +345,73 @@ class SetupMainWindow:
         self.btn_new_day.setIconSize(QSize(40, 40))
         self.btn_new_day.setFont(QFont("Ubuntu", 30))
 
-        def change_new_day(self, datetime_label: QLabel):
+        def change_new_day(self, datetime_label: QLabel, chart_layout: QLayout, chart_from_to: QLabel):
             builtins.mm.New_day()
+
+            def stat_chartview():
+                stat_series = QBarSeries()
+
+                sample = QBarSet("Energy Usage")
+                sample.setColor(QColor(255, 206, 0, 255))
+                sum_of_day,date = builtins.mm.Stat_L.Ploting_Usage_Of_All_Clients()
+                for i in sum_of_day:
+                    sample.append(i)
+                stat_series.append(sample)
+
+                chart = QChart()
+                chart.addSeries(stat_series)
+                chart.setBackgroundBrush(QBrush(QColor(44, 49, 60, 255)))
+                chart.setTitleBrush(QBrush(QColor(133, 148, 170, 255)))
+                chart.setAnimationOptions(QChart.SeriesAnimations)
+
+                categories = []
+                a=0
+                for i in date:
+                    a+=1
+                    categories.append(a)
+
+                axisX = QBarCategoryAxis()
+                axisX.append(categories)
+                axisX.setLabelsBrush(QBrush(QColor(133, 148, 170, 255)))
+                chart.addAxis(axisX, Qt.AlignBottom)
+                stat_series.attachAxis(axisX)
+            
+                axisY = QValueAxis()
+                maxy=(max(sum_of_day)//100 + 2)*100
+                axisY.setRange(0, maxy)
+                axisY.setTickCount(6)
+                axisY.setLabelsBrush(QBrush(QColor(133, 148, 170, 255)))
+                chart.addAxis(axisY, Qt.AlignLeft)
+                stat_series.attachAxis(axisY)
+
+                chart.legend().setVisible(True)
+                chart.legend().setAlignment(Qt.AlignBottom)
+                chart.legend().setLabelBrush(QBrush(QColor(133, 148, 170, 255)))
+
+                chartView = QChartView(chart);
+                chartView.setRenderHint(QPainter.Antialiasing)
+                return chartView
+            
+            
+            chart_from_to.setText(
+                "From " + 
+                builtins.mm.Stat_L.Start_Point.strftime(" %d %B, %Y ") + 
+                "To" + 
+                builtins.mm.Stat_L.End_Point.strftime(" %d %B, %Y ")
+            )
+            old_chart = chart_layout.takeAt(0).widget()
+            chart_layout.removeWidget(old_chart)
+            old_chart.deleteLater()
+            chart_layout.addWidget(stat_chartview())
             datetime_label.setText("Today is: " + str(builtins.mm.Today.strftime("%A, %d %B, %Y")))
 
-        self.btn_new_day.released.connect(lambda: change_new_day(self, self.ui.load_pages.label_datetime))
+
+        self.btn_new_day.released.connect(lambda: change_new_day(
+            self, 
+            self.ui.load_pages.label_datetime, 
+            self.ui.load_pages.layout_linechart,
+            self.ui.load_pages.label_from_to
+        ))
 
         self.btn_change_logout = PyPushButton(
             "Logout",
@@ -383,50 +447,280 @@ class SetupMainWindow:
 
         # SET STAT PANEL
         # ///////////////////////////////////////////////////////////////
+        #
 
-        self.stat_series = QBarSeries()
+        self.ui.load_pages.label_from_to.setText(
+            "From " + 
+            builtins.mm.Stat_L.Start_Point.strftime(" %d %B, %Y ") + 
+            "To" + 
+            builtins.mm.Stat_L.End_Point.strftime(" %d %B, %Y ")
+        )
 
-        sample = QBarSet("Energy Usage")
-        sample.setColor(QColor(255, 206, 0, 255))
-        sample.append(10)
-        sample.append(15)
-        sample.append(20)
+        def stat_chartview():
+            stat_series = QBarSeries()
+            sample = QBarSet("Energy Usage")
+            sample.setColor(QColor(255, 206, 0, 255))
+            sum_of_day,date = builtins.mm.Stat_L.Ploting_Usage_Of_All_Clients()
+            for i in sum_of_day:
+                sample.append(i)
+            stat_series.append(sample)
 
-        self.stat_series.append(sample)
+            chart = QChart()
+            chart.addSeries(stat_series)
+            chart.setBackgroundBrush(QBrush(QColor(44, 49, 60, 255)))
+            chart.setTitleBrush(QBrush(QColor(133, 148, 170, 255)))
+            chart.setAnimationOptions(QChart.SeriesAnimations)
 
-        chart = QChart()
-        chart.addSeries(self.stat_series)
-        chart.setBackgroundBrush(QBrush(QColor(44, 49, 60, 255)))
-        chart.setTitleBrush(QBrush(QColor(133, 148, 170, 255)))
-        chart.setAnimationOptions(QChart.SeriesAnimations)
+            categories = []
+            a=0
+            for i in date:
+                a+=1
+                categories.append(a)
 
-        categories = []
-        categories.append("One")
-        categories.append("Two")
-        categories.append("Three")
+            axisX = QBarCategoryAxis()
+            axisX.append(categories)
+            axisX.setLabelsBrush(QBrush(QColor(133, 148, 170, 255)))
+            chart.addAxis(axisX, Qt.AlignBottom)
+            stat_series.attachAxis(axisX)
+            
+            axisY = QValueAxis()
+            maxy=(max(sum_of_day)//100 + 2)*100
+            axisY.setRange(0, maxy)
+            axisY.setTickCount(6)
+            axisY.setLabelsBrush(QBrush(QColor(133, 148, 170, 255)))
+            chart.addAxis(axisY, Qt.AlignLeft)
+            stat_series.attachAxis(axisY)
 
-        axisX = QBarCategoryAxis()
-        axisX.append(categories)
-        axisX.setLabelsBrush(QBrush(QColor(133, 148, 170, 255)))
-        chart.addAxis(axisX, Qt.AlignBottom)
-        self.stat_series.attachAxis(axisX)
-    
-        axisY = QValueAxis()
-        axisY.setRange(0, 30)
-        axisY.setLabelsBrush(QBrush(QColor(133, 148, 170, 255)))
-        chart.addAxis(axisY, Qt.AlignLeft)
-        self.stat_series.attachAxis(axisY)
+            chart.legend().setVisible(True)
+            chart.legend().setAlignment(Qt.AlignBottom)
+            chart.legend().setLabelBrush(QBrush(QColor(133, 148, 170, 255)))
 
-        chart.legend().setVisible(True)
-        chart.legend().setAlignment(Qt.AlignBottom)
-        chart.legend().setLabelBrush(QBrush(QColor(133, 148, 170, 255)))
+            chartView = QChartView(chart);
+            chartView.setRenderHint(QPainter.Antialiasing)
+            return chartView
+                
+        self.ui.load_pages.layout_linechart.addWidget(stat_chartview())
+        chart = self.ui.load_pages.layout_linechart.takeAt(0).widget()
+        self.ui.load_pages.layout_linechart.removeWidget(chart)
+        chart.deleteLater()
+        self.ui.load_pages.layout_linechart.addWidget(stat_chartview())
 
-        chartView = QChartView(chart);
-        chartView.setRenderHint(QPainter.Antialiasing)
+        self.btn_export_price = PyPushButton(
+            "Export Price",
+            8,
+            self.themes["app_color"]["text_foreground"],
+            self.themes["app_color"]["dark_one"],
+            self.themes["app_color"]["dark_three"],
+            self.themes["app_color"]["dark_four"]
+        )
+        self.icon_export_price = QIcon(Functions.set_svg_icon("icon_export_price.svg"))
+        self.btn_export_price.setMinimumHeight(100)
+        self.btn_export_price.setIcon(self.icon_export_price)
+        self.btn_export_price.setIconSize(QSize(40, 40))
+        self.btn_export_price.setFont(QFont("Ubuntu", 30))
+        
+        def change_export_price(self):
+           
+            path =  builtins.mm.Stat_L.Price_List_To_Excel()
+            QMessageBox.information(self, "Export Price", "Success: Export Price saved to \n" + path, QMessageBox.Ok)
 
-        self.ui.load_pages.layout_linechart.addWidget(chartView)
+        self.btn_export_price.released.connect(lambda: change_export_price(self))
 
-        # SET CUSTOMER MANAGE
+        self.btn_export_usage = PyPushButton(
+            "Export Usage",
+            8,
+            self.themes["app_color"]["text_foreground"],
+            self.themes["app_color"]["dark_one"],
+            self.themes["app_color"]["dark_three"],
+            self.themes["app_color"]["dark_four"]
+        )
+        self.icon_export_usage = QIcon(Functions.set_svg_icon("icon_export_usage.svg"))
+        self.btn_export_usage.setMinimumHeight(100)
+        self.btn_export_usage.setIcon(self.icon_export_usage)
+        self.btn_export_usage.setIconSize(QSize(40, 40))
+        self.btn_export_usage.setFont(QFont("Ubuntu", 30))
+        
+        def change_export_usage(self):
+            path = builtins.mm.Stat_L.Export_Elec_Usage_To_Excel()
+            QMessageBox.information(self, "Export Usage", "Success: Export Usage saved to \n" + path, QMessageBox.Ok)
+
+        self.btn_export_usage.released.connect(lambda: change_export_usage(self))
+
+        self.btn_flush = PyPushButton(
+            "Flush Data",
+            8,
+            self.themes["app_color"]["text_foreground"],
+            self.themes["app_color"]["dark_one"],
+            self.themes["app_color"]["dark_three"],
+            self.themes["app_color"]["dark_four"]
+        )
+        self.icon_flush = QIcon(Functions.set_svg_icon("icon_flush.svg"))
+        self.btn_flush.setMinimumHeight(100)
+        self.btn_flush.setIcon(self.icon_flush)
+        self.btn_flush.setIconSize(QSize(40, 40))
+        self.btn_flush.setFont(QFont("Ubuntu", 30))
+        
+        def change_flush(self,chart_layout: QLayout, chart_from_to: QLabel):
+            reply = QMessageBox.warning(self, "Flush Data", "Are you sure to flush all data?\nThis action is irreversible!", QMessageBox.Yes, QMessageBox.No)
+
+            if reply == QMessageBox.Yes:
+                builtins.mm.Stat_L.Flush()
+                def stat_chartview():
+                    stat_series = QBarSeries()
+
+                    sample = QBarSet("Energy Usage")
+                    sample.setColor(QColor(255, 206, 0, 255))
+                    sum_of_day,date = builtins.mm.Stat_L.Ploting_Usage_Of_All_Clients()
+                    if len(sum_of_day)==0: sum_of_day.append(0)
+                    if len(date)==0: date.append(0)
+
+                    for i in sum_of_day:
+                        sample.append(i)
+                    stat_series.append(sample)
+
+                    chart = QChart()
+                    chart.addSeries(stat_series)
+                    chart.setBackgroundBrush(QBrush(QColor(44, 49, 60, 255)))
+                    chart.setTitleBrush(QBrush(QColor(133, 148, 170, 255)))
+                    chart.setAnimationOptions(QChart.SeriesAnimations)
+
+                    categories = []
+                    a=0
+                    for i in date:
+                        a+=1
+                        categories.append(a)
+
+                    axisX = QBarCategoryAxis()
+                    axisX.append(categories)
+                    axisX.setLabelsBrush(QBrush(QColor(133, 148, 170, 255)))
+                    chart.addAxis(axisX, Qt.AlignBottom)
+                    stat_series.attachAxis(axisX)
+
+                    axisY = QValueAxis()
+                    maxy=(max(sum_of_day)//100 + 2)*100
+                    axisY.setRange(0, maxy)
+                    axisY.setTickCount(6)
+                    axisY.setLabelsBrush(QBrush(QColor(133, 148, 170, 255)))
+                    chart.addAxis(axisY, Qt.AlignLeft)
+                    stat_series.attachAxis(axisY)
+
+                    chart.legend().setVisible(True)
+                    chart.legend().setAlignment(Qt.AlignBottom)
+                    chart.legend().setLabelBrush(QBrush(QColor(133, 148, 170, 255)))
+
+                    chartView = QChartView(chart);
+                    chartView.setRenderHint(QPainter.Antialiasing)
+                    return chartView
+
+
+                chart_from_to.setText(
+                    "Energy Data is empty"
+                )
+                old_chart = chart_layout.takeAt(0).widget()
+                chart_layout.removeWidget(old_chart)
+                old_chart.deleteLater()
+                chart_layout.addWidget(stat_chartview())
+
+
+        self.btn_flush.released.connect(lambda: change_flush(
+            self, 
+            self.ui.load_pages.layout_linechart,
+            self.ui.load_pages.label_from_to
+        ))
+
+        self.btn_load_version = PyPushButton(
+            "Load Version",
+            8,
+            self.themes["app_color"]["text_foreground"],
+            self.themes["app_color"]["dark_one"],
+            self.themes["app_color"]["dark_three"],
+            self.themes["app_color"]["dark_four"]
+        )
+        self.icon_load_version = QIcon(Functions.set_svg_icon("icon_load.svg"))
+        self.btn_load_version.setMinimumHeight(100)
+        self.btn_load_version.setIcon(self.icon_load_version)
+        self.btn_load_version.setIconSize(QSize(40, 40))
+        self.btn_load_version.setFont(QFont("Ubuntu", 30))
+        
+        def change_load_version(self,chart_layout: QLayout, chart_from_to: QLabel):
+            load_dialog = QFileDialog()
+            load_dialog.setFileMode(QFileDialog.AnyFile)
+            load_dialog.setNameFilter("ECMP object file (*.obj)")
+            load_dialog.setViewMode(QFileDialog.Detail)
+            if load_dialog.exec():
+                filename = load_dialog.selectedFiles()
+                path = filename[0]
+                print(path)
+                builtins.mm.Stat_L.Save_SL()
+                builtins.mm.Stat_L.Load_Previous_Version(path)
+                def stat_chartview():
+                        stat_series = QBarSeries()
+
+                        sample = QBarSet("Energy Usage")
+                        sample.setColor(QColor(255, 206, 0, 255))
+                        sum_of_day,date = builtins.mm.Stat_L.Ploting_Usage_Of_All_Clients()
+                        for i in sum_of_day:
+                            sample.append(i)
+                        stat_series.append(sample)
+
+                        chart = QChart()
+                        chart.addSeries(stat_series)
+                        chart.setBackgroundBrush(QBrush(QColor(44, 49, 60, 255)))
+                        chart.setTitleBrush(QBrush(QColor(133, 148, 170, 255)))
+                        chart.setAnimationOptions(QChart.SeriesAnimations)
+
+                        categories = []
+                        a=0
+                        for i in date:
+                            a+=1
+                            categories.append(a)
+
+                        axisX = QBarCategoryAxis()
+                        axisX.append(categories)
+                        axisX.setLabelsBrush(QBrush(QColor(133, 148, 170, 255)))
+                        chart.addAxis(axisX, Qt.AlignBottom)
+                        stat_series.attachAxis(axisX)
+                    
+                        axisY = QValueAxis()
+                        maxy=(max(sum_of_day)//100 + 2)*100
+                        axisY.setRange(0, maxy)
+                        axisY.setTickCount(6)
+                        axisY.setLabelsBrush(QBrush(QColor(133, 148, 170, 255)))
+                        chart.addAxis(axisY, Qt.AlignLeft)
+                        stat_series.attachAxis(axisY)
+
+                        chart.legend().setVisible(True)
+                        chart.legend().setAlignment(Qt.AlignBottom)
+                        chart.legend().setLabelBrush(QBrush(QColor(133, 148, 170, 255)))
+
+                        chartView = QChartView(chart);
+                        chartView.setRenderHint(QPainter.Antialiasing)
+                        return chartView
+                
+                chart_from_to.setText(
+                    "From " + 
+                    builtins.mm.Stat_L.Start_Point.strftime(" %d %B, %Y ") + 
+                    "To" + 
+                    builtins.mm.Stat_L.End_Point.strftime(" %d %B, %Y ")
+                )
+                old_chart = chart_layout.takeAt(0).widget()
+                chart_layout.removeWidget(old_chart)
+                old_chart.deleteLater()
+                chart_layout.addWidget(stat_chartview())
+                #builtins.mm.Stat_L.Load_SL()
+
+
+        self.btn_load_version.released.connect(lambda: change_load_version(self, 
+            self.ui.load_pages.layout_linechart,
+            self.ui.load_pages.label_from_to
+        ))
+
+        self.ui.load_pages.layout_frame_btn_export_price.addWidget(self.btn_export_price)
+        self.ui.load_pages.layout_frame_btn_export_usage.addWidget(self.btn_export_usage)
+        self.ui.load_pages.layout_frame_btn_flush.addWidget(self.btn_flush)
+        self.ui.load_pages.layout_frame_btn_load_version.addWidget(self.btn_load_version)
+
+        # SET CUSTOMER MANAGE - 
         # ///////////////////////////////////////////////////////////////
 
         # SET CUSTOMER INFO
@@ -448,9 +742,6 @@ class SetupMainWindow:
         self.ui.left_column.menus.layout_motd.addStretch(9)
         self.ui.left_column.menus.layout_motd.addWidget(self.toggle_motd, Qt.AlignCenter, Qt.AlignCenter)
         self.ui.left_column.menus.layout_motd.addStretch(1)
-
-        # SET SETTINGS MENU
-        # //////////////////////////////////////////////////////////////
 
         # ///////////////////////////////////////////////////////////////
         # END - EXAMPLE CUSTOM WIDGETS

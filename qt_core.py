@@ -34,5 +34,35 @@ builtins.motds = [
     "understand, v.:\n"+
 	    "To reach a point, in your investigation of some subject, at which " +
 	    "you cease to examine what is really present, and operate on the " + 
-	    "basis of your own internal model instead."
+	    "basis of your own internal model instead.",
+    "Practice makes perfect.\n" +
+        "~ Unknown ~",
+    "You only live once, but if you do it right, once is enough.\n"
+        "~ Mae West ~",
+    "Insanity is doing the same thing, over and over again, but expecting different results.\n"
+        "~ Narcotics Anonymous ~",
+    "There are only two ways to live your life. One is as though nothing is a miracle. The other is as though everything is a miracle.\n"
+        "~ Albert Einstein ~",
+    "It does not do to dwell on dreams and forget to live.\n"
+        "~ J.K. Rowling, Harry Potter and the Sorcerer's Stone ~",
+    "Good friends, good books, and a sleepy conscience: this is the ideal life.\n"
+        "~ Mark Twain ~",
+    "Life is what happens to us while we are making other plans.\n"
+        "~ Allen Saunders ~",
+    "Everything you can imagine is real.\n"
+        "~ Pablo Picasso ~",
+    "Sometimes the questions are complicated and the answers are simple.\n"
+        "~ Dr. Seuss ~",
+    "I'm not afraid of death; I just don't want to be there when it happens.\n"
+        "~ Woody Allen ~",
+    "Life isn't about finding yourself. Life is about creating yourself.\n"
+        "~ George Bernard Shaw ~",
+    "You should learn from your competitor, but never copy. Copy and you die.\n"
+        "~ Jack Ma ~",
+    "But better to get hurt by the truth than comforted with a lie.\n"
+        "~ Khaled Hosseini ~",
+    "We are all in the gutter, but some of us are looking at the stars.\n"
+        "~ Oscar Wilde ~",
+    "This too, shall pass.\n"
+        "~ Anonymous ~"
 ]

@@ -88,6 +88,7 @@ class Stat_List:
 
         '''
         stat_module.each_day_usage_to_excel(stat_module.each_day_usage_to_dataframe(self.List_Of_Day)) 
+        return "Excel_file/Each_day_usage.xlsx"
 
     def Price_In_This_Time_Interval(self):
         """
@@ -124,7 +125,8 @@ class Stat_List:
         Data=pd.DataFrame(price_list)
         Data.to_excel(writer, sheet_name = 'Price')
         #writer.save()
-        writer.close()   
+        writer.close()  
+        return path 
 
     def Save_History(self):
         """
@@ -151,6 +153,14 @@ class Stat_List:
         pickle.dump(self,file_sl)
         file_sl.close()    
 
+    def Load_SL(self):
+        file_sl = open('Object_Folder/Stat_L.obj', 'rb')
+        Minh = pickle.load(file_sl)
+        self.List_Of_Day=Minh.List_Of_Day
+        self.Start_Point=Minh.Start_Point
+        self.End_Point=Minh.End_Point  
+        file_sl.close()    
+
     def Load_Previous_Version(self,path):
         """
         WARNING: IN THE PANEL WHEN USE FOR THIS FUNCTION, DO NOT Save_Data() WHEN CLOSING, That will overwrite the Current Database
@@ -159,7 +169,10 @@ class Stat_List:
         This function is for load the Stat_History/*.obj (View only)
         """    
         file_cl = open(path, 'rb')
-        self = pickle.load(file_cl)    
+        Minh = pickle.load(file_cl)
+        self.List_Of_Day=Minh.List_Of_Day
+        self.Start_Point=Minh.Start_Point
+        self.End_Point=Minh.End_Point   
         file_cl.close()
 
 

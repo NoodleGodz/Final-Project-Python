@@ -1,5 +1,5 @@
 # Energy Control & Management Panel
-~ A project from Advanced Programming with Python, Group X ~
+~ A project from Advanced Programming with Python, Group 8 ~
 
 ## Features
  - Login System
@@ -23,6 +23,7 @@ pip install pandas pyside6 openpyxl
 
 Then run and hope you installed all dependencies :)
 ```
+python main.py
 python3 main.py
 ```
 
