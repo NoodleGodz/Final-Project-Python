@@ -117,21 +117,19 @@ def log_in(username, password):
             userinput = username
             with open("user_database.txt", "rb") as handle:
                 if check_exist("user_database.txt", userinput):
-                    #print("Welcome " + userinput + "!\n")
+                    return True
                     break
                 else:
-                    #print("Invalid username.")
-                    break
+                    return False
         while True:
             h = hashlib.pbkdf2_hmac('sha256', password.encode("utf-8"), b'*@#d2', 182)
             passinput = h.hex()
             passcheck = check_passwd(userinput)
             if passinput == passcheck:
-                #Succesfully log in
+                return True
                 break
             else:
-                #print("Invalid Password.")
-                pass
+                return False
             
 def delete_user(username):
     with open("user_database.txt", "w+b") as handle:
