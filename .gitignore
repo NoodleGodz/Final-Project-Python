@@ -7,4 +7,6 @@
 
 # Ignore Qt Creator autosave
 *.autosave
+
+# Ignore test modules
 Mava.py
