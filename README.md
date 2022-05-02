@@ -10,6 +10,12 @@
 
 Of course, Python 3 is necessary.
 
+Clone this repository:
+```
+git clone https://github.com/rashlight/Final-Project-Python
+cd Final-Project-Python
+```
+
 Next, install necessary PySide components:
 ``` 
 pip install pyside6 
@@ -20,7 +26,8 @@ Then run and hope you installed all dependencies :)
 python3 main.py
 ```
 
-It is also recommended to use Qt Creator or Qt Designer (>= 6.0.0) to build.
+It is also recommended to use Qt Creator and Qt Designer (>= 6.0.0) to build. 
+If that's the case, open the ```main.py``` file and press Run/Debug button instead.
 
 ## Troubleshooting
 

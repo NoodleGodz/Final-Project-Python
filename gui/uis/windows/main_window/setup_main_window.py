@@ -226,6 +226,7 @@ class SetupMainWindow:
         )
 
         self.userLineEdit.setMinimumHeight(36)
+        self.userLineEdit.returnPressed.connect(lambda: username_clicked(self, self.userLineEdit.text(), self.passwordLineEdit.text(), self.ui.load_pages.label_welcome, self.ui.load_pages.label_status))
 
         self.passwordLineEdit = PyLineEdit(
             "",
@@ -242,6 +243,7 @@ class SetupMainWindow:
         self.passwordLineEdit.setMinimumHeight(36)
         self.passwordLineEdit.setEchoMode(QLineEdit.Password)
         self.passwordLineEdit.setInputMethodHints(Qt.ImhHiddenText | Qt.ImhNoPredictiveText | Qt.ImhNoAutoUppercase);
+        self.passwordLineEdit.returnPressed.connect(lambda: username_clicked(self, self.userLineEdit.text(), self.passwordLineEdit.text(), self.ui.load_pages.label_welcome, self.ui.load_pages.label_status))
 
         self.login_btn = PyPushButton(
             "Login",
@@ -254,32 +256,110 @@ class SetupMainWindow:
 
         self.login_btn.setMinimumHeight(36)
 
-        def username_clicked(self, username, password, changed_label: QLabel):
+        def username_clicked(self, username, password, changed_label: QLabel, status_label: QLabel):
             if username and password:
                 builtins.is_logged = True
                 MainFunctions.get_left_menu_btn(self, "btn_login").set_icon(Functions.set_svg_icon("icon_user.svg"))
 
-                msgBox = QMessageBox()
-                msgBox.setWindowTitle("Login Panel")
-                msgBox.setIcon(QMessageBox.Information)
-                msgBox.setText("You are logged in!")
-                msgBox.exec()
-
                 MainFunctions.set_page(self, self.ui.load_pages.page_0)
                 changed_label.setText("Welcome back, " + username + "!")
+                status_label.setText("Last login: " + QDateTime.currentDateTime().toString())
             else:
                 msgBox = QMessageBox()
                 msgBox.setWindowTitle("Login Panel")
                 msgBox.setIcon(QMessageBox.Critical)
-                msgBox.setText("The username or/and password is empty.")
+                msgBox.setText("Authentication Failure: The user credentials does not match any accounts on record.")
                 msgBox.exec()
 
         # NO!
-        self.login_btn.clicked.connect(lambda: username_clicked(self, self.userLineEdit.text(), self.passwordLineEdit.text(), self.ui.load_pages.label_welcome))
+        self.login_btn.clicked.connect(lambda: username_clicked(self, self.userLineEdit.text(), self.passwordLineEdit.text(), self.ui.load_pages.label_welcome, self.ui.load_pages.label_status))
 
         self.ui.load_pages.layout_username.addWidget(self.userLineEdit)
         self.ui.load_pages.layout_password.addWidget(self.passwordLineEdit)
         self.ui.load_pages.layout_login.addWidget(self.login_btn)
+
+        # SET LOGGED PANEL
+        # ///////////////////////////////////////////////////////////////
+
+        self.btn_change_stat = PyPushButton(
+            "Statistic Dashboard",
+            8,
+            self.themes["app_color"]["text_foreground"],
+            self.themes["app_color"]["dark_one"],
+            self.themes["app_color"]["dark_three"],
+            self.themes["app_color"]["dark_four"]
+        )
+        self.icon_stat = QIcon(Functions.set_svg_icon("icon_insights.svg"))
+        self.btn_change_stat.setMinimumHeight(160)
+        self.btn_change_stat.setIcon(self.icon_stat)
+        self.btn_change_stat.setIconSize(QSize(40, 40))
+        self.btn_change_stat.setFont(QFont("Ubuntu", 30))
+
+        def change_stat_panel(self):
+            self.ui.left_menu.select_only_one("btn_stat")
+            MainFunctions.set_page(self, self.ui.load_pages.page_2)
+
+        self.btn_change_stat.clicked.connect(lambda: change_stat_panel(self))
+
+        self.btn_change_manage = PyPushButton(
+            "Customers Management",
+            8,
+            self.themes["app_color"]["text_foreground"],
+            self.themes["app_color"]["dark_one"],
+            self.themes["app_color"]["dark_three"],
+            self.themes["app_color"]["dark_four"]
+        )
+        self.icon_manage = QIcon(Functions.set_svg_icon("icon_business.svg"))
+        self.btn_change_manage.setMinimumHeight(160)
+        self.btn_change_manage.setIcon(self.icon_manage)
+        self.btn_change_manage.setIconSize(QSize(40, 40))
+        self.btn_change_manage.setFont(QFont("Ubuntu", 30))
+
+        def change_manage_panel(self):
+            self.ui.left_menu.select_only_one("btn_manage")
+            MainFunctions.set_page(self, self.ui.load_pages.page_3)
+
+        self.btn_change_manage.clicked.connect(lambda: change_manage_panel(self))
+
+        self.btn_change_logout = PyPushButton(
+            "Logout",
+            8,
+            self.themes["app_color"]["text_foreground"],
+            self.themes["app_color"]["dark_one"],
+            self.themes["app_color"]["dark_three"],
+            self.themes["app_color"]["dark_four"]
+        )
+        self.icon_logout = QIcon(Functions.set_svg_icon("icon_logout.svg"))
+        self.btn_change_logout.setMinimumHeight(160)
+        self.btn_change_logout.setIcon(self.icon_logout)
+        self.btn_change_logout.setIconSize(QSize(40, 40))
+        self.btn_change_logout.setFont(QFont("Ubuntu", 30))
+
+        def change_logout_panel(self, passwdbox: QLineEdit = None):
+            reply = QMessageBox.question(self, "Logout", "Are you sure you want to logout?", QMessageBox.Yes, QMessageBox.No)
+
+            if reply == QMessageBox.Yes:
+                builtins.is_logged = False
+                passwdbox.clear()
+                passwdbox.setFocus()
+                MainFunctions.get_left_menu_btn(self, "btn_login").set_icon(Functions.set_svg_icon("icon_lock.svg"))
+                self.ui.left_menu.select_only_one("btn_login")
+                MainFunctions.set_page(self, self.ui.load_pages.page_1)
+
+        self.btn_change_logout.clicked.connect(lambda: change_logout_panel(self, passwdbox=self.passwordLineEdit))
+
+        self.ui.load_pages.layout_frame_btn_stat.addWidget(self.btn_change_stat)
+        self.ui.load_pages.layout_frame_btn_manage.addWidget(self.btn_change_manage)
+        self.ui.load_pages.layout_frame_btn_logout.addWidget(self.btn_change_logout)
+
+        # SET STAT PANEL
+        # ///////////////////////////////////////////////////////////////
+
+        # SET CUSTOMER MANAGE
+        # ///////////////////////////////////////////////////////////////
+
+        # SET CUSTOMER INFO
+        # ///////////////////////////////////////////////////////////////
 
         # SET SETTINGS MENU
         # ///////////////////////////////////////////////////////////////
@@ -297,6 +377,9 @@ class SetupMainWindow:
         self.ui.left_column.menus.layout_motd.addStretch(9)
         self.ui.left_column.menus.layout_motd.addWidget(self.toggle_motd, Qt.AlignCenter, Qt.AlignCenter)
         self.ui.left_column.menus.layout_motd.addStretch(1)
+
+        # SET SETTINGS MENU
+        # //////////////////////////////////////////////////////////////
 
         # ///////////////////////////////////////////////////////////////
         # END - EXAMPLE CUSTOM WIDGETS

@@ -156,6 +156,14 @@ class Ui_MainPages(object):
         self.page_3_layout.setSpacing(5)
         self.page_3_layout.setObjectName(u"page_3_layout")
         self.page_3_layout.setContentsMargins(5, 5, 5, 5)
+        self.frame = QFrame(self.page_0)
+        self.frame.setObjectName(u"frame")
+        self.frame.setMaximumSize(QSize(16777215, 150))
+        self.frame.setFrameShape(QFrame.NoFrame)
+        self.frame.setFrameShadow(QFrame.Raised)
+
+        self.page_3_layout.addWidget(self.frame)
+
         self.main_frame_logged = QFrame(self.page_0)
         self.main_frame_logged.setObjectName(u"main_frame_logged")
         self.main_frame_logged.setMaximumSize(QSize(16777215, 16777215))
@@ -166,27 +174,29 @@ class Ui_MainPages(object):
         self.verticalLayout_3.setSpacing(0)
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
         self.verticalLayout_3.setContentsMargins(0, 0, 0, 0)
-        self.frame_8 = QFrame(self.main_frame_logged)
-        self.frame_8.setObjectName(u"frame_8")
-        self.frame_8.setMinimumSize(QSize(0, 0))
-        self.frame_8.setFrameShape(QFrame.StyledPanel)
-        self.frame_8.setFrameShadow(QFrame.Raised)
-
-        self.verticalLayout_3.addWidget(self.frame_8)
-
         self.label_welcome = QLabel(self.main_frame_logged)
         self.label_welcome.setObjectName(u"label_welcome")
         self.label_welcome.setMaximumSize(QSize(16777215, 100))
         font = QFont()
         font.setFamilies([u"Ubuntu"])
         font.setPointSize(30)
-        font.setBold(False)
+        font.setBold(True)
         font.setItalic(False)
         self.label_welcome.setFont(font)
-        self.label_welcome.setStyleSheet(u"font: 30pt \"Ubuntu\";")
+        self.label_welcome.setStyleSheet(u"font: 700 30pt \"Ubuntu\";\n"
+"color: \"#4f9fee\"")
         self.label_welcome.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_3.addWidget(self.label_welcome)
+
+        self.frame_2 = QFrame(self.main_frame_logged)
+        self.frame_2.setObjectName(u"frame_2")
+        self.frame_2.setMinimumSize(QSize(0, 10))
+        self.frame_2.setMaximumSize(QSize(16777215, 10))
+        self.frame_2.setFrameShape(QFrame.NoFrame)
+        self.frame_2.setFrameShadow(QFrame.Raised)
+
+        self.verticalLayout_3.addWidget(self.frame_2)
 
         self.label_4 = QLabel(self.main_frame_logged)
         self.label_4.setObjectName(u"label_4")
@@ -197,21 +207,24 @@ class Ui_MainPages(object):
 
         self.logged_btn_logged_frame = QFrame(self.main_frame_logged)
         self.logged_btn_logged_frame.setObjectName(u"logged_btn_logged_frame")
-        self.logged_btn_logged_frame.setMinimumSize(QSize(0, 170))
-        self.logged_btn_logged_frame.setFrameShape(QFrame.StyledPanel)
+        self.logged_btn_logged_frame.setMinimumSize(QSize(0, 160))
+        self.logged_btn_logged_frame.setFrameShape(QFrame.NoFrame)
         self.logged_btn_logged_frame.setFrameShadow(QFrame.Raised)
         self.layout_btn_logged_frame = QHBoxLayout(self.logged_btn_logged_frame)
+        self.layout_btn_logged_frame.setSpacing(15)
         self.layout_btn_logged_frame.setObjectName(u"layout_btn_logged_frame")
+        self.layout_btn_logged_frame.setContentsMargins(-1, -1, 9, -1)
         self.frame_btn_mleft = QFrame(self.logged_btn_logged_frame)
         self.frame_btn_mleft.setObjectName(u"frame_btn_mleft")
         self.frame_btn_mleft.setMaximumSize(QSize(100, 16777215))
-        self.frame_btn_mleft.setFrameShape(QFrame.StyledPanel)
+        self.frame_btn_mleft.setFrameShape(QFrame.NoFrame)
         self.frame_btn_mleft.setFrameShadow(QFrame.Raised)
 
         self.layout_btn_logged_frame.addWidget(self.frame_btn_mleft)
 
         self.frame_btn_stat = QFrame(self.logged_btn_logged_frame)
         self.frame_btn_stat.setObjectName(u"frame_btn_stat")
+        self.frame_btn_stat.setMinimumSize(QSize(0, 0))
         self.frame_btn_stat.setFrameShape(QFrame.NoFrame)
         self.frame_btn_stat.setFrameShadow(QFrame.Plain)
         self.layout_frame_btn_stat = QVBoxLayout(self.frame_btn_stat)
@@ -223,6 +236,7 @@ class Ui_MainPages(object):
 
         self.frame_btn_manage = QFrame(self.logged_btn_logged_frame)
         self.frame_btn_manage.setObjectName(u"frame_btn_manage")
+        self.frame_btn_manage.setMinimumSize(QSize(0, 0))
         self.frame_btn_manage.setFrameShape(QFrame.NoFrame)
         self.frame_btn_manage.setFrameShadow(QFrame.Raised)
         self.layout_frame_btn_manage = QVBoxLayout(self.frame_btn_manage)
@@ -232,11 +246,22 @@ class Ui_MainPages(object):
 
         self.layout_btn_logged_frame.addWidget(self.frame_btn_manage)
 
+        self.frame_btn_logout = QFrame(self.logged_btn_logged_frame)
+        self.frame_btn_logout.setObjectName(u"frame_btn_logout")
+        self.frame_btn_logout.setFrameShape(QFrame.NoFrame)
+        self.frame_btn_logout.setFrameShadow(QFrame.Raised)
+        self.layout_frame_btn_logout = QVBoxLayout(self.frame_btn_logout)
+        self.layout_frame_btn_logout.setSpacing(0)
+        self.layout_frame_btn_logout.setObjectName(u"layout_frame_btn_logout")
+        self.layout_frame_btn_logout.setContentsMargins(0, 0, 0, 0)
+
+        self.layout_btn_logged_frame.addWidget(self.frame_btn_logout)
+
         self.frame_btn_sright = QFrame(self.logged_btn_logged_frame)
         self.frame_btn_sright.setObjectName(u"frame_btn_sright")
         self.frame_btn_sright.setMinimumSize(QSize(0, 0))
         self.frame_btn_sright.setMaximumSize(QSize(100, 16777215))
-        self.frame_btn_sright.setFrameShape(QFrame.StyledPanel)
+        self.frame_btn_sright.setFrameShape(QFrame.NoFrame)
         self.frame_btn_sright.setFrameShadow(QFrame.Raised)
 
         self.layout_btn_logged_frame.addWidget(self.frame_btn_sright)
@@ -250,17 +275,21 @@ class Ui_MainPages(object):
         self.frame_6 = QFrame(self.page_0)
         self.frame_6.setObjectName(u"frame_6")
         self.frame_6.setMinimumSize(QSize(0, 100))
-        self.frame_6.setMaximumSize(QSize(16777215, 100))
-        self.frame_6.setFrameShape(QFrame.StyledPanel)
+        self.frame_6.setMaximumSize(QSize(16777215, 120))
+        self.frame_6.setFrameShape(QFrame.NoFrame)
         self.frame_6.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_2 = QHBoxLayout(self.frame_6)
+        self.horizontalLayout_2.setSpacing(0)
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
-        self.label_5 = QLabel(self.frame_6)
-        self.label_5.setObjectName(u"label_5")
-        self.label_5.setStyleSheet(u"font: 8pt \"Ubuntu\";")
-        self.label_5.setAlignment(Qt.AlignBottom|Qt.AlignRight|Qt.AlignTrailing)
+        self.horizontalLayout_2.setContentsMargins(0, 0, 0, 0)
+        self.label_status = QLabel(self.frame_6)
+        self.label_status.setObjectName(u"label_status")
+        self.label_status.setMinimumSize(QSize(0, 0))
+        self.label_status.setMaximumSize(QSize(16777215, 16777215))
+        self.label_status.setStyleSheet(u"font: 10pt \"Ubuntu\";")
+        self.label_status.setAlignment(Qt.AlignBottom|Qt.AlignRight|Qt.AlignTrailing)
 
-        self.horizontalLayout_2.addWidget(self.label_5)
+        self.horizontalLayout_2.addWidget(self.label_status)
 
 
         self.page_3_layout.addWidget(self.frame_6)
@@ -281,6 +310,21 @@ class Ui_MainPages(object):
         self.page_3_layout1.addWidget(self.label)
 
         self.pages.addWidget(self.page_3)
+        self.page_4 = QWidget()
+        self.page_4.setObjectName(u"page_4")
+        self.page_4.setStyleSheet(u"QFrame {\n"
+"	  font-size: 16pt;\n"
+"       }")
+        self.page_3_layout2 = QVBoxLayout(self.page_4)
+        self.page_3_layout2.setSpacing(5)
+        self.page_3_layout2.setObjectName(u"page_3_layout2")
+        self.page_3_layout2.setContentsMargins(5, 5, 5, 5)
+        self.label1 = QLabel(self.page_4)
+        self.label1.setObjectName(u"label1")
+
+        self.page_3_layout2.addWidget(self.label1)
+
+        self.pages.addWidget(self.page_4)
 
         self.main_pages_layout.addWidget(self.pages)
 
@@ -298,7 +342,8 @@ class Ui_MainPages(object):
         self.label_2.setText(QCoreApplication.translate("MainPages", u"Page 2", None))
         self.label_welcome.setText(QCoreApplication.translate("MainPages", u"Welcome back, User!", None))
         self.label_4.setText(QCoreApplication.translate("MainPages", u"Select an operation below to get started:", None))
-        self.label_5.setText(QCoreApplication.translate("MainPages", u"Python Instance, v.1.0.0", None))
+        self.label_status.setText(QCoreApplication.translate("MainPages", u"Error fetching status data: please contact IT support.", None))
         self.label.setText(QCoreApplication.translate("MainPages", u"Page 3", None))
+        self.label1.setText(QCoreApplication.translate("MainPages", u"Page 4", None))
     # retranslateUi
 
