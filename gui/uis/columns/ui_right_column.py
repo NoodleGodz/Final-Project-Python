@@ -48,16 +48,17 @@ class Ui_RightColumn(object):
 
         self.verticalLayout.addWidget(self.frame_image, 0, Qt.AlignHCenter)
 
-        self.label = QLabel(self.menu_1)
-        self.label.setObjectName(u"label")
-        self.label.setMaximumSize(QSize(16777215, 36))
-        self.label.setStyleSheet(u"font: 16pt \"Ubuntu\";")
-        self.label.setTextFormat(Qt.MarkdownText)
-        self.label.setScaledContents(True)
-        self.label.setAlignment(Qt.AlignHCenter|Qt.AlignTop)
-        self.label.setMargin(5)
+        self.frame_cstmr_name = QFrame(self.menu_1)
+        self.frame_cstmr_name.setObjectName(u"frame_cstmr_name")
+        self.frame_cstmr_name.setMaximumSize(QSize(16777215, 40))
+        self.frame_cstmr_name.setFrameShape(QFrame.StyledPanel)
+        self.frame_cstmr_name.setFrameShadow(QFrame.Raised)
+        self.layout_cstmr_name_input = QVBoxLayout(self.frame_cstmr_name)
+        self.layout_cstmr_name_input.setSpacing(0)
+        self.layout_cstmr_name_input.setObjectName(u"layout_cstmr_name_input")
+        self.layout_cstmr_name_input.setContentsMargins(0, 0, 0, 0)
 
-        self.verticalLayout.addWidget(self.label)
+        self.verticalLayout.addWidget(self.frame_cstmr_name)
 
         self.frame_2 = QFrame(self.menu_1)
         self.frame_2.setObjectName(u"frame_2")
@@ -85,17 +86,6 @@ class Ui_RightColumn(object):
         self.layout_cstmr_back.setContentsMargins(0, 0, 0, 0)
 
         self.horizontalLayout_2.addWidget(self.frame_cstmr_back)
-
-        self.frame_cstmr_next = QFrame(self.frame_cstmr_page)
-        self.frame_cstmr_next.setObjectName(u"frame_cstmr_next")
-        self.frame_cstmr_next.setFrameShape(QFrame.StyledPanel)
-        self.frame_cstmr_next.setFrameShadow(QFrame.Raised)
-        self.layout_cstmr_next = QVBoxLayout(self.frame_cstmr_next)
-        self.layout_cstmr_next.setSpacing(0)
-        self.layout_cstmr_next.setObjectName(u"layout_cstmr_next")
-        self.layout_cstmr_next.setContentsMargins(0, 0, 0, 0)
-
-        self.horizontalLayout_2.addWidget(self.frame_cstmr_next)
 
 
         self.verticalLayout_3.addWidget(self.frame_cstmr_page)
@@ -141,39 +131,6 @@ class Ui_RightColumn(object):
 
 
         self.verticalLayout_4.addWidget(self.frame_cstmr_id)
-
-        self.frame_cstmr_name = QFrame(self.frame_prop)
-        self.frame_cstmr_name.setObjectName(u"frame_cstmr_name")
-        self.frame_cstmr_name.setMaximumSize(QSize(16777215, 60))
-        self.frame_cstmr_name.setFrameShape(QFrame.StyledPanel)
-        self.frame_cstmr_name.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_7 = QVBoxLayout(self.frame_cstmr_name)
-        self.verticalLayout_7.setSpacing(2)
-        self.verticalLayout_7.setObjectName(u"verticalLayout_7")
-        self.verticalLayout_7.setContentsMargins(0, 0, 0, 0)
-        self.label_4 = QLabel(self.frame_cstmr_name)
-        self.label_4.setObjectName(u"label_4")
-        self.label_4.setMaximumSize(QSize(16777215, 16777215))
-        self.label_4.setStyleSheet(u"font: 11pt \"Ubuntu\";")
-        self.label_4.setIndent(3)
-
-        self.verticalLayout_7.addWidget(self.label_4)
-
-        self.frame_cstmr_name_input = QFrame(self.frame_cstmr_name)
-        self.frame_cstmr_name_input.setObjectName(u"frame_cstmr_name_input")
-        self.frame_cstmr_name_input.setMinimumSize(QSize(0, 30))
-        self.frame_cstmr_name_input.setMaximumSize(QSize(16777215, 30))
-        self.frame_cstmr_name_input.setFrameShape(QFrame.StyledPanel)
-        self.frame_cstmr_name_input.setFrameShadow(QFrame.Raised)
-        self.layout_cstmr_name_input_2 = QVBoxLayout(self.frame_cstmr_name_input)
-        self.layout_cstmr_name_input_2.setSpacing(0)
-        self.layout_cstmr_name_input_2.setObjectName(u"layout_cstmr_name_input_2")
-        self.layout_cstmr_name_input_2.setContentsMargins(0, 0, 0, 0)
-
-        self.verticalLayout_7.addWidget(self.frame_cstmr_name_input)
-
-
-        self.verticalLayout_4.addWidget(self.frame_cstmr_name)
 
         self.frame_cstmr_address = QFrame(self.frame_prop)
         self.frame_cstmr_address.setObjectName(u"frame_cstmr_address")
@@ -252,10 +209,10 @@ class Ui_RightColumn(object):
         self.frame_cstmr_btn_edit.setMaximumSize(QSize(16777215, 36))
         self.frame_cstmr_btn_edit.setFrameShape(QFrame.StyledPanel)
         self.frame_cstmr_btn_edit.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_6 = QVBoxLayout(self.frame_cstmr_btn_edit)
-        self.verticalLayout_6.setSpacing(0)
-        self.verticalLayout_6.setObjectName(u"verticalLayout_6")
-        self.verticalLayout_6.setContentsMargins(0, 0, 0, 0)
+        self.layout_cstmr_btn_edit = QVBoxLayout(self.frame_cstmr_btn_edit)
+        self.layout_cstmr_btn_edit.setSpacing(0)
+        self.layout_cstmr_btn_edit.setObjectName(u"layout_cstmr_btn_edit")
+        self.layout_cstmr_btn_edit.setContentsMargins(0, 0, 0, 0)
 
         self.verticalLayout.addWidget(self.frame_cstmr_btn_edit)
 
@@ -291,9 +248,7 @@ class Ui_RightColumn(object):
 
     def retranslateUi(self, RightColumn):
         RightColumn.setWindowTitle(QCoreApplication.translate("RightColumn", u"Form", None))
-        self.label.setText(QCoreApplication.translate("RightColumn", u"Nguyen Khanh Toan", None))
         self.label_3.setText(QCoreApplication.translate("RightColumn", u"ID:", None))
-        self.label_4.setText(QCoreApplication.translate("RightColumn", u"Name:", None))
         self.label_5.setText(QCoreApplication.translate("RightColumn", u"Address:", None))
         self.label_6.setText(QCoreApplication.translate("RightColumn", u"Info:", None))
         self.label_2.setText(QCoreApplication.translate("RightColumn", u"Menu 2 - Right Menu", None))

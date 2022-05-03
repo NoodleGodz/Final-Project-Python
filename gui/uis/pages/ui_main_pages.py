@@ -16,8 +16,8 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QFrame, QHBoxLayout, QLabel,
-    QListView, QSizePolicy, QStackedWidget, QTextBrowser,
-    QVBoxLayout, QWidget)
+    QListWidget, QListWidgetItem, QSizePolicy, QStackedWidget,
+    QTextBrowser, QVBoxLayout, QWidget)
 
 class Ui_MainPages(object):
     def setupUi(self, MainPages):
@@ -446,10 +446,30 @@ class Ui_MainPages(object):
 
         self.frame_15 = QFrame(self.page_3)
         self.frame_15.setObjectName(u"frame_15")
-        self.frame_15.setFrameShape(QFrame.StyledPanel)
+        self.frame_15.setFrameShape(QFrame.NoFrame)
         self.frame_15.setFrameShadow(QFrame.Raised)
 
         self.page_3_layout1.addWidget(self.frame_15)
+
+        self.frame_btn_add_cstmr = QFrame(self.page_3)
+        self.frame_btn_add_cstmr.setObjectName(u"frame_btn_add_cstmr")
+        self.frame_btn_add_cstmr.setMinimumSize(QSize(0, 100))
+        self.frame_btn_add_cstmr.setStyleSheet(u"font: 16pt \"Ubuntu\";")
+        self.frame_btn_add_cstmr.setFrameShape(QFrame.NoFrame)
+        self.frame_btn_add_cstmr.setFrameShadow(QFrame.Raised)
+        self.layout_btn_add_cstmr = QVBoxLayout(self.frame_btn_add_cstmr)
+        self.layout_btn_add_cstmr.setSpacing(0)
+        self.layout_btn_add_cstmr.setObjectName(u"layout_btn_add_cstmr")
+        self.layout_btn_add_cstmr.setContentsMargins(0, 0, 0, 0)
+
+        self.page_3_layout1.addWidget(self.frame_btn_add_cstmr)
+
+        self.frame_13 = QFrame(self.page_3)
+        self.frame_13.setObjectName(u"frame_13")
+        self.frame_13.setFrameShape(QFrame.NoFrame)
+        self.frame_13.setFrameShadow(QFrame.Raised)
+
+        self.page_3_layout1.addWidget(self.frame_13)
 
         self.label_3 = QLabel(self.page_3)
         self.label_3.setObjectName(u"label_3")
@@ -460,51 +480,53 @@ class Ui_MainPages(object):
 
         self.page_3_layout1.addWidget(self.label_3)
 
-        self.frame_13 = QFrame(self.page_3)
-        self.frame_13.setObjectName(u"frame_13")
-        self.frame_13.setMaximumSize(QSize(16777215, 10))
-        self.frame_13.setFrameShape(QFrame.StyledPanel)
-        self.frame_13.setFrameShadow(QFrame.Raised)
-
-        self.page_3_layout1.addWidget(self.frame_13)
-
         self.frame_labeledit_search = QFrame(self.page_3)
         self.frame_labeledit_search.setObjectName(u"frame_labeledit_search")
         self.frame_labeledit_search.setMinimumSize(QSize(500, 36))
         self.frame_labeledit_search.setMaximumSize(QSize(500, 36))
-        self.frame_labeledit_search.setFrameShape(QFrame.StyledPanel)
+        self.frame_labeledit_search.setFrameShape(QFrame.NoFrame)
         self.frame_labeledit_search.setFrameShadow(QFrame.Raised)
+        self.layout_frame_labeledit_search = QVBoxLayout(self.frame_labeledit_search)
+        self.layout_frame_labeledit_search.setSpacing(0)
+        self.layout_frame_labeledit_search.setObjectName(u"layout_frame_labeledit_search")
+        self.layout_frame_labeledit_search.setContentsMargins(0, 0, 0, 0)
 
         self.page_3_layout1.addWidget(self.frame_labeledit_search, 0, Qt.AlignHCenter|Qt.AlignVCenter)
 
-        self.label_7 = QLabel(self.page_3)
-        self.label_7.setObjectName(u"label_7")
-        self.label_7.setAlignment(Qt.AlignBottom|Qt.AlignHCenter)
+        self.frame_18 = QFrame(self.page_3)
+        self.frame_18.setObjectName(u"frame_18")
+        self.frame_18.setFrameShape(QFrame.NoFrame)
+        self.frame_18.setFrameShadow(QFrame.Raised)
 
-        self.page_3_layout1.addWidget(self.label_7)
+        self.page_3_layout1.addWidget(self.frame_18)
 
-        self.frame_16 = QFrame(self.page_3)
-        self.frame_16.setObjectName(u"frame_16")
-        self.frame_16.setMaximumSize(QSize(16777215, 10))
-        self.frame_16.setFrameShape(QFrame.StyledPanel)
-        self.frame_16.setFrameShadow(QFrame.Raised)
+        self.label_match_text = QLabel(self.page_3)
+        self.label_match_text.setObjectName(u"label_match_text")
+        self.label_match_text.setAlignment(Qt.AlignBottom|Qt.AlignHCenter)
 
-        self.page_3_layout1.addWidget(self.frame_16)
+        self.page_3_layout1.addWidget(self.label_match_text)
 
-        self.listView_cstmr = QListView(self.page_3)
-        self.listView_cstmr.setObjectName(u"listView_cstmr")
+        self.listWidget_cstmr = QListWidget(self.page_3)
+        self.listWidget_cstmr.setObjectName(u"listWidget_cstmr")
         sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.listView_cstmr.sizePolicy().hasHeightForWidth())
-        self.listView_cstmr.setSizePolicy(sizePolicy)
-        self.listView_cstmr.setStyleSheet(u"background-color: rgb(44, 49, 60);")
+        sizePolicy.setHeightForWidth(self.listWidget_cstmr.sizePolicy().hasHeightForWidth())
+        self.listWidget_cstmr.setSizePolicy(sizePolicy)
+        font1 = QFont()
+        font1.setFamilies([u"Ubuntu"])
+        font1.setPointSize(11)
+        font1.setBold(False)
+        font1.setItalic(False)
+        self.listWidget_cstmr.setFont(font1)
+        self.listWidget_cstmr.setStyleSheet(u"background-color: rgb(44, 49, 60);\n"
+"font: 11pt \"Ubuntu\";")
 
-        self.page_3_layout1.addWidget(self.listView_cstmr)
+        self.page_3_layout1.addWidget(self.listWidget_cstmr)
 
         self.frame_17 = QFrame(self.page_3)
         self.frame_17.setObjectName(u"frame_17")
-        self.frame_17.setFrameShape(QFrame.StyledPanel)
+        self.frame_17.setFrameShape(QFrame.NoFrame)
         self.frame_17.setFrameShadow(QFrame.Raised)
 
         self.page_3_layout1.addWidget(self.frame_17)
@@ -550,8 +572,8 @@ class Ui_MainPages(object):
         self.frame_icon_template.setMinimumSize(QSize(256, 256))
         self.frame_icon_template.setFrameShape(QFrame.StyledPanel)
         self.frame_icon_template.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_6 = QVBoxLayout(self.frame_icon_template)
-        self.verticalLayout_6.setObjectName(u"verticalLayout_6")
+        self.layout_icon_template = QVBoxLayout(self.frame_icon_template)
+        self.layout_icon_template.setObjectName(u"layout_icon_template")
 
         self.verticalLayout_4.addWidget(self.frame_icon_template)
 
@@ -578,10 +600,10 @@ class Ui_MainPages(object):
         self.frame_view_edit_profile.setMaximumSize(QSize(150, 30))
         self.frame_view_edit_profile.setFrameShape(QFrame.StyledPanel)
         self.frame_view_edit_profile.setFrameShadow(QFrame.Raised)
-        self.frame_cstmr_edit_profile = QVBoxLayout(self.frame_view_edit_profile)
-        self.frame_cstmr_edit_profile.setSpacing(0)
-        self.frame_cstmr_edit_profile.setObjectName(u"frame_cstmr_edit_profile")
-        self.frame_cstmr_edit_profile.setContentsMargins(0, 0, 0, 0)
+        self.layout_frame_view_edit_profile = QVBoxLayout(self.frame_view_edit_profile)
+        self.layout_frame_view_edit_profile.setSpacing(0)
+        self.layout_frame_view_edit_profile.setObjectName(u"layout_frame_view_edit_profile")
+        self.layout_frame_view_edit_profile.setContentsMargins(0, 0, 0, 0)
 
         self.verticalLayout_5.addWidget(self.frame_view_edit_profile)
 
@@ -636,6 +658,10 @@ class Ui_MainPages(object):
         self.frame_btn_export_customer.setObjectName(u"frame_btn_export_customer")
         self.frame_btn_export_customer.setFrameShape(QFrame.StyledPanel)
         self.frame_btn_export_customer.setFrameShadow(QFrame.Raised)
+        self.layout_frame_export_customer = QVBoxLayout(self.frame_btn_export_customer)
+        self.layout_frame_export_customer.setSpacing(0)
+        self.layout_frame_export_customer.setObjectName(u"layout_frame_export_customer")
+        self.layout_frame_export_customer.setContentsMargins(0, 0, 0, 0)
 
         self.horizontalLayout_3.addWidget(self.frame_btn_export_customer)
 
@@ -643,6 +669,10 @@ class Ui_MainPages(object):
         self.frame_btn_cstmr_plot.setObjectName(u"frame_btn_cstmr_plot")
         self.frame_btn_cstmr_plot.setFrameShape(QFrame.StyledPanel)
         self.frame_btn_cstmr_plot.setFrameShadow(QFrame.Raised)
+        self.layout_frame_btn_cstmr_plot = QVBoxLayout(self.frame_btn_cstmr_plot)
+        self.layout_frame_btn_cstmr_plot.setSpacing(0)
+        self.layout_frame_btn_cstmr_plot.setObjectName(u"layout_frame_btn_cstmr_plot")
+        self.layout_frame_btn_cstmr_plot.setContentsMargins(0, 0, 0, 0)
 
         self.horizontalLayout_3.addWidget(self.frame_btn_cstmr_plot)
 
@@ -650,6 +680,10 @@ class Ui_MainPages(object):
         self.frame_btn_toggle_contract.setObjectName(u"frame_btn_toggle_contract")
         self.frame_btn_toggle_contract.setFrameShape(QFrame.StyledPanel)
         self.frame_btn_toggle_contract.setFrameShadow(QFrame.Raised)
+        self.layout_frame_btn_toggle_contract = QVBoxLayout(self.frame_btn_toggle_contract)
+        self.layout_frame_btn_toggle_contract.setSpacing(0)
+        self.layout_frame_btn_toggle_contract.setObjectName(u"layout_frame_btn_toggle_contract")
+        self.layout_frame_btn_toggle_contract.setContentsMargins(0, 0, 0, 0)
 
         self.horizontalLayout_3.addWidget(self.frame_btn_toggle_contract)
 
@@ -681,8 +715,8 @@ class Ui_MainPages(object):
         self.label_4.setText(QCoreApplication.translate("MainPages", u"Select an operation below to get started:", None))
         self.label_status.setText(QCoreApplication.translate("MainPages", u"Error fetching status data: please contact IT support.", None))
         self.label.setText(QCoreApplication.translate("MainPages", u"Customers Management", None))
-        self.label_3.setText(QCoreApplication.translate("MainPages", u"Search for Customer ID:", None))
-        self.label_7.setText(QCoreApplication.translate("MainPages", u"XXX matches found, double-click to open Detailed View", None))
+        self.label_3.setText(QCoreApplication.translate("MainPages", u"Or, search for Customer ID:", None))
+        self.label_match_text.setText(QCoreApplication.translate("MainPages", u"XXX matches found, double-click to open Detailed View", None))
         self.label_5.setText(QCoreApplication.translate("MainPages", u"Customer Name Here", None))
         self.label_6.setText(QCoreApplication.translate("MainPages", u"Billing Statistics", None))
         self.label_8.setText(QCoreApplication.translate("MainPages", u"Operations Panel", None))

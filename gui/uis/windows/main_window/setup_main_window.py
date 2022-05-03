@@ -1,5 +1,6 @@
 # IMPORT PACKAGES AND MODULES
 # ///////////////////////////////////////////////////////////////
+from cProfile import label
 from gui.widgets.py_table_widget.py_table_widget import PyTableWidget
 from . functions_main_window import *
 import sys
@@ -394,7 +395,7 @@ class SetupMainWindow:
             
             
             chart_from_to.setText(
-                "From " + 
+                "From" + 
                 builtins.mm.Stat_L.Start_Point.strftime(" %d %B, %Y ") + 
                 "To" + 
                 builtins.mm.Stat_L.End_Point.strftime(" %d %B, %Y ")
@@ -450,7 +451,7 @@ class SetupMainWindow:
         #
 
         self.ui.load_pages.label_from_to.setText(
-            "From " + 
+            "From" + 
             builtins.mm.Stat_L.Start_Point.strftime(" %d %B, %Y ") + 
             "To" + 
             builtins.mm.Stat_L.End_Point.strftime(" %d %B, %Y ")
@@ -698,7 +699,7 @@ class SetupMainWindow:
                         return chartView
                 
                 chart_from_to.setText(
-                    "From " + 
+                    "From" + 
                     builtins.mm.Stat_L.Start_Point.strftime(" %d %B, %Y ") + 
                     "To" + 
                     builtins.mm.Stat_L.End_Point.strftime(" %d %B, %Y ")
@@ -723,8 +724,289 @@ class SetupMainWindow:
         # SET CUSTOMER MANAGE - 
         # ///////////////////////////////////////////////////////////////
 
+        self.btn_add_cstmr = PyPushButton(
+            " Add New Customer",
+            8,
+            self.themes["app_color"]["text_foreground"],
+            self.themes["app_color"]["dark_one"],
+            self.themes["app_color"]["dark_three"],
+            self.themes["app_color"]["dark_four"]
+        )
+        self.icon_add_cstmr = QIcon(Functions.set_svg_icon("icon_add_user.svg"))
+        self.btn_add_cstmr.setMinimumHeight(128)
+        self.btn_add_cstmr.setIcon(self.icon_add_cstmr)
+        self.btn_add_cstmr.setIconSize(QSize(40, 40))
+        self.btn_add_cstmr.setFont(QFont("Ubuntu", 30))
+
+        def add_cstmr(self):
+            c_id, ok1 = QInputDialog.getText(
+                self,
+                "Add New Customer",
+                "Type ID of customer:",
+            )
+
+            if not ok1 or not c_id:
+                return
+
+            c_Name,ok2 = QInputDialog.getText(
+                self,
+                "Add New Customer",
+                "Type Name of customer:",
+            )
+            if not ok2 or not c_Name:
+                return
+
+            c_Address,ok3 = QInputDialog.getText(
+                self,
+                "Add New Customer",
+                "Type Address of customer:",
+            )
+            if not ok3 or not c_Address:
+                return
+
+            c_Info, ok4 = QInputDialog.getText(
+                self,
+                "Add New Customer",
+                "Type Info of customer:",
+            )
+            if not ok4 or not c_Info:
+                return
+
+            mode_E=['0','1','2','3','4','5']
+            c_EM, ok5 = QInputDialog.getItem(
+                self,
+                "Add New Customer",
+                "Type Electric_Mode of customer:", 
+                mode_E,
+                0,
+                False
+            )
+            if not ok5:
+                return
+
+            c_status=builtins.mm.Client_L.CreateNewClient(c_id,c_Name,c_Address,c_Info,c_EM)
+            if c_status:
+                QMessageBox.information(
+                    self,
+                    "Add New Customer",
+                    "Success: " + str(c_id) + " - " + str(c_Name) + " has been added to the record."
+                )
+            else:
+                QMessageBox.critical(
+                    self,
+                    "Add New Customer",
+                    "Conflict: There is already a customer with ID " + str(c_id) + ", terminating"
+                )
+            
+            change_listWidget(self, self.customer_lineedit.text(), self.ui.load_pages.listWidget_cstmr, self.ui.load_pages.label_match_text)
+
+        self.btn_add_cstmr.clicked.connect(lambda: add_cstmr(self))
+        self.ui.load_pages.layout_btn_add_cstmr.addWidget(self.btn_add_cstmr)
+
+        self.customer_lineedit = PyLineEdit(
+            "",
+            "Type here to search...",
+            8,
+            2,
+            self.themes["app_color"]["text_foreground"],
+            self.themes["app_color"]["dark_four"],
+            self.themes["app_color"]["bg_three"],
+            self.themes["app_color"]["bg_one"],
+            self.themes["app_color"]["context_color"]
+        )
+
+        def change_listWidget(self, query: str, lw: QListWidget, match_text: QLabel):
+
+            lw.clear()
+            query_match=builtins.mm.Client_L.FindClientsListbyInput(query)
+            for i in query_match:
+                labelname=i['id']+' / '+i['Client_Object'].Owner_Name
+
+                item = QListWidgetItem()
+                item.setText(labelname)
+
+                lw.addItem(item)
+            
+            match_text.setText(str(len(query_match)) + " match(es) found, double-click to open Detailed View")
+        
+        self.customer_lineedit.setMinimumHeight(36)
+        self.customer_lineedit.textChanged.connect(lambda: change_listWidget(self, self.customer_lineedit.text(), self.ui.load_pages.listWidget_cstmr, self.ui.load_pages.label_match_text))
+
+        change_listWidget(self, "", self.ui.load_pages.listWidget_cstmr, self.ui.load_pages.label_match_text)
+
+        self.ui.load_pages.layout_frame_labeledit_search.addWidget(self.customer_lineedit)
+
+        def change_double_clicked(item):
+            idchoose=item.text().split()[0]
+            builtins.mm.Client_L.SelectClientbyid(idchoose)
+
+        def change_cstmr_page(self):
+            MainFunctions.set_page(self, self.ui.load_pages.page_4)
+
+        self.ui.load_pages.listWidget_cstmr.itemDoubleClicked.connect(change_double_clicked)
+        self.ui.load_pages.listWidget_cstmr.itemDoubleClicked.connect(lambda: change_cstmr_page(self))
+
+        self.logo_cstmr = QSvgWidget(Functions.set_svg_icon("icon_user.svg"))
+        self.logo_cstmr.renderer().setAspectRatioMode(Qt.KeepAspectRatio)
+
+        self.ui.load_pages.layout_icon_template.addWidget(self.logo_cstmr, Qt.AlignCenter, Qt.AlignCenter)
+
+        # SET CUSTOMER PAGE
+        # ///////////////////////////////////////////////////////////
+
+        self.btn_cstmr_back = PyPushButton(
+            "Back",
+            8,
+            self.themes["app_color"]["text_foreground"],
+            self.themes["app_color"]["dark_one"],
+            self.themes["app_color"]["dark_three"],
+            self.themes["app_color"]["dark_four"]
+        )
+        self.icon_cstmr_back = QIcon(Functions.set_svg_icon("icon_arrow_left.svg"))
+        self.btn_cstmr_back.setMinimumHeight(35)
+        self.btn_cstmr_back.setIcon(self.icon_cstmr_back)
+        self.btn_cstmr_back.setIconSize(QSize(20, 20))
+        self.btn_cstmr_back.setFont(QFont("Ubuntu", 12))
+
+        def change_cstmr_search(self):
+            MainFunctions.set_page(self, self.ui.load_pages.page_3)
+
+        self.btn_cstmr_back.clicked.connect(lambda: change_cstmr_search(self))
+
+        self.ui.load_pages.layout_frame_cstmr_back.addWidget(self.btn_cstmr_back)
+
+        self.btn_view_profile = PyPushButton(
+            "Back",
+            8,
+            self.themes["app_color"]["text_foreground"],
+            self.themes["app_color"]["dark_one"],
+            self.themes["app_color"]["dark_three"],
+            self.themes["app_color"]["dark_four"]
+        )
+        self.btn_view_profile.setMinimumHeight(30)
+        self.btn_view_profile.setFont(QFont("Ubuntu", 12))
+
+        def change_view_edit_profile(self, c_id, name, address, info, c_id_label : QLineEdit, name_label : QLineEdit, address_label : QLineEdit, info_label : QLineEdit):
+            c_id_label.setText(c_id)
+            name_label.setText(name)
+            address_label.setText(address)
+            info_label.setText(info_label)
+
+            if not MainFunctions.right_column_is_visible(self):
+                MainFunctions.toggle_right_column(self)
+
+        self.btn_view_profile.clicked.connect(lambda: change_view_edit_profile(
+            self,
+            builtins.mm.Client_L.SelectedClient.Contract_ID,
+            builtins.mm.Client_L.SelectedClient.Owner_Name,
+            builtins.mm.Client_L.SelectedClient.Address,
+            builtins.mm.Client_L.SelectedClient.Info,
+            self.customer_info_id,
+            self.customer_info_name,
+            self.customer_info_address,
+            self.customer_info_info,
+        ))
+        self.ui.load_pages.layout_frame_view_edit_profile.addWidget(self.btn_view_profile)
+
         # SET CUSTOMER INFO
         # ///////////////////////////////////////////////////////////////
+
+        self.ui.right_column.layout_cstmr_image_right.addWidget(self.logo_cstmr, Qt.AlignCenter, Qt.AlignCenter)
+
+        self.btn_right_back = PyPushButton(
+            "Back",
+            8,
+            self.themes["app_color"]["text_foreground"],
+            self.themes["app_color"]["dark_one"],
+            self.themes["app_color"]["dark_three"],
+            self.themes["app_color"]["dark_four"]
+        )
+        self.icon_right_back = QIcon(Functions.set_svg_icon("icon_arrow_left.svg"))
+        self.btn_right_back.setMinimumHeight(35)
+        self.btn_right_back.setIcon(self.icon_cstmr_back)
+        self.btn_right_back.setIconSize(QSize(20, 20))
+        self.btn_right_back.setFont(QFont("Ubuntu", 12))
+
+        def change_right_back(self):
+            MainFunctions.toggle_right_column(self)
+
+        self.btn_right_back.clicked.connect(lambda: change_right_back(self))
+        self.ui.right_column.layout_cstmr_back.addWidget(self.btn_right_back)
+
+        self.customer_info_name = PyLineEdit(
+            "",
+            "Empty...",
+            8,
+            2,
+            self.themes["app_color"]["text_foreground"],
+            self.themes["app_color"]["dark_four"],
+            self.themes["app_color"]["bg_three"],
+            self.themes["app_color"]["bg_one"],
+            self.themes["app_color"]["context_color"]
+        )
+        self.customer_info_name.setMinimumHeight(30)
+
+        self.customer_info_id = PyLineEdit(
+            "",
+            "Empty...",
+            8,
+            2,
+            self.themes["app_color"]["text_foreground"],
+            self.themes["app_color"]["dark_four"],
+            self.themes["app_color"]["bg_three"],
+            self.themes["app_color"]["bg_one"],
+            self.themes["app_color"]["context_color"]
+        )
+        self.customer_info_id.setMinimumHeight(30)
+
+        self.customer_info_address = PyLineEdit(
+            "",
+            "Empty...",
+            8,
+            2,
+            self.themes["app_color"]["text_foreground"],
+            self.themes["app_color"]["dark_four"],
+            self.themes["app_color"]["bg_three"],
+            self.themes["app_color"]["bg_one"],
+            self.themes["app_color"]["context_color"]
+        )
+        self.customer_info_address.setMinimumHeight(30)
+
+        self.customer_info_info = PyLineEdit(
+            "",
+            "Empty...",
+            8,
+            2,
+            self.themes["app_color"]["text_foreground"],
+            self.themes["app_color"]["dark_four"],
+            self.themes["app_color"]["bg_three"],
+            self.themes["app_color"]["bg_one"],
+            self.themes["app_color"]["context_color"]
+        )
+        self.customer_info_info.setMinimumHeight(30)
+
+        self.ui.right_column.layout_cstmr_name_input.addWidget(self.customer_info_name)
+        self.ui.right_column.layout_cstmr_id_input.addWidget(self.customer_info_id)
+        self.ui.right_column.layout_cstmr_address_input.addWidget(self.customer_info_address)
+        self.ui.right_column.layout_cstmr_info_input.addWidget(self.customer_info_info)
+
+        self.btn_view_edit_profile = PyPushButton(
+            "Edit...",
+            8,
+            self.themes["app_color"]["text_foreground"],
+            self.themes["app_color"]["dark_one"],
+            self.themes["app_color"]["dark_three"],
+            self.themes["app_color"]["dark_four"]
+        )
+        self.btn_view_edit_profile.setMinimumHeight(36)
+        self.btn_view_edit_profile.setFont(QFont("Ubuntu", 12))
+
+        def change_edit_profile(self):
+            pass
+
+        self.btn_view_edit_profile.clicked.connect(lambda: change_edit_profile(self))
+
+        self.ui.right_column.layout_cstmr_btn_edit.addWidget(self.btn_view_edit_profile)
 
         # SET SETTINGS MENU
         # ///////////////////////////////////////////////////////////////

@@ -61,7 +61,7 @@ class Clients_List:
         
         """
         a=Client.Client(self.Today)
-        a.UpdateInput(Contact_ID,Owner_Name,Address,Info,E_Mode)       
+        a.UpdateInput(Contact_ID,Owner_Name,Address,Info,int(E_Mode))       
         Check=self.CheckIDexist(Contact_ID)
         if Check:
             print("Error ! ID duplicate")
@@ -74,7 +74,7 @@ class Clients_List:
         """
         This function return all clients with Id contain text
         """
-        return [d for d in self.List if text in d['id']]
+        return [d for d in self.List if (text.lower() in d['id'].lower()) or (text.lower() in d['Client_Object'].Owner_Name.lower())]
 
     def GetUsageDay(self):
         return [d['Client_Object'].Energy_Usage for d in self.List]
@@ -96,3 +96,7 @@ class Clients_List:
 
     def ListOfDict(self):
         return [d['Client_Object'].ToDict() for d in self.List]
+
+    def SelectClientbyid(self,id):
+        a=[d for d in self.List if id in d['id']]    
+        self.SelectedClient=a[0]['Client_Object']

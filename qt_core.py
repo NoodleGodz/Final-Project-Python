@@ -64,5 +64,11 @@ builtins.motds = [
     "We are all in the gutter, but some of us are looking at the stars.\n"
         "~ Oscar Wilde ~",
     "This too, shall pass.\n"
+        "~ Anonymous ~",
+    "Marriage is a three ring circus: engagement ring, wedding ring, and suffering.\n"
+		"~ Roger Price ~",
+    "Any time things appear to be going better, you have overlooked something.\n"
+        "~ Anonymous ~",
+    "I have many CHARTS and DIAGRAMS..\n"
         "~ Anonymous ~"
 ]
