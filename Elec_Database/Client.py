@@ -88,7 +88,7 @@ class Client:
             Energy_Usage of this client in Yesterday
         """
         self.Today=Today
-        self.Energy_Usage=round(self.Base_Energy_Usage*(self.Energy_mode/5)*self.Random_Usage_Factor)
+        self.Energy_Usage=round(self.Base_Energy_Usage*(self.Energy_mode/5)*self.Random_Usage_Factor*int(self.Open))
         self.Random_Usage_Factor=random.uniform(0.10,2.5)                  
     def __str__(self) -> str:
         buffer='-------------Client-------------------\n'
