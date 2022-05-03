@@ -6,5 +6,5 @@ Info : quangminh.dang@gmail.com
 -------------Contract-------------------
 State : True
 Energy Mode : 5
-Start Date (mm/dd/yy): 04/25/22
-Length : 5 days
+Start Date (mm/dd/yy): 03/01/2022
+Length : 30 days

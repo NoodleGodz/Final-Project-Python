@@ -858,7 +858,24 @@ class SetupMainWindow:
             idchoose=item.text().split()[0]
             builtins.mm.Client_L.SelectClientbyid(idchoose)
 
-        def change_cstmr_page(self, cstmr_label: QLabel, cstmr_text_browser: QTextBrowser):
+        def change_cstmr_page(
+                self, 
+                cstmr_label: QLabel, 
+                cstmr_text_browser: QTextBrowser, 
+                c_id, 
+                name, 
+                address, 
+                info, 
+                c_id_label : QLineEdit,
+                name_label : QLineEdit, 
+                address_label : QLineEdit, 
+                info_label : QLineEdit):
+
+            c_id_label.setText(c_id)
+            name_label.setText(name)
+            address_label.setText(address)
+            info_label.setText(info)
+
             cstmr_label.setText(builtins.mm.Client_L.SelectedClient.Owner_Name)
             cstmr_text_browser.setMarkdown(
                 builtins.mm.Client_L.SelectedClient.Contract_Info()
@@ -869,7 +886,15 @@ class SetupMainWindow:
         self.ui.load_pages.listWidget_cstmr.itemDoubleClicked.connect(lambda: change_cstmr_page(
             self, 
             self.ui.load_pages.label_cstmr_title_name, 
-            self.ui.load_pages.billing_text_browser
+            self.ui.load_pages.billing_text_browser,
+            builtins.mm.Client_L.SelectedClient.Contract_ID,
+            builtins.mm.Client_L.SelectedClient.Owner_Name,
+            builtins.mm.Client_L.SelectedClient.Address,
+            builtins.mm.Client_L.SelectedClient.Info,
+            self.customer_info_id,
+            self.customer_info_name,
+            self.customer_info_address,
+            self.customer_info_info,
         ))
 
         self.logo_cstmr = QSvgWidget(Functions.set_svg_icon("icon_user.svg"))
@@ -890,7 +915,7 @@ class SetupMainWindow:
 
         self.btn_cstmr_back = PyPushButton(
             "Save and Back",
-            8,
+            4,
             self.themes["app_color"]["text_foreground"],
             self.themes["app_color"]["dark_one"],
             self.themes["app_color"]["dark_three"],
@@ -899,7 +924,7 @@ class SetupMainWindow:
         self.icon_cstmr_back = QIcon(Functions.set_svg_icon("icon_arrow_left.svg"))
         self.btn_cstmr_back.setMinimumHeight(30)
         self.btn_cstmr_back.setIcon(self.icon_cstmr_back)
-        self.btn_cstmr_back.setIconSize(QSize(20, 20))
+        self.btn_cstmr_back.setIconSize(QSize(10, 10))
         self.btn_cstmr_back.setFont(QFont("Ubuntu", 12))
 
         def change_cstmr_search(self):
@@ -916,6 +941,7 @@ class SetupMainWindow:
                     )
                 MainFunctions.toggle_right_column(self)
             builtins.is_edit_mode = False
+            
             builtins.mm.Client_L.SelectedClient.UpdateInput(
                 self.customer_info_id.text(), 
                 self.customer_info_name.text(),
@@ -925,6 +951,8 @@ class SetupMainWindow:
             )
 
             builtins.mm.Client_L.Save_CL()
+
+            change_listWidget(self, "", self.ui.load_pages.listWidget_cstmr, self.ui.load_pages.label_match_text)
 
         self.btn_cstmr_back.clicked.connect(lambda: change_cstmr_search(self))
 
@@ -941,27 +969,175 @@ class SetupMainWindow:
         self.btn_view_profile.setMinimumHeight(25)
         self.btn_view_profile.setFont(QFont("Ubuntu", 12))
 
-        def change_view_edit_profile(self, c_id, name, address, info, c_id_label : QLineEdit, name_label : QLineEdit, address_label : QLineEdit, info_label : QLineEdit):
-            c_id_label.setText(c_id)
-            name_label.setText(name)
-            address_label.setText(address)
-            info_label.setText(info)
-
+        def change_view_edit_profile(self):
             if not MainFunctions.right_column_is_visible(self):
                 MainFunctions.toggle_right_column(self)
 
-        self.btn_view_profile.clicked.connect(lambda: change_view_edit_profile(
-            self,
-            builtins.mm.Client_L.SelectedClient.Contract_ID,
-            builtins.mm.Client_L.SelectedClient.Owner_Name,
-            builtins.mm.Client_L.SelectedClient.Address,
-            builtins.mm.Client_L.SelectedClient.Info,
-            self.customer_info_id,
-            self.customer_info_name,
-            self.customer_info_address,
-            self.customer_info_info,
-        ))
+        self.btn_view_profile.clicked.connect(lambda: change_view_edit_profile(self))
         self.ui.load_pages.layout_frame_view_edit_profile.addWidget(self.btn_view_profile)
+
+        self.btn_export_text = PyPushButton(
+            "Export to Text",
+            8,
+            self.themes["app_color"]["text_foreground"],
+            self.themes["app_color"]["dark_one"],
+            self.themes["app_color"]["dark_three"],
+            self.themes["app_color"]["dark_four"]
+        )
+        self.icon_export_text = QIcon(Functions.set_svg_icon("icon_export_customer.svg"))
+        self.btn_export_text.setMinimumHeight(100)
+        self.btn_export_text.setIcon(self.icon_export_text)
+        self.btn_export_text.setIconSize(QSize(35, 35))
+        self.btn_export_text.setFont(QFont("Ubuntu", 12))
+
+        def change_export_text(self):
+            path = builtins.mm.Client_L.SelectedClient.Print_Info_File()
+            QMessageBox.information(self, "Export Price", "Success: Export Price saved to \n" + path, QMessageBox.Ok)
+
+        self.btn_export_text.clicked.connect(lambda: change_export_text(self))
+        self.ui.load_pages.layout_frame_btn_export_customer.addWidget(self.btn_export_text)
+
+        self.btn_set_energy = PyPushButton(
+            "Set Energy Level",
+            8,
+            self.themes["app_color"]["text_foreground"],
+            self.themes["app_color"]["dark_one"],
+            self.themes["app_color"]["dark_three"],
+            self.themes["app_color"]["dark_four"]
+        )
+        self.icon_set_energy = QIcon(Functions.set_svg_icon("icon_energy_mode.svg"))
+        self.btn_set_energy.setMinimumHeight(100)
+        self.btn_set_energy.setIcon(self.icon_set_energy)
+        self.btn_set_energy.setIconSize(QSize(35, 35))
+        self.btn_set_energy.setFont(QFont("Ubuntu", 12))
+
+        def change_set_energy(self, cstmr_text_browser: QTextBrowser):
+            mode_E=['0','1','2','3','4','5']
+            c_EM, ok5 = QInputDialog.getItem(
+                self,
+                "Set energy",
+                "Choose New Electric_Mode:", 
+                mode_E,
+                builtins.mm.Client_L.SelectedClient.Energy_mode,
+                False
+            )
+            if not ok5:
+                return
+
+            builtins.mm.Client_L.SelectedClient.Set_Energy_Mode(c_EM)  
+            cstmr_text_browser.setMarkdown(
+                builtins.mm.Client_L.SelectedClient.Contract_Info()
+            )
+
+
+        self.btn_set_energy.clicked.connect(lambda: change_set_energy(self, self.ui.load_pages.billing_text_browser))
+        self.ui.load_pages.layout_frame_btn_set_energy.addWidget(self.btn_set_energy)
+
+        self.btn_toggle_contract = PyPushButton(
+            "Toggle Contract",
+            8,
+            self.themes["app_color"]["text_foreground"],
+            self.themes["app_color"]["dark_one"],
+            self.themes["app_color"]["dark_three"],
+            self.themes["app_color"]["dark_four"]
+        )
+        self.icon_toggle_contract = QIcon(Functions.set_svg_icon("icon_toggle_contract.svg"))
+        self.btn_toggle_contract.setMinimumHeight(100)
+        self.btn_toggle_contract.setIcon(self.icon_toggle_contract)
+        self.btn_toggle_contract.setIconSize(QSize(35, 35))
+        self.btn_toggle_contract.setFont(QFont("Ubuntu", 12))
+
+        def change_toggle_contract(self, cstmr_text_browser: QTextBrowser):
+            true_c=['Open','Close']
+            c_open, ok5 = QInputDialog.getItem(
+                self,
+                "Toggle contract",
+                "State:", 
+                true_c,
+                0,
+                False
+            )
+            if not ok5:
+                return
+            true_b =  c_open=='Open' 
+            builtins.mm.Client_L.SelectedClient.Set_Open(true_b)
+            cstmr_text_browser.setMarkdown(
+                builtins.mm.Client_L.SelectedClient.Contract_Info()
+            )
+
+        self.btn_toggle_contract.clicked.connect(lambda: change_toggle_contract(self, self.ui.load_pages.billing_text_browser))
+        self.ui.load_pages.layout_frame_btn_toggle_contract.addWidget(self.btn_toggle_contract)
+
+        self.btn_plot_user = PyPushButton(
+            "Plot User Data",
+            8,
+            self.themes["app_color"]["text_foreground"],
+            self.themes["app_color"]["dark_one"],
+            self.themes["app_color"]["dark_three"],
+            self.themes["app_color"]["dark_four"]
+        )
+        self.icon_plot_user = QIcon(Functions.set_svg_icon("icon_graph.svg"))
+        self.btn_plot_user.setMinimumHeight(100)
+        self.btn_plot_user.setIcon(self.icon_plot_user)
+        self.btn_plot_user.setIconSize(QSize(35, 35))
+        self.btn_plot_user.setFont(QFont("Ubuntu", 12))
+
+        def change_plot_user(self):
+            def stat_chartview():
+                stat_series = QBarSeries()
+
+                sample = QBarSet("Energy Usage")
+                sample.setColor(QColor(255, 206, 0, 255))
+                sum_of_day,date = builtins.mm.Stat_L.Ploting_Usage_Of_Specific_Client(builtins.mm.Client_L.SelectedClient.Contract_ID)
+                for i in sum_of_day:
+                    sample.append(i)
+                stat_series.append(sample)
+                if len(sum_of_day)==0 : 
+                    sum_of_day.append(0)
+                    date.append(0)
+                chart = QChart()
+                chart.addSeries(stat_series)
+                chart.setBackgroundBrush(QBrush(QColor(44, 49, 60, 255)))
+                chart.setTitleBrush(QBrush(QColor(133, 148, 170, 255)))
+                chart.setAnimationOptions(QChart.SeriesAnimations)
+
+                categories = []
+                a=0
+                for i in date:
+                    a+=1
+                    categories.append(a)
+
+                axisX = QBarCategoryAxis()
+                axisX.append(categories)
+                axisX.setLabelsBrush(QBrush(QColor(133, 148, 170, 255)))
+                chart.addAxis(axisX, Qt.AlignBottom)
+                stat_series.attachAxis(axisX)
+            
+                axisY = QValueAxis()
+                maxy=(max(sum_of_day)//100 + 2)*100
+                axisY.setRange(0, maxy)
+                axisY.setTickCount(6)
+                axisY.setLabelsBrush(QBrush(QColor(133, 148, 170, 255)))
+                chart.addAxis(axisY, Qt.AlignLeft)
+                stat_series.attachAxis(axisY)
+
+                chart.legend().setVisible(True)
+                chart.legend().setAlignment(Qt.AlignBottom)
+                chart.legend().setLabelBrush(QBrush(QColor(133, 148, 170, 255)))
+
+                chartView = QChartView(chart);
+                chartView.setRenderHint(QPainter.Antialiasing)
+                return chartView
+
+            self.qTempWindow = QMainWindow()
+            self.qTempWindow.setWindowTitle("Plot of usage for " + builtins.mm.Client_L.SelectedClient.Contract_ID)
+            self.qTempWindow.setCentralWidget(stat_chartview())
+            self.qTempWindow.setStyleSheet("background-color: rgb(40, 44, 52);")
+            self.qTempWindow.resize(QSize(1000, 600))
+            self.qTempWindow.showNormal()
+
+        self.btn_plot_user.clicked.connect(lambda: change_plot_user(self))
+        self.ui.load_pages.layout_frame_btn_plot_user.addWidget(self.btn_plot_user)
 
         # SET CUSTOMER INFO
         # ///////////////////////////////////////////////////////////////
@@ -974,7 +1150,7 @@ class SetupMainWindow:
 
         self.btn_right_back = PyPushButton(
             "Back",
-            8,
+            4,
             self.themes["app_color"]["text_foreground"],
             self.themes["app_color"]["dark_one"],
             self.themes["app_color"]["dark_three"],
@@ -983,7 +1159,7 @@ class SetupMainWindow:
         self.icon_right_back = QIcon(Functions.set_svg_icon("icon_arrow_left.svg"))
         self.btn_right_back.setMinimumHeight(25)
         self.btn_right_back.setIcon(self.icon_cstmr_back)
-        self.btn_right_back.setIconSize(QSize(20, 20))
+        self.btn_right_back.setIconSize(QSize(10, 10))
         self.btn_right_back.setFont(QFont("Ubuntu", 12))
 
         def change_right_back(self):
@@ -1061,7 +1237,7 @@ class SetupMainWindow:
             self.themes["app_color"]["dark_three"],
             self.themes["app_color"]["dark_four"]
         )
-        self.btn_view_edit_profile.setMinimumHeight(25)
+        self.btn_view_edit_profile.setMinimumHeight(30)
         self.btn_view_edit_profile.setFont(QFont("Ubuntu", 12))
 
         def change_edit_profile(self, name_lineedit: QLineEdit, id_lineedit: QLineEdit, address_lineedit: QLineEdit, info_lineedit: QLineEdit, btn_view_edit: QPushButton):

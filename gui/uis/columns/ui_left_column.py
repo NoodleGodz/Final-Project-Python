@@ -116,7 +116,7 @@ class Ui_LeftColumn(object):
 
         self.retranslateUi(LeftColumn)
 
-        self.menus.setCurrentIndex(0)
+        self.menus.setCurrentIndex(1)
 
 
         QMetaObject.connectSlotsByName(LeftColumn)

@@ -44,7 +44,7 @@ class Client:
     def Set_info(self,info):
         self.Info=info 
     def Set_Energy_Mode(self,EM):
-        self.Energy_mode=EM
+        self.Energy_mode=int(EM)
     def Set_Open(self,b:bool):
         """
         This function is for the state of the Contract
@@ -97,7 +97,10 @@ class Client:
         buffer=buffer +"Address : "+ self.Address +'\n'
         buffer=buffer +"Info : "+ self.Info +'\n'
         buffer=buffer +'-------------Contract-------------------\n'
-        buffer=buffer +"State : "+ str(self.Open) +'\n'
+        Minh=""
+        if self.Open : Minh="Open" 
+        else: Minh="Close"
+        buffer=buffer +"State : "+ Minh +'\n'
         buffer=buffer +"Energy Mode : "+ str(self.Energy_mode) +'\n'
         buffer=buffer +"Start Date (mm/dd/yy): "+ self.Start_date.strftime("%x") +'\n'
         buffer=buffer +"Length : "+ str((self.Today - self.Start_date).days) + " days" +'\n'
@@ -111,10 +114,14 @@ class Client:
         f = open(filename,'w')
         f.write(str(self))
         f.close()
+        return filename
 
     def Contract_Info(self):
         buffer=""
-        buffer=buffer +"**State :** "+ str(self.Open) +'\n\n'
+        Minh=""
+        if self.Open : Minh="Open" 
+        else: Minh="Close"
+        buffer=buffer +"**State :** "+ Minh +'\n\n'
         buffer=buffer +"**Energy Mode :** "+ str(self.Energy_mode) +'\n\n'
         buffer=buffer +"**Start Date (mm/dd/yy):** "+ self.Start_date.strftime("%x") +'\n\n'
         buffer=buffer +"**Length :** "+ str((self.Today - self.Start_date).days) + " days" +'\n\n'

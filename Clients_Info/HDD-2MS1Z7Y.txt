@@ -1,0 +1,10 @@
+-------------Client-------------------
+ID : HDD-2MS1Z7Y
+Name : Bui Thanh Lon
+Address : 315C Nam Ky Khoi Nghia St., Ward 7, Dist. 3, Ha Noi
+Info : duycan.trinh@hotmail.com
+-------------Contract-------------------
+State : True
+Energy Mode : 5
+Start Date (mm/dd/yy): 03/03/2022
+Length : 28 days
