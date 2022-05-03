@@ -76,7 +76,7 @@ def check_passwd_from_db(username):
     Return:
         user password with the following username
     """
-    with open("user_database.txt", "rb") as handle:
+    with open("Object_Folder/user_database.obj", "rb") as handle:
         user_db = pickle.loads(handle)
         for i in range(len(user_db)):
             val = user_db[i].values()
@@ -131,7 +131,7 @@ def check_empty_user_db():
         True if empty
         False if not empty
     """
-    if os.path.getsize("user_database.txt") == 0:
+    if os.path.getsize("Object_Folder/user_database.obj") == 0:
         return True
     return False
     
@@ -153,8 +153,8 @@ def log_in(username, password):
     else:
         while True:
             userinput = username
-            with open("user_database.txt", "rb") as handle:
-                if check_exist("user_database.txt", userinput):
+            with open("Object_Folder/user_database.obj", "rb") as handle:
+                if check_exist("Object_Folder/user_database.obj", userinput):
                     break
                 else:
                     continue
