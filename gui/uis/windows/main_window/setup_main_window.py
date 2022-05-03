@@ -415,7 +415,7 @@ class SetupMainWindow:
         ))
 
         self.btn_change_logout = PyPushButton(
-            "Logout",
+            "Save and Logout",
             8,
             self.themes["app_color"]["text_foreground"],
             self.themes["app_color"]["dark_one"],
@@ -429,10 +429,11 @@ class SetupMainWindow:
         self.btn_change_logout.setFont(QFont("Ubuntu", 30))
 
         def change_logout_panel(self, passwdbox: QLineEdit = None):
-            reply = QMessageBox.question(self, "Logout", "Are you sure you want to logout?", QMessageBox.Yes, QMessageBox.No)
+            reply = QMessageBox.question(self, "Logout", "Are you sure you want to save and logout?", QMessageBox.Yes, QMessageBox.No)
 
             if reply == QMessageBox.Yes:
                 builtins.is_logged = False
+                builtins.mm.Save_Data()
                 passwdbox.clear()
                 passwdbox.setFocus()
                 MainFunctions.get_left_menu_btn(self, "btn_login").set_icon(Functions.set_svg_icon("icon_lock.svg"))
@@ -465,7 +466,8 @@ class SetupMainWindow:
             for i in sum_of_day:
                 sample.append(i)
             stat_series.append(sample)
-
+            if len(sum_of_day)==0: sum_of_day.append(0)
+            if len(date)==0: date.append(0)            
             chart = QChart()
             chart.addSeries(stat_series)
             chart.setBackgroundBrush(QBrush(QColor(44, 49, 60, 255)))
@@ -578,7 +580,8 @@ class SetupMainWindow:
                     for i in sum_of_day:
                         sample.append(i)
                     stat_series.append(sample)
-
+                    if len(sum_of_day)==0: sum_of_day.append(0)
+                    if len(date)==0: date.append(0)
                     chart = QChart()
                     chart.addSeries(stat_series)
                     chart.setBackgroundBrush(QBrush(QColor(44, 49, 60, 255)))
@@ -855,7 +858,7 @@ class SetupMainWindow:
         # ///////////////////////////////////////////////////////////
 
         self.btn_cstmr_back = PyPushButton(
-            "Back",
+            "Save and Back",
             8,
             self.themes["app_color"]["text_foreground"],
             self.themes["app_color"]["dark_one"],
@@ -870,6 +873,7 @@ class SetupMainWindow:
 
         def change_cstmr_search(self):
             MainFunctions.set_page(self, self.ui.load_pages.page_3)
+            builtins.mm.Client_L.Save_CL()
 
         self.btn_cstmr_back.clicked.connect(lambda: change_cstmr_search(self))
 

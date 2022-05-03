@@ -24,7 +24,7 @@ class Main_Menu():
     """
 
     def __init__(self) -> None:
-        self.Load_TempData()
+        self.Load_Data()
         #self.Load_Data()
 
     def Load_TempData(self):
