@@ -1,49 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Created with Inkscape (http://www.inkscape.org/) -->
-
 <svg
    xmlns:dc="http://purl.org/dc/elements/1.1/"
    xmlns:cc="http://creativecommons.org/ns#"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="300"
-   height="70"
-   viewBox="0 0 79.375002 18.520833"
-   version="1.1"
    id="svg8"
-   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
-   sodipodi:docname="logo_home.svg">
+   version="1.1"
+   viewBox="0 0 79.375002 18.520833"
+   height="70"
+   width="300">
   <defs
-     id="defs2">
-    <inkscape:path-effect
-       effect="spiro"
-       id="path-effect4692"
-       is_visible="true" />
-  </defs>
-  <sodipodi:namedview
-     id="base"
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1.0"
-     inkscape:pageopacity="0.0"
-     inkscape:pageshadow="2"
-     inkscape:zoom="4"
-     inkscape:cx="162.66304"
-     inkscape:cy="50.586644"
-     inkscape:document-units="mm"
-     inkscape:current-layer="layer1"
-     showgrid="false"
-     units="px"
-     showguides="true"
-     inkscape:guide-bbox="true"
-     inkscape:window-width="1920"
-     inkscape:window-height="1011"
-     inkscape:window-x="0"
-     inkscape:window-y="0"
-     inkscape:window-maximized="1" />
+     id="defs2" />
   <metadata
      id="metadata5">
     <rdf:RDF>
@@ -52,153 +20,137 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
   <g
-     inkscape:label="Layer 1"
-     inkscape:groupmode="layer"
-     id="layer1"
-     transform="translate(0,-278.47918)">
+     transform="translate(0,-278.47918)"
+     id="layer1">
     <path
-       transform="translate(2.6458334)"
-       style="fill:none;stroke:#4f9fee;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0.33507854"
+       id="path4690"
        d="m 6.2333406,282.43498 c 1.6209497,-1.32542 3.5418217,-2.29365 5.5866144,-2.74425 2.044794,-0.4506 4.211405,-0.37631 6.201188,0.2756 1.948463,0.63837 3.674556,1.79858 5.472095,2.78493 1.797539,0.98634 3.774257,1.82458 5.821978,1.72036 2.116235,-0.10771 4.037115,-1.20108 5.890723,-2.22782 0.926804,-0.51337 1.862683,-1.01854 2.854188,-1.39194 0.991505,-0.37341 2.045742,-0.61325 3.104607,-0.57695 1.948325,0.0668 3.733031,1.04598 5.432194,2.00164 1.699163,0.95565 3.481747,1.93734 5.429865,2.00992 1.082422,0.0403 2.160322,-0.20706 3.173439,-0.59027 1.013118,-0.38322 1.969332,-0.90047 2.919569,-1.42039 0.950238,-0.51991 1.901118,-1.04559 2.907088,-1.4472 1.00597,-0.4016 2.074833,-0.678 3.158005,-0.67713 1.194119,9.6e-4 2.382074,0.34473 3.40828,0.95532 1.026207,0.61059 1.890296,1.48402 2.516479,2.50079 0.948412,1.53999 1.342508,3.41271 1.099734,5.20494 -0.242774,1.79224 -1.119828,3.49133 -2.43706,4.73067 -1.317233,1.23933 -3.064957,2.01097 -4.867902,2.15394 -1.802944,0.14298 -3.648974,-0.34282 -5.150561,-1.35093 -0.863324,-0.57961 -1.60611,-1.31812 -2.409046,-1.97884 -0.802937,-0.66073 -1.696989,-1.25778 -2.713401,-1.47727 -0.878291,-0.18967 -1.801546,-0.084 -2.659647,0.18248 -0.858101,0.26652 -1.659239,0.68866 -2.436783,1.13898 -0.777543,0.45033 -1.538405,0.93188 -2.344032,1.32979 -0.805627,0.39791 -1.663756,0.71286 -2.557571,0.80486 -1.586609,0.16331 -3.154692,-0.38122 -4.633627,-0.9785 -1.478936,-0.59728 -2.970331,-1.26526 -4.562093,-1.36671 -2.164569,-0.13795 -4.235408,0.78132 -6.259518,1.56066 -1.012056,0.38967 -2.042143,0.75024 -3.111239,0.93226 -1.069095,0.18203 -2.185442,0.17958 -3.219357,-0.14771 -1.62881,-0.5156 -2.894984,-1.76791 -4.246985,-2.8124 -0.676,-0.52224 -1.393885,-1.00375 -2.189671,-1.3143 -0.795786,-0.31054 -1.678776,-0.44256 -2.512199,-0.25515 -0.669514,0.15055 -1.280879,0.49972 -1.822118,0.92159 -0.541238,0.42187 -1.019819,0.91728 -1.5054635,1.40211 -0.4856441,0.48484 -0.9836667,0.96358 -1.554412,1.34459 -0.5707453,0.381 -1.2224514,0.66265 -1.9067932,0.71356 -0.748901,0.0557 -1.5086395,-0.17293 -2.1280083,-0.5976 -0.6193689,-0.42466 -1.0999924,-1.03832 -1.4049743,-1.72457 -0.6099637,-1.37251 -0.5102403,-2.97633 -0.04656,-4.4049 0.6646397,-2.04772 2.0363283,-3.82137 3.7029746,-5.18416 z"
-       id="path4690" />
+       style="fill:none;stroke:#4f9fee;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0.33507854"
+       transform="translate(2.6458334)" />
     <path
-       style="fill:#e06c75;fill-opacity:0.51243783;stroke:#ff5f75;stroke-width:0.32706702px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0.01570681"
-       d="m 37.059371,280.48509 h 4.99601 l -2.2974,5.88284 4.797933,-0.0513 -8.440841,10.2764 2.512288,-7.42437 -4.072858,0.0698 z"
        id="path162-3"
-       inkscape:connector-curvature="0"
-       sodipodi:nodetypes="cccccccc" />
+       d="m 37.059371,280.48509 h 4.99601 l -2.2974,5.88284 4.797933,-0.0513 -8.440841,10.2764 2.512288,-7.42437 -4.072858,0.0698 z"
+       style="fill:#e06c75;fill-opacity:0.51243783;stroke:#ff5f75;stroke-width:0.32706702px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0.01570681" />
     <flowRoot
-       xml:space="preserve"
+       style="fill:black;fill-opacity:1;stroke:none;font-family:'Chakra Petch';font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;letter-spacing:0px;word-spacing:0px;-inkscape-font-specification:'Chakra Petch';font-stretch:normal;font-variant:normal;"
        id="flowRoot26"
-       style="fill:black;fill-opacity:1;stroke:none;font-family:'Chakra Petch';font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;letter-spacing:0px;word-spacing:0px;-inkscape-font-specification:'Chakra Petch';font-stretch:normal;font-variant:normal;"><flowRegion
-         id="flowRegion28"
-         style="-inkscape-font-specification:'Chakra Petch';font-family:'Chakra Petch';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;"><rect
-           id="rect30"
-           width="300.20337"
-           height="70.210732"
-           x="0"
+       xml:space="preserve"><flowRegion
+         style="-inkscape-font-specification:'Chakra Petch';font-family:'Chakra Petch';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;"
+         id="flowRegion28"><rect
+           style="-inkscape-font-specification:'Chakra Petch';font-family:'Chakra Petch';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;"
            y="0.022525635"
-           style="-inkscape-font-specification:'Chakra Petch';font-family:'Chakra Petch';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;" /></flowRegion><flowPara
+           x="0"
+           height="70.210732"
+           width="300.20337"
+           id="rect30" /></flowRegion><flowPara
          id="flowPara32" /></flowRoot>    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="7.4676657"
+       id="text36"
        y="293.23532"
-       id="text36"><tspan
-         sodipodi:role="line"
-         id="tspan34"
-         x="7.4676657"
-         y="302.59909"
-         style="stroke-width:0.26458332" /></text>
-    <text
-       xml:space="preserve"
+       x="7.4676657"
        style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="6.048192"
-       y="293.11188"
-       id="text40"><tspan
-         sodipodi:role="line"
-         id="tspan38"
-         x="6.048192"
-         y="302.47565"
-         style="stroke-width:0.26458332" /></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:22.57777786px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#dce1ec;fill-opacity:0.78431373;stroke:none;stroke-width:0.26458332"
-       x="2.336653"
-       y="296.58005"
-       id="text48"><tspan
-         sodipodi:role="line"
-         id="tspan46"
-         x="2.336653"
-         y="296.58005"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:22.57777786px;font-family:'Chakra Petch SemiBold';-inkscape-font-specification:'Chakra Petch SemiBold, ';fill:#dce1ec;fill-opacity:0.78431373;stroke-width:0.26458332">EC</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:22.57777786px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#4f9fee;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="3.1184285"
-       y="295.69135"
-       id="text48-3"><tspan
-         sodipodi:role="line"
-         id="tspan46-2"
-         x="3.1184285"
-         y="295.69135"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:22.57777786px;font-family:'Chakra Petch SemiBold';-inkscape-font-specification:'Chakra Petch SemiBold, ';fill:#4f9fee;fill-opacity:1;stroke-width:0.26458332">EC</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:22.57777786px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#dce1ec;fill-opacity:0.78431373;stroke:none;stroke-width:0.26458332"
-       x="45.962154"
-       y="296.93546"
-       id="text52-1"><tspan
-         sodipodi:role="line"
-         id="tspan50-5"
-         x="45.962154"
-         y="296.93546"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:22.57777786px;font-family:'Chakra Petch SemiBold';-inkscape-font-specification:'Chakra Petch SemiBold, ';fill:#dce1ec;fill-opacity:0.78431373;stroke-width:0.26458332">MP</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:22.57777786px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#4f9fee;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="45.011417"
-       y="295.7803"
-       id="text52-1-9"><tspan
-         sodipodi:role="line"
-         id="tspan50-5-9"
-         x="45.011417"
-         y="295.7803"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:22.57777786px;font-family:'Chakra Petch SemiBold';-inkscape-font-specification:'Chakra Petch SemiBold, ';fill:#4f9fee;fill-opacity:1;stroke-width:0.26458332">MP</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.58333302px;line-height:1.25;font-family:D050000L;-inkscape-font-specification:D050000L;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="36.449593"
-       y="287.61914"
-       id="text4737"><tspan
-         sodipodi:role="line"
-         x="36.449593"
-         y="298.01196"
+       xml:space="preserve"><tspan
          style="stroke-width:0.26458332"
-         id="tspan4759" /></text>
+         y="302.59909"
+         x="7.4676657"
+         id="tspan34" /></text>
     <text
-       xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.58333302px;line-height:1.25;font-family:'Thunder Lord';-inkscape-font-specification:'Thunder Lord';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="35.894524"
+       id="text40"
+       y="293.11188"
+       x="6.048192"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       xml:space="preserve"><tspan
+         style="stroke-width:0.26458332"
+         y="302.47565"
+         x="6.048192"
+         id="tspan38" /></text>
+    <text
+       id="text48"
+       y="296.58005"
+       x="2.336653"
+       style="font-style:normal;font-weight:normal;font-size:22.57777786px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#dce1ec;fill-opacity:0.78431373;stroke:none;stroke-width:0.26458332"
+       xml:space="preserve"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:22.57777786px;font-family:'Chakra Petch SemiBold';-inkscape-font-specification:'Chakra Petch SemiBold, ';fill:#dce1ec;fill-opacity:0.78431373;stroke-width:0.26458332"
+         y="296.58005"
+         x="2.336653"
+         id="tspan46">EC</tspan></text>
+    <text
+       id="text48-3"
+       y="295.69135"
+       x="3.1184285"
+       style="font-style:normal;font-weight:normal;font-size:22.57777786px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#4f9fee;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       xml:space="preserve"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:22.57777786px;font-family:'Chakra Petch SemiBold';-inkscape-font-specification:'Chakra Petch SemiBold, ';fill:#4f9fee;fill-opacity:1;stroke-width:0.26458332"
+         y="295.69135"
+         x="3.1184285"
+         id="tspan46-2">EC</tspan></text>
+    <text
+       id="text52-1"
+       y="296.93546"
+       x="45.962154"
+       style="font-style:normal;font-weight:normal;font-size:22.57777786px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#dce1ec;fill-opacity:0.78431373;stroke:none;stroke-width:0.26458332"
+       xml:space="preserve"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:22.57777786px;font-family:'Chakra Petch SemiBold';-inkscape-font-specification:'Chakra Petch SemiBold, ';fill:#dce1ec;fill-opacity:0.78431373;stroke-width:0.26458332"
+         y="296.93546"
+         x="45.962154"
+         id="tspan50-5">MP</tspan></text>
+    <text
+       id="text52-1-9"
+       y="295.7803"
+       x="45.011417"
+       style="font-style:normal;font-weight:normal;font-size:22.57777786px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#4f9fee;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       xml:space="preserve"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:22.57777786px;font-family:'Chakra Petch SemiBold';-inkscape-font-specification:'Chakra Petch SemiBold, ';fill:#4f9fee;fill-opacity:1;stroke-width:0.26458332"
+         y="295.7803"
+         x="45.011417"
+         id="tspan50-5-9">MP</tspan></text>
+    <text
+       id="text4737"
+       y="287.61914"
+       x="36.449593"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.58333302px;line-height:1.25;font-family:D050000L;-inkscape-font-specification:D050000L;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       xml:space="preserve"><tspan
+         id="tspan4759"
+         style="stroke-width:0.26458332"
+         y="298.01196"
+         x="36.449593" /></text>
+    <text
+       id="text104"
        y="285.46689"
-       id="text104"><tspan
-         sodipodi:role="line"
-         id="tspan102"
-         x="35.894524"
+       x="35.894524"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.58333302px;line-height:1.25;font-family:'Thunder Lord';-inkscape-font-specification:'Thunder Lord';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       xml:space="preserve"><tspan
+         style="stroke-width:0.26458332"
          y="295.02002"
-         style="stroke-width:0.26458332" /></text>
+         x="35.894524"
+         id="tspan102" /></text>
     <text
-       xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.58333302px;line-height:1.25;font-family:'Thunder Lord';-inkscape-font-specification:'Thunder Lord';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="36.264568"
+       id="text108"
        y="292.62112"
-       id="text108"><tspan
-         sodipodi:role="line"
-         id="tspan106"
-         x="36.264568"
-         y="292.62112"
-         style="stroke-width:0.26458332">@@</tspan></text>
-    <text
-       xml:space="preserve"
+       x="36.264568"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.58333302px;line-height:1.25;font-family:'Thunder Lord';-inkscape-font-specification:'Thunder Lord';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="38.731544"
+       xml:space="preserve"><tspan
+         style="stroke-width:0.26458332"
+         y="292.62112"
+         x="36.264568"
+         id="tspan106">@@</tspan></text>
+    <text
+       id="text112"
        y="284.66513"
-       id="text112"><tspan
-         sodipodi:role="line"
-         id="tspan110"
-         x="38.731544"
+       x="38.731544"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.58333302px;line-height:1.25;font-family:'Thunder Lord';-inkscape-font-specification:'Thunder Lord';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       xml:space="preserve"><tspan
+         style="stroke-width:0.26458332"
          y="294.21826"
-         style="stroke-width:0.26458332" /></text>
+         x="38.731544"
+         id="tspan110" /></text>
     <path
-       style="fill:#e06c75;fill-opacity:1;stroke:#ff5f75;stroke-width:0.32706702px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 35.657471,280.42384 h 4.99601 l -2.297401,5.88285 4.797933,-0.0513 -7.038939,10.33764 1.110387,-7.48562 -4.072858,0.0698 z"
        id="path162"
-       inkscape:connector-curvature="0"
-       sodipodi:nodetypes="cccccccc" />
+       d="m 35.657471,280.42384 h 4.99601 l -2.297401,5.88285 4.797933,-0.0513 -7.038939,10.33764 1.110387,-7.48562 -4.072858,0.0698 z"
+       style="fill:#e06c75;fill-opacity:1;stroke:#ff5f75;stroke-width:0.32706702px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
   </g>
 </svg>
