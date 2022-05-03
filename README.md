@@ -13,6 +13,7 @@
 |  Lê Đình Thông   | BI11-257 |    Users     |
 
 ## Features
+
  - Login System
  - Enterprise Management
  - Customer Management
@@ -20,26 +21,32 @@
 # 🚀 Instalatiion
 
 ## Prerequisites
+
 - Python 3 (prefered from version 3.7).
 - Segoe UI family fonts.
 - Necessary components of Python
+
 ``` 
 pip install pandas pyside6 openpyxl
 ```
 
 ## Step 1: Clone this repository:
+
 ```
 git clone https://github.com/rashlight/Final-Project-Python.git
 cd Final-Project-Python
 ```
 
-## Step2: Run the main functions:
+## Step 2: Run the main functions:
 
 Depend on the configuration for your Python system, run:
+
 ```
 python main.py
 ```
+
 *or*
+
 ```
 python3 main.py
 ```
@@ -51,8 +58,7 @@ If that's the case, open the ```main.py``` file and press Run/Debug button inste
 # 🔖 Legal 
 
 GUI based on
-```
 (C)opyright ADV-P group X members, using [Unlicensed License](https://unlicense.org/)
 
 UI based from [PyOneDark_Qt_Widgets_Modern_GUI](https://github.com/Wanderson-Magalhaes/PyOneDark_Qt_Widgets_Modern_GUI) and [Material Design](https://material.io)
-```
+
