@@ -51,6 +51,8 @@ class Ui_RightColumn(object):
         self.frame_cstmr_name = QFrame(self.menu_1)
         self.frame_cstmr_name.setObjectName(u"frame_cstmr_name")
         self.frame_cstmr_name.setMaximumSize(QSize(16777215, 40))
+        self.frame_cstmr_name.setStyleSheet(u"font: 700 14pt \"Ubuntu\";\n"
+"color: rgb(224, 108, 117);")
         self.frame_cstmr_name.setFrameShape(QFrame.StyledPanel)
         self.frame_cstmr_name.setFrameShadow(QFrame.Raised)
         self.layout_cstmr_name_input = QVBoxLayout(self.frame_cstmr_name)
@@ -111,7 +113,7 @@ class Ui_RightColumn(object):
         self.label_3 = QLabel(self.frame_cstmr_id)
         self.label_3.setObjectName(u"label_3")
         self.label_3.setMaximumSize(QSize(16777215, 16777215))
-        self.label_3.setStyleSheet(u"font: 11pt \"Ubuntu\";")
+        self.label_3.setStyleSheet(u"font: 700 14pt \"Ubuntu\";")
         self.label_3.setIndent(3)
 
         self.verticalLayout_5.addWidget(self.label_3)
@@ -144,7 +146,7 @@ class Ui_RightColumn(object):
         self.label_5 = QLabel(self.frame_cstmr_address)
         self.label_5.setObjectName(u"label_5")
         self.label_5.setMaximumSize(QSize(16777215, 16777215))
-        self.label_5.setStyleSheet(u"font: 11pt \"Ubuntu\";")
+        self.label_5.setStyleSheet(u"font: 700 14pt \"Ubuntu\";")
         self.label_5.setIndent(3)
 
         self.verticalLayout_8.addWidget(self.label_5)
@@ -177,7 +179,7 @@ class Ui_RightColumn(object):
         self.label_6 = QLabel(self.frame_cstmr_info)
         self.label_6.setObjectName(u"label_6")
         self.label_6.setMaximumSize(QSize(16777215, 16777215))
-        self.label_6.setStyleSheet(u"font: 11pt \"Ubuntu\";")
+        self.label_6.setStyleSheet(u"font: 700 14pt \"Ubuntu\";")
         self.label_6.setIndent(3)
 
         self.verticalLayout_9.addWidget(self.label_6)

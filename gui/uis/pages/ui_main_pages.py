@@ -543,7 +543,7 @@ class Ui_MainPages(object):
         self.page_3_layout2.setContentsMargins(5, 5, 5, 5)
         self.frame_cstmr_back = QFrame(self.page_4)
         self.frame_cstmr_back.setObjectName(u"frame_cstmr_back")
-        self.frame_cstmr_back.setMaximumSize(QSize(100, 35))
+        self.frame_cstmr_back.setMaximumSize(QSize(200, 35))
         self.frame_cstmr_back.setFrameShape(QFrame.StyledPanel)
         self.frame_cstmr_back.setFrameShadow(QFrame.Raised)
         self.layout_frame_cstmr_back = QVBoxLayout(self.frame_cstmr_back)
@@ -555,6 +555,8 @@ class Ui_MainPages(object):
 
         self.frame_7 = QFrame(self.page_4)
         self.frame_7.setObjectName(u"frame_7")
+        self.frame_7.setMinimumSize(QSize(0, 0))
+        self.frame_7.setMaximumSize(QSize(16777215, 375))
         self.frame_7.setFrameShape(QFrame.StyledPanel)
         self.frame_7.setFrameShadow(QFrame.Raised)
         self.horizontalLayout = QHBoxLayout(self.frame_7)
@@ -570,12 +572,13 @@ class Ui_MainPages(object):
         self.frame_icon_template = QFrame(self.frame_9)
         self.frame_icon_template.setObjectName(u"frame_icon_template")
         self.frame_icon_template.setMinimumSize(QSize(256, 256))
+        self.frame_icon_template.setMaximumSize(QSize(256, 256))
         self.frame_icon_template.setFrameShape(QFrame.StyledPanel)
         self.frame_icon_template.setFrameShadow(QFrame.Raised)
         self.layout_icon_template = QVBoxLayout(self.frame_icon_template)
         self.layout_icon_template.setObjectName(u"layout_icon_template")
 
-        self.verticalLayout_4.addWidget(self.frame_icon_template)
+        self.verticalLayout_4.addWidget(self.frame_icon_template, 0, Qt.AlignHCenter|Qt.AlignVCenter)
 
 
         self.horizontalLayout.addWidget(self.frame_9)
@@ -587,17 +590,17 @@ class Ui_MainPages(object):
         self.frame_10.setFrameShadow(QFrame.Raised)
         self.verticalLayout_5 = QVBoxLayout(self.frame_10)
         self.verticalLayout_5.setObjectName(u"verticalLayout_5")
-        self.label_5 = QLabel(self.frame_10)
-        self.label_5.setObjectName(u"label_5")
-        self.label_5.setStyleSheet(u"font: 30pt \"Ubuntu\";\n"
+        self.label_cstmr_title_name = QLabel(self.frame_10)
+        self.label_cstmr_title_name.setObjectName(u"label_cstmr_title_name")
+        self.label_cstmr_title_name.setStyleSheet(u"font: 30pt \"Ubuntu\";\n"
 "color: rgb(79, 159, 238);")
 
-        self.verticalLayout_5.addWidget(self.label_5)
+        self.verticalLayout_5.addWidget(self.label_cstmr_title_name)
 
         self.frame_view_edit_profile = QFrame(self.frame_10)
         self.frame_view_edit_profile.setObjectName(u"frame_view_edit_profile")
         self.frame_view_edit_profile.setMinimumSize(QSize(0, 30))
-        self.frame_view_edit_profile.setMaximumSize(QSize(150, 30))
+        self.frame_view_edit_profile.setMaximumSize(QSize(175, 30))
         self.frame_view_edit_profile.setFrameShape(QFrame.StyledPanel)
         self.frame_view_edit_profile.setFrameShadow(QFrame.Raised)
         self.layout_frame_view_edit_profile = QVBoxLayout(self.frame_view_edit_profile)
@@ -700,7 +703,7 @@ class Ui_MainPages(object):
 
         self.retranslateUi(MainPages)
 
-        self.pages.setCurrentIndex(3)
+        self.pages.setCurrentIndex(4)
 
 
         QMetaObject.connectSlotsByName(MainPages)
@@ -717,8 +720,9 @@ class Ui_MainPages(object):
         self.label.setText(QCoreApplication.translate("MainPages", u"Customers Management", None))
         self.label_3.setText(QCoreApplication.translate("MainPages", u"Or, search for Customer ID:", None))
         self.label_match_text.setText(QCoreApplication.translate("MainPages", u"XXX matches found, double-click to open Detailed View", None))
-        self.label_5.setText(QCoreApplication.translate("MainPages", u"Customer Name Here", None))
-        self.label_6.setText(QCoreApplication.translate("MainPages", u"Billing Statistics", None))
+        self.label_cstmr_title_name.setText(QCoreApplication.translate("MainPages", u"Customer Name Here", None))
+        self.label_6.setText(QCoreApplication.translate("MainPages", u"Contract Info", None))
+        self.billing_text_browser.setMarkdown("")
         self.label_8.setText(QCoreApplication.translate("MainPages", u"Operations Panel", None))
     # retranslateUi
 

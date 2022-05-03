@@ -20,6 +20,7 @@ import random
 # GLOBAL VARIABLES
 builtins.mm = Main_Menu()
 builtins.is_logged = False
+builtins.is_edit_mode = False
 builtins.motds = [
     "The whole point of criticism is that you are asking the other guys to do better." +
         " If you never comeback to see how they did, then it's plain old bad-mouthing.\n" +

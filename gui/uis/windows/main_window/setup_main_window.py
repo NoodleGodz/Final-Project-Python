@@ -1,6 +1,7 @@
 # IMPORT PACKAGES AND MODULES
 # ///////////////////////////////////////////////////////////////
 from cProfile import label
+from fcntl import F_SEAL_SEAL
 from gui.widgets.py_table_widget.py_table_widget import PyTableWidget
 from . functions_main_window import *
 import sys
@@ -229,7 +230,14 @@ class SetupMainWindow:
         )
 
         self.userLineEdit.setMinimumHeight(36)
-        self.userLineEdit.returnPressed.connect(lambda: username_released(self, self.userLineEdit.text(), self.passwordLineEdit.text(), self.ui.load_pages.label_welcome, self.ui.load_pages.label_status))
+        self.userLineEdit.returnPressed.connect(lambda: username_released(
+            self, 
+            self.userLineEdit.text(), 
+            self.passwordLineEdit.text(), 
+            self.ui.load_pages.label_welcome, 
+            self.ui.load_pages.label_status,
+            self.ui.load_pages.label_datetime
+        ))
 
         self.passwordLineEdit = PyLineEdit(
             "",
@@ -246,7 +254,14 @@ class SetupMainWindow:
         self.passwordLineEdit.setMinimumHeight(36)
         self.passwordLineEdit.setEchoMode(QLineEdit.Password)
         self.passwordLineEdit.setInputMethodHints(Qt.ImhHiddenText | Qt.ImhNoPredictiveText | Qt.ImhNoAutoUppercase);
-        self.passwordLineEdit.returnPressed.connect(lambda: username_released(self, self.userLineEdit.text(), self.passwordLineEdit.text(), self.ui.load_pages.label_welcome, self.ui.load_pages.label_status))
+        self.passwordLineEdit.returnPressed.connect(lambda: username_released(
+            self, 
+            self.userLineEdit.text(), 
+            self.passwordLineEdit.text(), 
+            self.ui.load_pages.label_welcome, 
+            self.ui.load_pages.label_status,
+            self.ui.load_pages.label_datetime
+        ))
 
         self.login_btn = PyPushButton(
             "Login",
@@ -800,7 +815,7 @@ class SetupMainWindow:
                     "Add New Customer",
                     "Conflict: There is already a customer with ID " + str(c_id) + ", terminating"
                 )
-            
+                
             change_listWidget(self, self.customer_lineedit.text(), self.ui.load_pages.listWidget_cstmr, self.ui.load_pages.label_match_text)
 
         self.btn_add_cstmr.clicked.connect(lambda: add_cstmr(self))
@@ -843,14 +858,30 @@ class SetupMainWindow:
             idchoose=item.text().split()[0]
             builtins.mm.Client_L.SelectClientbyid(idchoose)
 
-        def change_cstmr_page(self):
+        def change_cstmr_page(self, cstmr_label: QLabel, cstmr_text_browser: QTextBrowser):
+            cstmr_label.setText(builtins.mm.Client_L.SelectedClient.Owner_Name)
+            cstmr_text_browser.setMarkdown(
+                builtins.mm.Client_L.SelectedClient.Contract_Info()
+            )
             MainFunctions.set_page(self, self.ui.load_pages.page_4)
 
         self.ui.load_pages.listWidget_cstmr.itemDoubleClicked.connect(change_double_clicked)
-        self.ui.load_pages.listWidget_cstmr.itemDoubleClicked.connect(lambda: change_cstmr_page(self))
+        self.ui.load_pages.listWidget_cstmr.itemDoubleClicked.connect(lambda: change_cstmr_page(
+            self, 
+            self.ui.load_pages.label_cstmr_title_name, 
+            self.ui.load_pages.billing_text_browser
+        ))
 
         self.logo_cstmr = QSvgWidget(Functions.set_svg_icon("icon_user.svg"))
         self.logo_cstmr.renderer().setAspectRatioMode(Qt.KeepAspectRatio)
+        self.logo_cstmr.setFixedWidth(min(
+            self.ui.load_pages.frame_icon_template.width(),
+            self.ui.load_pages.frame_icon_template.height()
+        ))
+        self.logo_cstmr.setFixedHeight(min(
+            self.ui.load_pages.frame_icon_template.width(),
+            self.ui.load_pages.frame_icon_template.height()
+        ))
 
         self.ui.load_pages.layout_icon_template.addWidget(self.logo_cstmr, Qt.AlignCenter, Qt.AlignCenter)
 
@@ -866,13 +897,33 @@ class SetupMainWindow:
             self.themes["app_color"]["dark_four"]
         )
         self.icon_cstmr_back = QIcon(Functions.set_svg_icon("icon_arrow_left.svg"))
-        self.btn_cstmr_back.setMinimumHeight(35)
+        self.btn_cstmr_back.setMinimumHeight(30)
         self.btn_cstmr_back.setIcon(self.icon_cstmr_back)
         self.btn_cstmr_back.setIconSize(QSize(20, 20))
         self.btn_cstmr_back.setFont(QFont("Ubuntu", 12))
 
         def change_cstmr_search(self):
             MainFunctions.set_page(self, self.ui.load_pages.page_3)
+            if MainFunctions.right_column_is_visible(self):
+                if builtins.is_edit_mode:
+                    change_edit_profile(
+                        self,
+                        self.customer_info_name,
+                        self.customer_info_id,
+                        self.customer_info_address,
+                        self.customer_info_info,
+                        self.btn_view_edit_profile
+                    )
+                MainFunctions.toggle_right_column(self)
+            builtins.is_edit_mode = False
+            builtins.mm.Client_L.SelectedClient.UpdateInput(
+                self.customer_info_id.text(), 
+                self.customer_info_name.text(),
+                self.customer_info_address.text(),
+                self.customer_info_info.text(),
+                builtins.mm.Client_L.SelectedClient.Energy_mode
+            )
+
             builtins.mm.Client_L.Save_CL()
 
         self.btn_cstmr_back.clicked.connect(lambda: change_cstmr_search(self))
@@ -880,21 +931,21 @@ class SetupMainWindow:
         self.ui.load_pages.layout_frame_cstmr_back.addWidget(self.btn_cstmr_back)
 
         self.btn_view_profile = PyPushButton(
-            "Back",
+            "View / Edit profile...",
             8,
             self.themes["app_color"]["text_foreground"],
             self.themes["app_color"]["dark_one"],
             self.themes["app_color"]["dark_three"],
             self.themes["app_color"]["dark_four"]
         )
-        self.btn_view_profile.setMinimumHeight(30)
+        self.btn_view_profile.setMinimumHeight(25)
         self.btn_view_profile.setFont(QFont("Ubuntu", 12))
 
         def change_view_edit_profile(self, c_id, name, address, info, c_id_label : QLineEdit, name_label : QLineEdit, address_label : QLineEdit, info_label : QLineEdit):
             c_id_label.setText(c_id)
             name_label.setText(name)
             address_label.setText(address)
-            info_label.setText(info_label)
+            info_label.setText(info)
 
             if not MainFunctions.right_column_is_visible(self):
                 MainFunctions.toggle_right_column(self)
@@ -915,7 +966,11 @@ class SetupMainWindow:
         # SET CUSTOMER INFO
         # ///////////////////////////////////////////////////////////////
 
-        self.ui.right_column.layout_cstmr_image_right.addWidget(self.logo_cstmr, Qt.AlignCenter, Qt.AlignCenter)
+        self.logo_cstmr_right = QSvgWidget(Functions.set_svg_icon("icon_user.svg"))
+        self.logo_cstmr_right.renderer().setAspectRatioMode(Qt.KeepAspectRatio)
+        self.logo_cstmr_right.setFixedWidth(self.ui.right_column.frame_image.width())
+        self.logo_cstmr_right.setFixedHeight(self.ui.right_column.frame_image.height())
+        self.ui.right_column.layout_cstmr_image_right.addWidget(self.logo_cstmr_right, Qt.AlignCenter, Qt.AlignCenter)
 
         self.btn_right_back = PyPushButton(
             "Back",
@@ -926,7 +981,7 @@ class SetupMainWindow:
             self.themes["app_color"]["dark_four"]
         )
         self.icon_right_back = QIcon(Functions.set_svg_icon("icon_arrow_left.svg"))
-        self.btn_right_back.setMinimumHeight(35)
+        self.btn_right_back.setMinimumHeight(25)
         self.btn_right_back.setIcon(self.icon_cstmr_back)
         self.btn_right_back.setIconSize(QSize(20, 20))
         self.btn_right_back.setFont(QFont("Ubuntu", 12))
@@ -948,7 +1003,8 @@ class SetupMainWindow:
             self.themes["app_color"]["bg_one"],
             self.themes["app_color"]["context_color"]
         )
-        self.customer_info_name.setMinimumHeight(30)
+        self.customer_info_name.setMinimumHeight(25)
+        self.customer_info_name.setEnabled(builtins.is_edit_mode)
 
         self.customer_info_id = PyLineEdit(
             "",
@@ -962,6 +1018,7 @@ class SetupMainWindow:
             self.themes["app_color"]["context_color"]
         )
         self.customer_info_id.setMinimumHeight(30)
+        self.customer_info_id.setEnabled(builtins.is_edit_mode)
 
         self.customer_info_address = PyLineEdit(
             "",
@@ -975,6 +1032,7 @@ class SetupMainWindow:
             self.themes["app_color"]["context_color"]
         )
         self.customer_info_address.setMinimumHeight(30)
+        self.customer_info_address.setEnabled(builtins.is_edit_mode)
 
         self.customer_info_info = PyLineEdit(
             "",
@@ -988,6 +1046,7 @@ class SetupMainWindow:
             self.themes["app_color"]["context_color"]
         )
         self.customer_info_info.setMinimumHeight(30)
+        self.customer_info_info.setEnabled(builtins.is_edit_mode)
 
         self.ui.right_column.layout_cstmr_name_input.addWidget(self.customer_info_name)
         self.ui.right_column.layout_cstmr_id_input.addWidget(self.customer_info_id)
@@ -995,20 +1054,50 @@ class SetupMainWindow:
         self.ui.right_column.layout_cstmr_info_input.addWidget(self.customer_info_info)
 
         self.btn_view_edit_profile = PyPushButton(
-            "Edit...",
+            "View Mode",
             8,
             self.themes["app_color"]["text_foreground"],
             self.themes["app_color"]["dark_one"],
             self.themes["app_color"]["dark_three"],
             self.themes["app_color"]["dark_four"]
         )
-        self.btn_view_edit_profile.setMinimumHeight(36)
+        self.btn_view_edit_profile.setMinimumHeight(25)
         self.btn_view_edit_profile.setFont(QFont("Ubuntu", 12))
 
-        def change_edit_profile(self):
-            pass
+        def change_edit_profile(self, name_lineedit: QLineEdit, id_lineedit: QLineEdit, address_lineedit: QLineEdit, info_lineedit: QLineEdit, btn_view_edit: QPushButton):
+            if not builtins.is_edit_mode:
 
-        self.btn_view_edit_profile.clicked.connect(lambda: change_edit_profile(self))
+                passwd, ok1 = QInputDialog.getText(
+                    self,
+                    "Customers Management",
+                    "To make changes to this customer, you need to authenticate.\n\nEnter password:",
+                    QLineEdit.Password
+                )
+
+                if not ok1:
+                    return
+
+            builtins.is_edit_mode = not builtins.is_edit_mode
+
+            id_lineedit.setEnabled(builtins.is_edit_mode)
+            name_lineedit.setEnabled(builtins.is_edit_mode)
+            address_lineedit.setEnabled(builtins.is_edit_mode)
+            info_lineedit.setEnabled(builtins.is_edit_mode)
+
+            if builtins.is_edit_mode:
+                btn_view_edit.setText("Edit Mode")
+            else:
+                btn_view_edit.setText("View Mode")
+
+        self.btn_view_edit_profile.clicked.connect(lambda: change_edit_profile(
+            self,
+            self.customer_info_name,
+            self.customer_info_id,
+            self.customer_info_address,
+            self.customer_info_info,
+            self.btn_view_edit_profile
+        ))
+
 
         self.ui.right_column.layout_cstmr_btn_edit.addWidget(self.btn_view_edit_profile)
 

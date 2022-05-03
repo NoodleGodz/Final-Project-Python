@@ -98,6 +98,10 @@
            <height>40</height>
           </size>
          </property>
+         <property name="styleSheet">
+          <string notr="true">font: 700 14pt &quot;Ubuntu&quot;;
+color: rgb(224, 108, 117);</string>
+         </property>
          <property name="frameShape">
           <enum>QFrame::StyledPanel</enum>
          </property>
@@ -273,7 +277,7 @@
                    </size>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">font: 11pt &quot;Ubuntu&quot;;</string>
+                   <string notr="true">font: 700 12pt &quot;Ubuntu&quot;;</string>
                   </property>
                   <property name="text">
                    <string>ID:</string>
@@ -364,7 +368,7 @@
                    </size>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">font: 11pt &quot;Ubuntu&quot;;</string>
+                   <string notr="true">font: 700 12pt &quot;Ubuntu&quot;;</string>
                   </property>
                   <property name="text">
                    <string>Address:</string>
@@ -455,7 +459,7 @@
                    </size>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">font: 11pt &quot;Ubuntu&quot;;</string>
+                   <string notr="true">font: 700 12pt &quot;Ubuntu&quot;;</string>
                   </property>
                   <property name="text">
                    <string>Info:</string>

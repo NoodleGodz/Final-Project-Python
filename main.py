@@ -71,6 +71,8 @@ class MainWindow(QMainWindow):
         # TITLE BAR MENU
         # ///////////////////////////////////////////////////////////////
 
+        if MainFunctions.right_column_is_visible(self):
+            MainFunctions.toggle_right_column(self)
 
         # top_btn_setting = MainFunctions.get_title_bar_btn(self, "btn_top_settings")
 

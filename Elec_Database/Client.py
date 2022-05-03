@@ -112,6 +112,14 @@ class Client:
         f.write(str(self))
         f.close()
 
+    def Contract_Info(self):
+        buffer=""
+        buffer=buffer +"**State :** "+ str(self.Open) +'\n\n'
+        buffer=buffer +"**Energy Mode :** "+ str(self.Energy_mode) +'\n\n'
+        buffer=buffer +"**Start Date (mm/dd/yy):** "+ self.Start_date.strftime("%x") +'\n\n'
+        buffer=buffer +"**Length :** "+ str((self.Today - self.Start_date).days) + " days" +'\n\n'
+        return buffer
+
     def ToDict(self):
         """
         Client represention as Dictionary

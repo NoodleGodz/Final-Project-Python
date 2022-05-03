@@ -47,6 +47,7 @@ class Clients_List:
         return any(d['id'] == id for d in self.List)
                
     def Save_CL(self):
+        self.SaveSelectedClient()
         file_cl = open('Object_Folder/Client_L.obj', 'wb')
         pickle.dump(self,file_cl)
         file_cl.close()
@@ -100,3 +101,8 @@ class Clients_List:
     def SelectClientbyid(self,id):
         a=[d for d in self.List if id in d['id']]    
         self.SelectedClient=a[0]['Client_Object']
+
+    def SaveSelectedClient(self):
+        for d in self.List:
+            if d['id']==self.SelectedClient.Contract_ID:
+                d['Client_Object']=self.SelectedClient  

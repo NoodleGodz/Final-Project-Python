@@ -32,7 +32,7 @@
    <item>
     <widget class="QStackedWidget" name="pages">
      <property name="currentIndex">
-      <number>3</number>
+      <number>4</number>
      </property>
      <widget class="QWidget" name="page_1">
       <property name="styleSheet">
@@ -1241,7 +1241,7 @@ font: 11pt &quot;Ubuntu&quot;;</string>
         <widget class="QFrame" name="frame_cstmr_back">
          <property name="maximumSize">
           <size>
-           <width>100</width>
+           <width>200</width>
            <height>35</height>
           </size>
          </property>
@@ -1272,6 +1272,18 @@ font: 11pt &quot;Ubuntu&quot;;</string>
        </item>
        <item>
         <widget class="QFrame" name="frame_7">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>375</height>
+          </size>
+         </property>
          <property name="frameShape">
           <enum>QFrame::StyledPanel</enum>
          </property>
@@ -1303,9 +1315,15 @@ font: 11pt &quot;Ubuntu&quot;;</string>
              <enum>QFrame::Raised</enum>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_4">
-             <item>
+             <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
               <widget class="QFrame" name="frame_icon_template">
                <property name="minimumSize">
+                <size>
+                 <width>256</width>
+                 <height>256</height>
+                </size>
+               </property>
+               <property name="maximumSize">
                 <size>
                  <width>256</width>
                  <height>256</height>
@@ -1339,7 +1357,7 @@ font: 11pt &quot;Ubuntu&quot;;</string>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_5">
              <item>
-              <widget class="QLabel" name="label_5">
+              <widget class="QLabel" name="label_cstmr_title_name">
                <property name="styleSheet">
                 <string notr="true">font: 30pt &quot;Ubuntu&quot;;
 color: rgb(79, 159, 238);</string>
@@ -1359,7 +1377,7 @@ color: rgb(79, 159, 238);</string>
                </property>
                <property name="maximumSize">
                 <size>
-                 <width>150</width>
+                 <width>175</width>
                  <height>30</height>
                 </size>
                </property>
@@ -1401,7 +1419,7 @@ color: rgb(79, 159, 238);</string>
              <item>
               <widget class="QLabel" name="label_6">
                <property name="text">
-                <string>Billing Statistics</string>
+                <string>Contract Info</string>
                </property>
               </widget>
              </item>
@@ -1415,6 +1433,9 @@ color: rgb(79, 159, 238);</string>
                </property>
                <property name="styleSheet">
                 <string notr="true">background-color: rgb(40, 44, 52);</string>
+               </property>
+               <property name="markdown">
+                <string/>
                </property>
               </widget>
              </item>
