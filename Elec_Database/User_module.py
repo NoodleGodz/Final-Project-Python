@@ -2,10 +2,21 @@ import hashlib
 import os
 import getpass
 import sys
-import getch
 
 def input_username():
     pass
+
+if os.name == "nt":
+    from msvcrt import getch
+else:
+    from readchar import readchar as getch
+
+is_windows = os.name == "nt"
+is_linux = os.name == "posix"
+
+BACKSPACE_WINDOWS = 8
+BACKSPACE_LINUX = 127
+RETURN_KEY = 13
 
 def input_passwd(prompt='Password: '):
     """
@@ -26,21 +37,27 @@ def input_passwd(prompt='Password: '):
         sys.stdout.flush()
         while True:
             key = ord(getch())
-            if key == 13:
-                sys.stdout.write('\n')
+            if key == RETURN_KEY:
+                sys.stdout.write("\n")
                 return pwd
                 break
-            if key == 8:
+            if (
+                is_windows
+                and key == BACKSPACE_WINDOWS
+                or is_linux
+                and key == BACKSPACE_LINUX
+            ):
                 if len(pwd) > 0:
-                    sys.stdout.write('\b' + ' ' + '\b')
+                    # Erases previous character.
+                    sys.stdout.write("\b" + " " + "\b")
                     sys.stdout.flush()
                     pwd = pwd[:-1]
             else:
+                # Masks user input.
                 char = chr(key)
-                sys.stdout.write('*')
+                sys.stdout.write("*")
                 sys.stdout.flush()
                 pwd = pwd + char
-        return pwd
 
 ## Check user name exist
 def check_if_exist(username):
