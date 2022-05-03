@@ -911,6 +911,8 @@ class SetupMainWindow:
         # SET CUSTOMER PAGE
         # ///////////////////////////////////////////////////////////
 
+        self.ui.load_pages.billing_text_browser.document().setDefaultStyleSheet(u"background-color: rgb(40, 44, 52);")
+
         self.btn_cstmr_back = PyPushButton(
             "Save and Back",
             4,
