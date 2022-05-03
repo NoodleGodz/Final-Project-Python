@@ -36,118 +36,80 @@
        id="path162-3"
        d="m 37.059371,280.48509 h 4.99601 l -2.2974,5.88284 4.797933,-0.0513 -8.440841,10.2764 2.512288,-7.42437 -4.072858,0.0698 z"
        style="fill:#e06c75;fill-opacity:0.51243783;stroke:#ff5f75;stroke-width:0.32706702px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0.01570681" />
-    <flowRoot
-       style="fill:black;fill-opacity:1;stroke:none;font-family:'Chakra Petch';font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;letter-spacing:0px;word-spacing:0px;-inkscape-font-specification:'Chakra Petch';font-stretch:normal;font-variant:normal;"
+    <g
        id="flowRoot26"
-       xml:space="preserve"><flowRegion
-         style="-inkscape-font-specification:'Chakra Petch';font-family:'Chakra Petch';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;"
-         id="flowRegion28"><rect
-           style="-inkscape-font-specification:'Chakra Petch';font-family:'Chakra Petch';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;"
-           y="0.022525635"
-           x="0"
-           height="70.210732"
-           width="300.20337"
-           id="rect30" /></flowRegion><flowPara
-         id="flowPara32" /></flowRoot>    <text
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40px;line-height:1.25;font-family:'Chakra Petch';-inkscape-font-specification:'Chakra Petch';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none" />
+    <g
        id="text36"
-       y="293.23532"
-       x="7.4676657"
-       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       xml:space="preserve"><tspan
-         style="stroke-width:0.26458332"
-         y="302.59909"
-         x="7.4676657"
-         id="tspan34" /></text>
-    <text
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332" />
+    <g
        id="text40"
-       y="293.11188"
-       x="6.048192"
-       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       xml:space="preserve"><tspan
-         style="stroke-width:0.26458332"
-         y="302.47565"
-         x="6.048192"
-         id="tspan38" /></text>
-    <text
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332" />
+    <g
        id="text48"
-       y="296.58005"
-       x="2.336653"
        style="font-style:normal;font-weight:normal;font-size:22.57777786px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#dce1ec;fill-opacity:0.78431373;stroke:none;stroke-width:0.26458332"
-       xml:space="preserve"><tspan
+       aria-label="EC">
+      <path
+         id="path1549"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:22.57777786px;font-family:'Chakra Petch SemiBold';-inkscape-font-specification:'Chakra Petch SemiBold, ';fill:#dce1ec;fill-opacity:0.78431373;stroke-width:0.26458332"
-         y="296.58005"
-         x="2.336653"
-         id="tspan46">EC</tspan></text>
-    <text
+         d="M 3.9170974,280.7756 H 14.935053 v 2.2352 H 6.5361197 v 4.51556 h 7.7441773 v 2.21262 H 6.5361197 v 4.60587 h 8.3989333 v 2.2352 H 3.9170974 Z" />
+      <path
+         id="path1551"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:22.57777786px;font-family:'Chakra Petch SemiBold';-inkscape-font-specification:'Chakra Petch SemiBold, ';fill:#dce1ec;fill-opacity:0.78431373;stroke-width:0.26458332"
+         d="m 17.192821,294.02876 v -10.70187 l 2.551289,-2.55129 h 7.405511 l 2.506133,2.50614 v 2.07715 h -2.619022 v -1.15146 l -1.196622,-1.17405 h -4.741334 l -1.286933,1.26436 v 8.76017 l 1.286933,1.26436 h 4.741334 l 1.196622,-1.17404 v -1.15147 h 2.619022 v 2.07715 l -2.506133,2.50614 H 19.74411 Z" />
+    </g>
+    <g
        id="text48-3"
-       y="295.69135"
-       x="3.1184285"
        style="font-style:normal;font-weight:normal;font-size:22.57777786px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#4f9fee;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       xml:space="preserve"><tspan
+       aria-label="EC">
+      <path
+         id="path1544"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:22.57777786px;font-family:'Chakra Petch SemiBold';-inkscape-font-specification:'Chakra Petch SemiBold, ';fill:#4f9fee;fill-opacity:1;stroke-width:0.26458332"
-         y="295.69135"
-         x="3.1184285"
-         id="tspan46-2">EC</tspan></text>
-    <text
+         d="M 4.6988729,279.8869 H 15.716829 v 2.2352 H 7.3178952 v 4.51556 h 7.7441778 v 2.21262 H 7.3178952 v 4.60587 h 8.3989338 v 2.2352 H 4.6988729 Z" />
+      <path
+         id="path1546"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:22.57777786px;font-family:'Chakra Petch SemiBold';-inkscape-font-specification:'Chakra Petch SemiBold, ';fill:#4f9fee;fill-opacity:1;stroke-width:0.26458332"
+         d="m 17.974596,293.14006 v -10.70187 l 2.551289,-2.55129 h 7.405511 l 2.506134,2.50613 v 2.07716 h -2.619023 v -1.15147 l -1.196622,-1.17404 h -4.741333 l -1.286934,1.26435 v 8.76018 l 1.286934,1.26436 h 4.741333 l 1.196622,-1.17405 v -1.15146 h 2.619023 v 2.07715 l -2.506134,2.50614 h -7.405511 z" />
+    </g>
+    <g
        id="text52-1"
-       y="296.93546"
-       x="45.962154"
        style="font-style:normal;font-weight:normal;font-size:22.57777786px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#dce1ec;fill-opacity:0.78431373;stroke:none;stroke-width:0.26458332"
-       xml:space="preserve"><tspan
+       aria-label="MP">
+      <path
+         id="path1559"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:22.57777786px;font-family:'Chakra Petch SemiBold';-inkscape-font-specification:'Chakra Petch SemiBold, ';fill:#dce1ec;fill-opacity:0.78431373;stroke-width:0.26458332"
-         y="296.93546"
-         x="45.962154"
-         id="tspan50-5">MP</tspan></text>
-    <text
+         d="m 47.542599,281.13101 h 2.506133 l 4.831645,10.88249 h 0.04515 l 4.831645,-10.88249 h 2.528711 v 15.80445 h -2.506134 v -10.5664 h -0.04515 l -3.973689,8.55697 h -1.715911 l -3.951111,-8.55697 h -0.04516 v 10.5664 h -2.506133 z" />
+      <path
+         id="path1561"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:22.57777786px;font-family:'Chakra Petch SemiBold';-inkscape-font-specification:'Chakra Petch SemiBold, ';fill:#dce1ec;fill-opacity:0.78431373;stroke-width:0.26458332"
+         d="m 65.44676,281.13101 h 9.618134 l 2.302933,2.32551 v 5.37351 l -2.325511,2.34809 h -6.976533 v 5.75734 H 65.44676 Z m 8.444089,7.83449 0.903111,-0.90311 v -3.81565 l -0.903111,-0.90311 h -5.825066 v 5.62187 z" />
+    </g>
+    <g
        id="text52-1-9"
-       y="295.7803"
-       x="45.011417"
        style="font-style:normal;font-weight:normal;font-size:22.57777786px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#4f9fee;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       xml:space="preserve"><tspan
+       aria-label="MP">
+      <path
+         id="path1554"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:22.57777786px;font-family:'Chakra Petch SemiBold';-inkscape-font-specification:'Chakra Petch SemiBold, ';fill:#4f9fee;fill-opacity:1;stroke-width:0.26458332"
-         y="295.7803"
-         x="45.011417"
-         id="tspan50-5-9">MP</tspan></text>
-    <text
+         d="m 46.591862,279.97586 h 2.506133 l 4.831645,10.88249 h 0.04516 l 4.831645,-10.88249 h 2.528711 v 15.80444 h -2.506134 v -10.5664 h -0.04516 l -3.973689,8.55698 h -1.715911 l -3.951111,-8.55698 h -0.04516 v 10.5664 h -2.506133 z" />
+      <path
+         id="path1556"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:22.57777786px;font-family:'Chakra Petch SemiBold';-inkscape-font-specification:'Chakra Petch SemiBold, ';fill:#4f9fee;fill-opacity:1;stroke-width:0.26458332"
+         d="m 64.496023,279.97586 h 9.618134 l 2.302933,2.32551 v 5.37351 l -2.325511,2.34809 h -6.976533 v 5.75733 h -2.619023 z m 8.444089,7.83449 0.903111,-0.90311 v -3.81565 l -0.903111,-0.90311 h -5.825066 v 5.62187 z" />
+    </g>
+    <g
        id="text4737"
-       y="287.61914"
-       x="36.449593"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.58333302px;line-height:1.25;font-family:D050000L;-inkscape-font-specification:D050000L;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       xml:space="preserve"><tspan
-         id="tspan4759"
-         style="stroke-width:0.26458332"
-         y="298.01196"
-         x="36.449593" /></text>
-    <text
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.58333302px;line-height:1.25;font-family:D050000L;-inkscape-font-specification:D050000L;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332" />
+    <g
        id="text104"
-       y="285.46689"
-       x="35.894524"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.58333302px;line-height:1.25;font-family:'Thunder Lord';-inkscape-font-specification:'Thunder Lord';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       xml:space="preserve"><tspan
-         style="stroke-width:0.26458332"
-         y="295.02002"
-         x="35.894524"
-         id="tspan102" /></text>
-    <text
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.58333302px;line-height:1.25;font-family:'Thunder Lord';-inkscape-font-specification:'Thunder Lord';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332" />
+    <g
        id="text108"
-       y="292.62112"
-       x="36.264568"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.58333302px;line-height:1.25;font-family:'Thunder Lord';-inkscape-font-specification:'Thunder Lord';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       xml:space="preserve"><tspan
-         style="stroke-width:0.26458332"
-         y="292.62112"
-         x="36.264568"
-         id="tspan106">@@</tspan></text>
-    <text
+       aria-label="@@" />
+    <g
        id="text112"
-       y="284.66513"
-       x="38.731544"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.58333302px;line-height:1.25;font-family:'Thunder Lord';-inkscape-font-specification:'Thunder Lord';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       xml:space="preserve"><tspan
-         style="stroke-width:0.26458332"
-         y="294.21826"
-         x="38.731544"
-         id="tspan110" /></text>
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.58333302px;line-height:1.25;font-family:'Thunder Lord';-inkscape-font-specification:'Thunder Lord';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332" />
     <path
        id="path162"
        d="m 35.657471,280.42384 h 4.99601 l -2.297401,5.88285 4.797933,-0.0513 -7.038939,10.33764 1.110387,-7.48562 -4.072858,0.0698 z"
