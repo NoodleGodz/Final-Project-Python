@@ -1,7 +1,5 @@
 # IMPORT PACKAGES AND MODULES
 # ///////////////////////////////////////////////////////////////
-from cProfile import label
-from fcntl import F_SEAL_SEAL
 from gui.widgets.py_table_widget.py_table_widget import PyTableWidget
 from . functions_main_window import *
 import sys
