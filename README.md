@@ -9,7 +9,7 @@
 |  Phạm Minh Hiếu  | BI11-090 |  Statistics  |
 |   Lê Quốc Hưng   | BI11-104 |  Statistics  |
 | Hoàng Quang Huy  | BI11-111 |     Main     |
-| Nguyễn Đăng Minh | BI11-179 |   Clients    |
+| Nguyễn Đăng Minh | BI11-179 |   Clients/Synchronize    |
 |  Lê Đình Thông   | BI11-257 |    Users     |
 
 ## Features
