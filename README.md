@@ -33,7 +33,7 @@ pip install pandas pyside6 openpyxl
 ## Step 1: Clone this repository:
 
 ```
-git clone https://github.com/rashlight/Final-Project-Python.git
+git clone https://github.com/NoodleGodz/Final-Project-Python.git
 cd Final-Project-Python
 ```
 
